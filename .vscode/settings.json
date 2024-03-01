@@ -1,0 +1,13 @@
+{
+    "editor.defaultFormatter": "Tobiah.unity-tools",
+    "files.exclude": {
+        "**/*.meta": true,
+        "**/*.cs.meta": true
+    },
+    "dotnet.defaultSolution": "MolecularSurvivors.sln",
+    "omnisharp.organizeImportsOnFormat": true,
+    "unity-code-snippets.autoComplete.experimentalAttributes": true,
+    "unity-code-snippets.style": "kr",
+    "vstuc.refreshOnSave": true,
+    "editor.defaultFoldingRangeProvider": "Tobiah.unity-tools"
+}
