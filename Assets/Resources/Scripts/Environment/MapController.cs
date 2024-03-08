@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 namespace MolecularSurvivors.Environment
@@ -7,11 +8,13 @@ namespace MolecularSurvivors.Environment
         [SerializeField] private MapChunk[] _templates;
         [SerializeField] private Player _player;
         [SerializeField] private LayerMask _layer;
+        [SerializeField] private float _spawnDelay;
 
         private ChunkVisibility _chunkVisibility;
         private ChunkSpawner _spawner;
         private PlayerMovement _movement;
         private MapChunk _current;
+        private float _delay;
 
         public MapChunk CurrentChunk => _current;
 
@@ -22,7 +25,11 @@ namespace MolecularSurvivors.Environment
             _spawner = new(_templates, transform);
         }
 
-        private void Update() => UpdateMap();
+        private void Update()
+        {
+            _delay -= Time.deltaTime;
+            UpdateMap();
+        }
 
         public void SetCurrentChunk(MapChunk chunk) => _current = chunk;
 
@@ -64,18 +71,30 @@ namespace MolecularSurvivors.Environment
 
         private void SetChunkAtPoint(Vector3 position)
         {
-            _chunkVisibility.ShowOnlyCloseChunks();
-
-            if (ChunkIsAbcent(position))
+            if (ChunkIsAbcent(position) && TryToSpawnChunk())
             {
-                _spawner.SpawnChunk(position, out MapChunk chunk);
-                _chunkVisibility.AddSpawnedChunk(chunk);
+                _spawner.Spawn(position, out MapChunk chunk);
+                _chunkVisibility.Add(chunk);
             }
         }
 
         private bool ChunkIsAbcent(Vector3 position)
         {
-            return Physics2D.OverlapCircle(position, 0, _layer) == null;
+            _chunkVisibility.ShowOnlyCloseChunks();
+            return transform.Find(position.ToString()) == null;
+        }
+
+        private bool TryToSpawnChunk()
+        {
+            if (_delay <= 0)
+            {
+                _delay = _spawnDelay;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

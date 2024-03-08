@@ -5,7 +5,6 @@ namespace MolecularSurvivors.Environment
 {
     public class ChunkVisibility
     {
-        private readonly List<MapChunk> _spawned = new();
         private readonly Player _player;
         private readonly float _visibleDistance = 50;
 
@@ -13,11 +12,13 @@ namespace MolecularSurvivors.Environment
 
         public ChunkVisibility(Player player) => _player = player;
 
-        public void AddSpawnedChunk(MapChunk chunk) => _spawned.Add(chunk);
+        public List<MapChunk> Spawned { get; private set; } = new();
+
+        public void Add(MapChunk chunk) => Spawned.Add(chunk);
 
         public void ShowOnlyCloseChunks()
         {
-            foreach (var chunk in _spawned)
+            foreach (var chunk in Spawned)
             {
                 _currentDistance = Vector3.Distance(_player.transform.position, chunk.transform.position);
 
