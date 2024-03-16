@@ -9,53 +9,40 @@ namespace MolecularSurvivors
 {
     public class HealthChangesDisplay : MonoBehaviour
     {
-        [SerializeField] private HealthOperations _operations;
+        private List<Health> _healthInstances = new();
+
         [SerializeField] private Canvas _prefab;
         [SerializeField] private int _poolAmount;
         [SerializeField] private float _duration;
         [SerializeField] private Vector3 _offset;
-        [SerializeField] private bool _showDecrease;
 
         private TMP_Text[] _pool;
-        private int _health;
         private WaitForSeconds _wait;
 
         private void Awake()
         {
-            _health = _operations.MaxAmount;
-
             _wait = new(_duration);
             Initialize();
         }
 
-        private void OnEnable() => _operations.HealthChanged += OnHealthChanged;
-
-        private void OnDisable() => _operations.HealthChanged -= OnHealthChanged;
-
-        private void OnHealthChanged(int value)
+        public void Subscribe(Health health)
         {
-            if (_operations.Current > _health)
-                OnIncreased(value);
-            else if (_operations.Current < _health && _showDecrease)
-                OnDecreased(value);
-
-            _health = _operations.Current;
+            _healthInstances.Add(health);
+            health.DamageTaken += OnDamageTaken;
         }
 
-        private void OnIncreased(int value)
+        public void Remove(Health health)
         {
-            var text = GetText("+" + value.ToString(), Color.green);
-
-            if (text != null)
-                StartCoroutine(ShowChange(text));
+            _healthInstances.Remove(health);
+            health.DamageTaken -= OnDamageTaken;
         }
 
-        private void OnDecreased(int value)
+        private void OnDamageTaken(string value, Vector3 position)
         {
-            var text = GetText(value.ToString(), Color.red);
+            var text = GetText(value, Color.white);
 
             if (text != null)
-                StartCoroutine(ShowChange(text));
+                StartCoroutine(ShowChange(text, position));
         }
 
         private TMP_Text GetText(string text, Color color)
@@ -71,10 +58,10 @@ namespace MolecularSurvivors
             return display;
         }
 
-        private IEnumerator ShowChange(TMP_Text text)
+        private IEnumerator ShowChange(TMP_Text text, Vector3 position)
         {
-            Debug.Log(text.text);
             text.transform.localScale = Vector3.one;
+            text.transform.parent.localPosition = position;
             text.gameObject.SetActive(true);
             yield return _wait;
             text.gameObject.SetActive(false);
@@ -86,7 +73,7 @@ namespace MolecularSurvivors
 
             for (int i = 0; i < _poolAmount; i++)
             {
-                var display = Instantiate(_prefab, transform.position + _offset, Quaternion.identity, transform);
+                var display = Instantiate(_prefab, transform);
                 var text = display.GetComponentInChildren<TMP_Text>();
                 text.gameObject.SetActive(false);
                 _pool[i] = text;

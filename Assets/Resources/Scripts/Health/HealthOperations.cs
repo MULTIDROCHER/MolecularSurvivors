@@ -3,33 +3,40 @@ using UnityEngine;
 
 namespace MolecularSurvivors
 {
-    public class HealthOperations : Health
+    public class HealthOperations
     {
-        public event Action<int> HealthChanged;
+        private Health _health;
 
-        public void Increase(int amount)
+        public HealthOperations(Health health) => _health = health;
+
+        public int CurrentAmount => _health.Current;
+
+        public int Recover(int amount)
         {
-            Current = Current += amount <= MaxAmount ?
-            Current + amount : MaxAmount;
+            var health = CurrentAmount + amount <= _health.MaxAmount ?
+            _health.Current + amount : _health.MaxAmount;
 
-            HealthChanged?.Invoke(amount);
+            return health;
         }
 
-        public void Decrease(int amount)
+        public int ApplyDamage(int amount)
         {
-            Current = Current - amount >= 0 ?
-            Current - amount : 0;
-            
-            HealthChanged?.Invoke(amount);
+            var health = _health.Current - amount >= 0 ?
+            _health.Current - amount : 0;
 
-            if (Current <= 0)
+            if (health <= 0)
                 Die();
+
+            return health;
         }
 
         private void Die()
         {
-            if (GetComponentInParent<Player>() == null)
-                Destroy(transform.parent.gameObject);
+            if (_health.GetComponentInParent<Player>() == null)
+            {
+                Debug.Log("died " + _health.transform.parent.name);
+                _health.transform.parent.gameObject.SetActive(false);
+            }
         }
     }
 }

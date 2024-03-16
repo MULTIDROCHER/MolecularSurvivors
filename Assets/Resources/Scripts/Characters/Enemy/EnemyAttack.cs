@@ -12,7 +12,7 @@ namespace MolecularSurvivors
         private WaitForSeconds _wait;
         private bool _inContact = false;
 
-        private void Awake()
+        private void Start()
         {
             _enemy = GetComponent<Enemy>();
             _player = _enemy.Player;
@@ -21,7 +21,7 @@ namespace MolecularSurvivors
         
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.transform == _player.transform)
+            if (_player != null && other.gameObject == _player.gameObject)
             {
                 _inContact = true;
                 StartCoroutine(Attack());
@@ -30,7 +30,7 @@ namespace MolecularSurvivors
 
         private void OnCollisionExit2D(Collision2D other)
         {
-            if (other.transform == _player.transform)
+            if (_player != null && other.gameObject == _player.gameObject)
                 _inContact = false;
         }
 
@@ -38,7 +38,7 @@ namespace MolecularSurvivors
         {
             while (_inContact)
             {
-                _player.Health.Operations.Decrease(_enemy.EnemyData.Damage);
+                _player.Health.ApplyDamage(_enemy.EnemyData.Damage);
                 yield return _wait;
             }
         }

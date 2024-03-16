@@ -13,7 +13,7 @@ namespace MolecularSurvivors
         private Enemy _enemy;
         private Transform _target;
 
-        private void Awake()
+        private void Start()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
             _enemy = GetComponent<Enemy>();

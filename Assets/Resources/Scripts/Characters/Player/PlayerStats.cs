@@ -1,43 +1,42 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MolecularSurvivors
 {
     public class PlayerStats : MonoBehaviour
     {
-        [SerializeField] private PlayerData _playerData;
-
-        private float _maxHealth;
-        private float _recovery;
-        private float _moveSpeed;
-        private float _projectileSpeed;
-
+        [SerializeField] private Slider _slider;
+        [SerializeField] private TMP_Text _levelDisplay;
         ///to clean
         public int _exp = 0;
         public int _level = 1;
         public int _expGoal = 10;
         public List<LevelRange> _levelRanges;
 
-        private void Awake()
-        {
-            _maxHealth = _playerData.MaxHealth;
-            _recovery = _playerData.Recovery;
-            _moveSpeed = _playerData.MoveSpeed;
-            _projectileSpeed = _playerData.ProjectileSpeed;
-        }
-
         private void Start()
         {
             _expGoal = _levelRanges[0]._expGoalIncrease;
+            SetSlider();
         }
 
         public void IncreaseExperience(int amount)
         {
             _exp += amount;
+            _slider.DOValue(_exp, .5f);
 
             CheckLevelUp();
+        }
+
+        private void SetSlider()
+        {
+            _slider.maxValue = _expGoal;
+            _slider.value = _exp;
+            _levelDisplay.text = _level.ToString();
         }
 
         private void CheckLevelUp()
@@ -59,6 +58,7 @@ namespace MolecularSurvivors
                 }
 
                 _expGoal += expCapIncrease;
+                SetSlider();
             }
         }
     }

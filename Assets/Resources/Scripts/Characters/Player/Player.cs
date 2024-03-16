@@ -5,6 +5,7 @@ namespace MolecularSurvivors
     public class Player : MonoBehaviour
     {
         [SerializeField] private PlayerData _playerData;
+        [SerializeField] private HealthChangesDisplay _healthChangesDisplay;
 
         public PlayerData PlayerData => _playerData;
 
@@ -16,6 +17,7 @@ namespace MolecularSurvivors
         {
             Health = GetComponentInChildren<Health>();
             Movement = GetComponent<PlayerMovement>();
+            Health.SetDisplay(_healthChangesDisplay);
         }
     }
 }
