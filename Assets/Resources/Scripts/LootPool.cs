@@ -26,7 +26,7 @@ namespace MolecularSurvivors
 
         public LootTemplate GetTemplate()
         {
-            var template = _pool.FirstOrDefault(obj => obj.gameObject.activeSelf == false);
+            var template = _pool.Where(obj => obj.gameObject.activeSelf == false).FirstOrDefault();
 
             if (template == null && _pool.Count + 1 <= _maxSize)
             {

@@ -43,6 +43,13 @@ namespace MolecularSurvivors
                     { Tr, "Karşı tarafa doğru hızla ateş eder." }
                 }
             },
+            { TextCode.Default, new Dictionary<string, string>()
+                {
+                    { Ru, "idk.null.." },
+                    { En, "idk.null.." },
+                    { Tr, "idk.null.." }
+                }
+            },
         };
 
         public static string GetText(TextCode code)

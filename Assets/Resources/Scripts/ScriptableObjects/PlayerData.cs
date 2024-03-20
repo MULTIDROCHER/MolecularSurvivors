@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MolecularSurvivors
@@ -9,12 +7,14 @@ namespace MolecularSurvivors
     {
         [SerializeField] private float _recovery;
         [SerializeField] private float _projectileSpeed;
-        [SerializeField] private GameObject _startWeapon;
+        [SerializeField] private WeaponData _startWeapon;
 
         public int Level { get; private set; } = 1;
 
         public float Recovery => _recovery;
 
         public float ProjectileSpeed => _projectileSpeed;
+
+        public WeaponData StartWeapon => _startWeapon;
     }
 }

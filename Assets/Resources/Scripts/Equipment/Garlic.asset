@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7233c59058043a41a3ed5ce839cc5bc, type: 3}
+  m_Name: Garlic
+  m_EditorClassIdentifier: 
+  <Icon>k__BackingField: {fileID: 21300000, guid: d96fb04f42bf66242998b08a4c32b58a,
+    type: 3}
+  <TextData>k__BackingField:
+    rid: 7958124799787794432
+  <Components>k__BackingField: []
+  <Ammo>k__BackingField: {fileID: 7701565081176907199, guid: e4d22afdd8623514db8348bc70613385,
+    type: 3}
+  <TimerData>k__BackingField:
+    rid: 7958124837859229721
+  <DamageData>k__BackingField:
+    rid: 7958124837859229722
+  <DurationData>k__BackingField:
+    rid: 7958124837859229723
+  <AmountData>k__BackingField:
+    rid: 7958124837859229724
+  references:
+    version: 2
+    RefIds:
+    - rid: 7958124799787794432
+      type: {class: TextComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        _nameCode: 1
+        _descriptionCode: 2
+    - rid: 7958124837859229721
+      type: {class: TimerComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <Cooldown>k__BackingField: 5
+    - rid: 7958124837859229722
+      type: {class: DamageComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <Damage>k__BackingField: 1
+    - rid: 7958124837859229723
+      type: {class: DurationComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <Duration>k__BackingField: 1
+    - rid: 7958124837859229724
+      type: {class: AmountComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <MaxAmount>k__BackingField: 1
+        <Amount>k__BackingField: 1

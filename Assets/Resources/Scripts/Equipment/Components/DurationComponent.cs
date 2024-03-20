@@ -4,32 +4,18 @@ namespace MolecularSurvivors
 {
     public class DurationComponent : ComponentData, IIncreasable
     {
-        [SerializeField] private float _maxDuration;
-        [SerializeField] private float _minDuration;
+        [field: SerializeField] public float Duration { get; private set; }
 
-        public DurationComponent()
-        {
-            _minDuration = 1;
-            _maxDuration = 10;
-        }
-
-        public float GetDuration()
-        {
-            if (_minDuration >= _maxDuration)
-                _minDuration = _maxDuration / 2;
-
-            return Random.Range(_minDuration, _maxDuration);
-        }
+        public DurationComponent() => Duration = 1;
 
         public void Increase(float value, bool isPercent = false)
         {
             var amount = value;
 
             if (isPercent)
-                amount = PercentConverter.GetValueByPercent(_maxDuration, value);
+                amount = PercentConverter.GetValueByPercent(Duration, value);
 
-            _minDuration += amount;
-            _maxDuration += amount;
+            Duration += amount;
         }
     }
 }

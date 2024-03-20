@@ -8,14 +8,14 @@ namespace MolecularSurvivors
     [RequireComponent(typeof(CircleCollider2D))]
     public class LootCollector : MonoBehaviour
     {
-        private PlayerStats _player;
+        private LevelChanger _player;
         private CircleCollider2D _collider;
         private float _radius = .7f;
         private float _collectSpeed = .5f;
 
         private void Awake()
         {
-            _player = GetComponentInParent<PlayerStats>();
+            _player = GetComponentInParent<LevelChanger>();
             _collider = GetComponent<CircleCollider2D>();
 
             _collider.radius = _radius;

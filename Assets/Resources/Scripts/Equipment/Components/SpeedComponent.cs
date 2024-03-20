@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace MolecularSurvivors
 {
-    public class ThrowingComponent : ComponentData, IIncreasable
+    public class SpeedComponent : ComponentData, IIncreasable
     {
         [field: SerializeField] public float Speed { get; private set; }
 
-        public ThrowingComponent() => Speed =  5;
+        public SpeedComponent() => Speed =  5;
 
         public void Increase(float value, bool isPercent = false)
         {

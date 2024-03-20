@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace MolecularSurvivors
 {
-    public class PlayerStats : MonoBehaviour
+    public class LevelChanger : MonoBehaviour
     {
         [SerializeField] private Slider _slider;
         [SerializeField] private TMP_Text _levelDisplay;

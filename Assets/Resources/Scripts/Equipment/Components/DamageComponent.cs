@@ -6,31 +6,18 @@ namespace MolecularSurvivors
 {
     public class DamageComponent : ComponentData, IIncreasable
     {
-        [SerializeField] private int _minDamage;
-        [SerializeField] private int _maxDamage;
+        [field: SerializeField] public int Damage { get; private set; }
 
-        public DamageComponent(){
-            _minDamage = 1;
-            _maxDamage = 10;
-        }
-
-        public int GetDamage()
-        {
-            if (_minDamage >= _maxDamage)
-                _minDamage = _maxDamage / 2;
-
-            return Random.Range(_minDamage, _maxDamage);
-        }
+        public DamageComponent() => Damage = 1;
 
         public void Increase(float value, bool isPercent = false)
         {
             var amount = value;
 
             if (isPercent)
-                amount = PercentConverter.GetValueByPercent(_maxDamage, value);
+                amount = PercentConverter.GetValueByPercent(Damage, value);
 
-            _minDamage += (int)amount;
-            _maxDamage += (int)amount;
+            Damage += (int)amount;
         }
     }
 }

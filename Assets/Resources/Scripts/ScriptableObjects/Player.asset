@@ -16,4 +16,4 @@ MonoBehaviour:
   _maxHealth: 50
   _recovery: 0.1
   _projectileSpeed: 1
-  _startWeapon: {fileID: 0}
+  _startWeapon: {fileID: 11400000, guid: ecbbdf9a7690d8e47b78eb0b87aee57e, type: 2}
