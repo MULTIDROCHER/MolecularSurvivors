@@ -13,11 +13,14 @@ namespace MolecularSurvivors
 
         public PlayerMovement Movement { get; private set; }
 
+        public SpriteRenderer Renderer { get; private set; }
+
         private void Awake()
         {
             Health = GetComponentInChildren<Health>();
             Movement = GetComponent<PlayerMovement>();
             Health.SetDisplay(_healthChangesDisplay);
+            Renderer = GetComponentInChildren<SpriteRenderer>();
         }
     }
 }

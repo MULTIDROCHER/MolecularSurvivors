@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MolecularSurvivors
@@ -41,6 +40,10 @@ namespace MolecularSurvivors
                 _player.Health.ApplyDamage(_enemy.EnemyData.Damage);
                 yield return _wait;
             }
+        }
+
+        private void OnDisable() {
+            StopAllCoroutines();
         }
     }
 }

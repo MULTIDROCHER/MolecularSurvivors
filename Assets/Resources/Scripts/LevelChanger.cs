@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
@@ -10,6 +9,7 @@ namespace MolecularSurvivors
 {
     public class LevelChanger : MonoBehaviour
     {
+        [SerializeField] private RewardWindow _rewardWindow;
         [SerializeField] private Slider _slider;
         [SerializeField] private TMP_Text _levelDisplay;
         ///to clean
@@ -59,6 +59,7 @@ namespace MolecularSurvivors
 
                 _expGoal += expCapIncrease;
                 SetSlider();
+                _rewardWindow.gameObject.SetActive(true);
             }
         }
     }

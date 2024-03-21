@@ -1,6 +1,3 @@
-using System;
-using UnityEngine;
-
 namespace MolecularSurvivors
 {
     public class HealthOperations
@@ -34,7 +31,6 @@ namespace MolecularSurvivors
         {
             if (_health.GetComponentInParent<Player>() == null)
             {
-                Debug.Log("died " + _health.transform.parent.name);
                 _health.transform.parent.gameObject.SetActive(false);
             }
         }

@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7233c59058043a41a3ed5ce839cc5bc, type: 3}
+  m_Name: GreenWeapon
+  m_EditorClassIdentifier: 
+  <Icon>k__BackingField: {fileID: 21300000, guid: 079f5a8d00f74c84181be0a872b4c39d,
+    type: 3}
+  <TextData>k__BackingField:
+    rid: 7958124908034654213
+  <Color>k__BackingField: {r: 0.6082635, g: 1, b: 0, a: 1}
+  <TimerData>k__BackingField:
+    rid: 7958124908034654214
+  <DurationData>k__BackingField:
+    rid: 7958124908034654215
+  <Ammo>k__BackingField: {fileID: 853872879145074082, guid: 72f1bfbd9d923ae4a8b8f7f82d837d26,
+    type: 3}
+  <AmountData>k__BackingField:
+    rid: 7958124908034654216
+  <DamageData>k__BackingField:
+    rid: 7958124908034654217
+  references:
+    version: 2
+    RefIds:
+    - rid: 7958124908034654213
+      type: {class: TextComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        _nameCode: 3
+        _descriptionCode: 4
+    - rid: 7958124908034654214
+      type: {class: TimerComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <Cooldown>k__BackingField: 6
+    - rid: 7958124908034654215
+      type: {class: DurationComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <Duration>k__BackingField: 5
+    - rid: 7958124908034654216
+      type: {class: AmountComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <MaxAmount>k__BackingField: 2
+        <Amount>k__BackingField: 1
+    - rid: 7958124908034654217
+      type: {class: DamageComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <Damage>k__BackingField: 1
