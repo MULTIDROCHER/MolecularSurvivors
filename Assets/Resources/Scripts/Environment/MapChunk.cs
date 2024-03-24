@@ -6,12 +6,15 @@ namespace MolecularSurvivors.Environment
     {
         public MapController Controller { get; private set; }
 
-        public ChunkSpawnPoints SpawnPoints { get; private set; }
+        public ChunkSpawnPoints ChunkSpawnPoints { get; private set; }
+
+        public BreakablesSpawner BreakablesSpawner { get; private set; }
 
         private void Awake()
         {
             Controller = GetComponentInParent<MapController>();
-            SpawnPoints = GetComponent<ChunkSpawnPoints>();
+            ChunkSpawnPoints = GetComponent<ChunkSpawnPoints>();
+            BreakablesSpawner = GetComponentInChildren<BreakablesSpawner>();
         }
     }
 }

@@ -6,7 +6,7 @@ namespace MolecularSurvivors
     [RequireComponent(typeof(CircleCollider2D))]
     public class LootCollector : MonoBehaviour
     {
-        [SerializeField] private LevelChanger _levelChanger;
+        [SerializeField] private LevelProgress _progressChanger;
         private Player _player;
         private CircleCollider2D _collider;
         private float _radius = .7f;
@@ -26,9 +26,28 @@ namespace MolecularSurvivors
             {
                 loot.transform.DOMove(_player.transform.position, _collectSpeed).OnComplete(() =>
                 {
+                    GetLoot(loot.Loot);
                     loot.Collect();
-                    _levelChanger.IncreaseExperience(loot.Loot.Exp);
                 });
+            }
+        }
+
+        private void GetLoot(Loot loot)
+        {
+            switch (loot)
+            {
+                case ExpirienceLoot expLoot:
+                    _progressChanger.IncreaseExperience(expLoot.Exp);
+                    break;
+                case HpLoot hpLoot:
+                    _player.Health.Recover(hpLoot.HealthRecovery);
+                    break;
+                case GoldLoot goldLoot:
+                    _player.GoldCollector.Collect(goldLoot.Gold);
+                    break;
+                default:
+                    Debug.Log("Loot not found");
+                    break;
             }
         }
     }

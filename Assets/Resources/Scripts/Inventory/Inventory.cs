@@ -29,28 +29,23 @@ namespace MolecularSurvivors
 
         public void Add(EquipmentData equipment)
         {
-            //todo rewrite
             switch (equipment)
             {
                 case WeaponData:
-                    if (_weaponContainer.HasEmptySlot())
-                    {
-                        _weaponContainer.Add(equipment);
-                        EquipmentAdded?.Invoke(equipment);
-                        Debug.Log("added to weapon");
-                    }
+                    Add(_weaponContainer, equipment);
                     break;
                 case AbilityData:
-                    if (_abilityContainer.HasEmptySlot())
-                    {
-                        _abilityContainer.Add(equipment);
-                        EquipmentAdded?.Invoke(equipment);
-                        Debug.Log("added to ability");
-                    }
+                    Add(_abilityContainer, equipment);
                     break;
-                default:
-                    Debug.Log("cant add equip to inventory");
-                    break;
+            }
+        }
+
+        private void Add(InventoryBlock block, EquipmentData equipment)
+        {
+            if (block.HasEmptySlot())
+            {
+                EquipmentAdded?.Invoke(equipment);
+                block.Add(equipment);
             }
         }
 

@@ -4,29 +4,20 @@ namespace MolecularSurvivors.Environment
 {
     public class ChunkSpawnPoints : MonoBehaviour
     {
-        [SerializeField] private Transform _right;
-        [SerializeField] private Transform _rightUp;
-        [SerializeField] private Transform _rightDown;
-        [SerializeField] private Transform _left;
-        [SerializeField] private Transform _leftUp;
-        [SerializeField] private Transform _leftDown;
-        [SerializeField] private Transform _up;
-        [SerializeField] private Transform _down;
+        [field: SerializeField] public Transform Right { get; private set; }
 
-        public Transform Right => _right;
+        [field: SerializeField] public Transform RightUp { get; private set; }
 
-        public Transform RightUp => _rightUp;
+        [field: SerializeField] public Transform RightDown { get; private set; }
 
-        public Transform RightDown => _rightDown;
+        [field: SerializeField] public Transform Left { get; private set; }
 
-        public Transform Left => _left;
+        [field: SerializeField] public Transform LeftUp { get; private set; }
 
-        public Transform LeftUp => _leftUp;
+        [field: SerializeField] public Transform LeftDown { get; private set; }
 
-        public Transform LeftDown => _leftDown;
+        [field: SerializeField] public Transform Up { get; private set; }
 
-        public Transform Up => _up;
-
-        public Transform Down => _down;
+        [field: SerializeField] public Transform Down { get; private set; }
     }
 }

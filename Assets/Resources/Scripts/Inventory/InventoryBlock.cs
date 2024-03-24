@@ -6,8 +6,8 @@ namespace MolecularSurvivors
 {
     public class InventoryBlock : MonoBehaviour
     {
-        private List<InventorySlot> _slots = new();
-        private List<EquipmentData> _equipment = new();
+        private readonly List<InventorySlot> _slots = new();
+        private readonly List<EquipmentData> _equipment = new();
 
         public void Initialize(InventorySlot template, int amount)
         {
@@ -24,15 +24,20 @@ namespace MolecularSurvivors
 
         public void Add(EquipmentData equipment)
         {
-            var slot = GetSlot();
+            InventorySlot slot;
+
+            if (_equipment.Contains(equipment))
+            {
+                slot = _slots.FirstOrDefault(slot => slot.Equipment == equipment);
+            }
+            else
+            {
+                _equipment.Add(equipment);
+                slot = _slots.FirstOrDefault(slot => slot.Empty);
+            }
 
             if (slot != null)
-            {
                 slot.Set(equipment);
-                _equipment.Add(equipment);
-            }
         }
-
-        public InventorySlot GetSlot() => _slots.FirstOrDefault(slot => slot.Empty);
     }
 }

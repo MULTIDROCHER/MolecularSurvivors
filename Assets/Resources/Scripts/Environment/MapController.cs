@@ -8,6 +8,7 @@ namespace MolecularSurvivors.Environment
         [SerializeField] private Player _player;
         [SerializeField] private LayerMask _layer;
         [SerializeField] private float _spawnDelay;
+        [SerializeField] private BreakablesController _breakablesController;
 
         private ChunkVisibility _chunkVisibility;
         private ChunkSpawner _spawner;
@@ -40,28 +41,28 @@ namespace MolecularSurvivors.Environment
             switch (_movement.Movement)
             {
                 case { x: > 0, y: 0 }:
-                    SetChunkAtPoint(_current.SpawnPoints.Right.position);
+                    SetChunkAtPoint(_current.ChunkSpawnPoints.Right.position);
                     break;
                 case { x: < 0, y: 0 }:
-                    SetChunkAtPoint(_current.SpawnPoints.Left.position);
+                    SetChunkAtPoint(_current.ChunkSpawnPoints.Left.position);
                     break;
                 case { x: 0, y: > 0 }:
-                    SetChunkAtPoint(_current.SpawnPoints.Up.position);
+                    SetChunkAtPoint(_current.ChunkSpawnPoints.Up.position);
                     break;
                 case { x: 0, y: < 0 }:
-                    SetChunkAtPoint(_current.SpawnPoints.Down.position);
+                    SetChunkAtPoint(_current.ChunkSpawnPoints.Down.position);
                     break;
                 case { x: > 0, y: > 0 }:
-                    SetChunkAtPoint(_current.SpawnPoints.RightUp.position);
+                    SetChunkAtPoint(_current.ChunkSpawnPoints.RightUp.position);
                     break;
                 case { x: < 0, y: > 0 }:
-                    SetChunkAtPoint(_current.SpawnPoints.LeftUp.position);
+                    SetChunkAtPoint(_current.ChunkSpawnPoints.LeftUp.position);
                     break;
                 case { x: > 0, y: < 0 }:
-                    SetChunkAtPoint(_current.SpawnPoints.RightDown.position);
+                    SetChunkAtPoint(_current.ChunkSpawnPoints.RightDown.position);
                     break;
                 case { x: < 0, y: < 0 }:
-                    SetChunkAtPoint(_current.SpawnPoints.LeftDown.position);
+                    SetChunkAtPoint(_current.ChunkSpawnPoints.LeftDown.position);
                     break;
                 default:
                     return;
@@ -73,6 +74,7 @@ namespace MolecularSurvivors.Environment
             if (ChunkIsAbcent(position) && TryToSpawnChunk())
             {
                 _spawner.Spawn(position, out MapChunk chunk);
+                _breakablesController.Spawn(chunk);
                 _chunkVisibility.Add(chunk);
             }
         }

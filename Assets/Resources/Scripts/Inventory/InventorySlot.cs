@@ -9,16 +9,37 @@ namespace MolecularSurvivors
         [SerializeField] private Image _image;
         [SerializeField] private TMP_Text _level;
 
+        public EquipmentData Equipment{ get; private set; }
+
         public bool Empty { get; private set; } = true;
 
         public void Set(EquipmentData equipment)
         {
-            if (Empty == false)
-                return;
+            switch (Equipment)
+            {
+                case null:
+                    Add(equipment);
+                    return;
+                case var _ when Equipment == equipment:
+                    Upgrade();
+                    return;
+                default:
+                    Debug.Log("wtf");
+                    return;
+            }
+        }
 
+        private void Add(EquipmentData equipment)
+        {
             Empty = false;
-            _level.text = "666";
+            Equipment = equipment;
+            Upgrade();
             _image.sprite = equipment.Icon;
+        }
+
+        private void Upgrade()
+        {
+            _level.text = Equipment.LevelData.Level + "/" + Equipment.LevelData.MaxLevel;
         }
     }
 }

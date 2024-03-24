@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e986363c0aa6582459f44521e87bf845, type: 3}
+  m_Name: GoldReward
+  m_EditorClassIdentifier: 
+  <TextData>k__BackingField:
+    rid: 7958124974406107168
+  <Loot>k__BackingField: {fileID: 11400000, guid: 43d268bbbaa526349a3db00f40ca6864,
+    type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 7958124974406107168
+      type: {class: TextComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        _nameCode:
+          <Ru>k__BackingField: ru gold
+          <En>k__BackingField: en gold
+          <Tr>k__BackingField: tr gold
+        _descriptionCode:
+          <Ru>k__BackingField: ' gold gold'
+          <En>k__BackingField: ' gold gold'
+          <Tr>k__BackingField: ' gold gold'

@@ -14,7 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 10
   _maxHealth: 50
-  <StartWeapon>k__BackingField: {fileID: 11400000, guid: 32e8400901252a541b70aff166751b50,
-    type: 2}
-  <StartAbility>k__BackingField: {fileID: 11400000, guid: 017b98fa256ea6f429e4720d469f6d9a,
-    type: 2}
+  _startWeapon: {fileID: 11400000, guid: 5256b26967a7ff94793be147b5ec3491, type: 2}
+  _startAbility: {fileID: 11400000, guid: c6aa788bf61636440986b34edb97bd94, type: 2}

@@ -5,7 +5,10 @@ namespace MolecularSurvivors
     [CreateAssetMenu(menuName = "Characters/Player")]
     public class PlayerData : CharacterData
     {
-        [field: SerializeField] public WeaponData StartWeapon { get; private set; }
-        [field: SerializeField] public AbilityData StartAbility { get; private set; }
+        [SerializeField] private WeaponData _startWeapon;
+        [SerializeField] private AbilityData _startAbility;
+
+        public WeaponData StartWeapon => _startWeapon;
+        public AbilityData StartAbility => _startAbility;
     }
 }

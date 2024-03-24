@@ -16,19 +16,30 @@ MonoBehaviour:
     type: 3}
   <TextData>k__BackingField:
     rid: 7958124908034654230
-  <Color>k__BackingField: {r: 1, g: 0.9577489, b: 0, a: 1}
   <TimerData>k__BackingField:
     rid: 7958124908034654231
   <DurationData>k__BackingField:
     rid: 7958124908034654232
+  <LevelData>k__BackingField:
+    rid: 7958124934239879208
+  <Color>k__BackingField: {r: 1, g: 0.9577489, b: 0, a: 1}
   references:
     version: 2
     RefIds:
     - rid: 7958124908034654230
       type: {class: TextComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
       data:
-        _nameCode: 1
-        _descriptionCode: 2
+        _nameCode:
+          <Ru>k__BackingField: "\u0440\u0443  \u0430\u0431\u0438\u043B 3"
+          <En>k__BackingField: "\u0438\u043D  \u0430\u0431\u0438\u043B 3"
+          <Tr>k__BackingField: "\u0442\u0440  \u0430\u0431\u0438\u043B 3"
+        _descriptionCode:
+          <Ru>k__BackingField: "\u0440\u0443  \u0430\u0431\u0438\u043B 3  \u0430\u0431\u0438\u043B
+            3"
+          <En>k__BackingField: "\u0438\u043D  \u0430\u0431\u0438\u043B 3  \u0430\u0431\u0438\u043B
+            3"
+          <Tr>k__BackingField: "\u0442\u0440  \u0430\u0431\u0438\u043B 3  \u0430\u0431\u0438\u043B
+            3"
     - rid: 7958124908034654231
       type: {class: TimerComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
       data:
@@ -37,3 +48,7 @@ MonoBehaviour:
       type: {class: DurationComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
       data:
         <Duration>k__BackingField: 2
+    - rid: 7958124934239879208
+      type: {class: UpgradeComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <MaxLevel>k__BackingField: 3

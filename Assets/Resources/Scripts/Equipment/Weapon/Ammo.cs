@@ -1,4 +1,5 @@
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 
 namespace MolecularSurvivors
@@ -11,14 +12,19 @@ namespace MolecularSurvivors
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.TryGetComponent(out Enemy enemy))
-                enemy.Health.Operations.ApplyDamage(_weapon.GetDamage());
+            /* if (other.gameObject.layer == gameObject.layer)
+            { */
+                if (other.TryGetComponent(out Enemy enemy))
+                    enemy.Health.ApplyDamage(_weapon.GetDamage());
+
+                if (other.TryGetComponent(out ObjectHealth health))
+                    health.ApplyDamage(_weapon.GetDamage());
+            /* } */
         }
 
         public void Initialize(Weapon weapon)
         {
             _weapon = weapon;
-            SetScale();
             SetDuration();
             _renderer = GetComponent<SpriteRenderer>();
             _renderer.color = _weapon.Data.Color;
@@ -27,20 +33,12 @@ namespace MolecularSurvivors
 
         public IEnumerator Shoot()
         {
-            transform.localPosition = Vector3.zero;
+            transform.DOScale(new Vector3(2, 2, 2), _weapon.Data.DurationData.Duration / 2);
 
             yield return _wait;
 
+            transform.DOScale(Vector3.zero, _weapon.Data.DurationData.Duration / 2);
             gameObject.SetActive(false);
-        }
-
-        public void SetScale()
-        {
-            //todo change scale
-            var size = 2;
-            var scale = new Vector3(size, size);
-
-            transform.localScale = scale;
         }
 
         public void SetDuration()

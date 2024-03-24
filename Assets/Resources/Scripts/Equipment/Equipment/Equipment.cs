@@ -15,7 +15,6 @@ namespace MolecularSurvivors
             Controller = controller;
             Player = Controller.Player;
             gameObject.name = Data.name;
-            print("initialized " + Data.TextData.Name);
         }
 
         public abstract void Execute();

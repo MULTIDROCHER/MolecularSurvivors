@@ -4,30 +4,20 @@ namespace MolecularSurvivors
 {
     public class Enemy : MonoBehaviour
     {
-        [SerializeField] private EnemyData _enemyData;
-        private Player _player;
-        private DropLootManager _drop;
+        [field: SerializeField] public EnemyData EnemyData { get; private set; }
 
-        public Player Player => _player;
-        public EnemyData EnemyData => _enemyData;
-
-        public Health Health { get; private set; }
+        public Player Player { get; private set; }
+        public CharactersHealth Health { get; private set; }
 
         private void Awake()
         {
-            Health = GetComponentInChildren<Health>();
+            Health = GetComponentInChildren<CharactersHealth>();
         }
 
-        public void Set(Player player, HealthChangesDisplay healthChanges, DropLootManager drop)
+        public void Set(Player player, HealthChangesDisplay healthChanges)
         {
-            _player = player;
+            Player = player;
             Health.SetDisplay(healthChanges);
-            _drop = drop;
-        }
-
-        private void OnDisable()
-        {
-            _drop?.InstantiateLoot(transform.position);
         }
     }
 }

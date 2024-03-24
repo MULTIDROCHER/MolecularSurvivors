@@ -5,17 +5,19 @@ namespace MolecularSurvivors
 {
     public class EquipmentAssets : MonoBehaviour
     {
-        [SerializeField] private List<WeaponData> weaponDatas;
-        [SerializeField] private List<AbilityData> abilityDatas;
+        [SerializeField] private List<WeaponData> _weaponDatas;
+        [SerializeField] private List<AbilityData> _abilityDatas;
+
+        private int _randomIndex;
 
         public EquipmentData GetRandomEquipment()
         {
-            var randomIndex = Random.Range(0, weaponDatas.Count + abilityDatas.Count);
+            _randomIndex = Random.Range(0, _weaponDatas.Count + _abilityDatas.Count);
 
-            if (randomIndex < weaponDatas.Count)
-                return weaponDatas[randomIndex];
+            if (_randomIndex < _weaponDatas.Count)
+                return _weaponDatas[_randomIndex];
             else
-                return abilityDatas[randomIndex - weaponDatas.Count];
+                return _abilityDatas[_randomIndex - _weaponDatas.Count];
         }
     }
 }

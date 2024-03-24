@@ -21,7 +21,6 @@ namespace MolecularSurvivors
                 Cooldown -= amount;
         }
 
-
         public bool ReadyToAttack()
         {
             if (_timer >= Cooldown)

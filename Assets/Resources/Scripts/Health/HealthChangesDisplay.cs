@@ -24,13 +24,13 @@ namespace MolecularSurvivors
             Initialize();
         }
 
-        public void Subscribe(Health health)
+        public void Subscribe(CharactersHealth health)
         {
             _healthInstances.Add(health);
             health.DamageTaken += OnDamageTaken;
         }
 
-        public void Remove(Health health)
+        public void Remove(CharactersHealth health)
         {
             _healthInstances.Remove(health);
             health.DamageTaken -= OnDamageTaken;

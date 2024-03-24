@@ -16,12 +16,14 @@ MonoBehaviour:
     type: 3}
   <TextData>k__BackingField:
     rid: 7958124908034654213
-  <Color>k__BackingField: {r: 0.6082635, g: 1, b: 0, a: 1}
   <TimerData>k__BackingField:
     rid: 7958124908034654214
   <DurationData>k__BackingField:
     rid: 7958124908034654215
-  <Ammo>k__BackingField: {fileID: 853872879145074082, guid: 72f1bfbd9d923ae4a8b8f7f82d837d26,
+  <LevelData>k__BackingField:
+    rid: 7958124934239879206
+  <Color>k__BackingField: {r: 0.6082635, g: 1, b: 0, a: 1}
+  <Ammo>k__BackingField: {fileID: 853872879145074082, guid: a13bcfc1ad431f148ae7091782d075b3,
     type: 3}
   <AmountData>k__BackingField:
     rid: 7958124908034654216
@@ -33,22 +35,35 @@ MonoBehaviour:
     - rid: 7958124908034654213
       type: {class: TextComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
       data:
-        _nameCode: 3
-        _descriptionCode: 4
+        _nameCode:
+          <Ru>k__BackingField: "\u0440\u0443  \u0432\u0435\u0430\u043F 3"
+          <En>k__BackingField: "\u0438\u043D  \u0432\u0435\u0430\u043F 3"
+          <Tr>k__BackingField: "\u0442\u0440  \u0432\u0435\u0430\u043F 3"
+        _descriptionCode:
+          <Ru>k__BackingField: "\u0440\u0443  \u0432\u0435\u0430\u043F 3  \u0432\u0435\u0430\u043F
+            3"
+          <En>k__BackingField: "\u0438\u043D  \u0432\u0435\u0430\u043F 3  \u0432\u0435\u0430\u043F
+            3"
+          <Tr>k__BackingField: "\u0442\u0440  \u0432\u0435\u0430\u043F 3  \u0432\u0435\u0430\u043F
+            3"
     - rid: 7958124908034654214
       type: {class: TimerComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
       data:
-        <Cooldown>k__BackingField: 6
+        <Cooldown>k__BackingField: 3
     - rid: 7958124908034654215
       type: {class: DurationComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
       data:
-        <Duration>k__BackingField: 5
+        <Duration>k__BackingField: 1
     - rid: 7958124908034654216
       type: {class: AmountComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
       data:
-        <MaxAmount>k__BackingField: 2
-        <Amount>k__BackingField: 1
+        <MaxAmount>k__BackingField: 5
+        <Amount>k__BackingField: 2
     - rid: 7958124908034654217
       type: {class: DamageComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
       data:
-        <Damage>k__BackingField: 1
+        <Damage>k__BackingField: 2
+    - rid: 7958124934239879206
+      type: {class: UpgradeComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <MaxLevel>k__BackingField: 5

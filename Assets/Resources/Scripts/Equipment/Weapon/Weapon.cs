@@ -35,8 +35,10 @@ namespace MolecularSurvivors
 
             for (int i = 0; i < ammos.Length; i++)
             {
-                if (_ammos[i].gameObject.activeSelf == false)
+                if (_ammos[i] != null && _ammos[i].gameObject.activeSelf == false)
                     ammos[i] = _ammos[i];
+                else
+                    Debug.Log("null ammo");
             }
 
             return ammos;

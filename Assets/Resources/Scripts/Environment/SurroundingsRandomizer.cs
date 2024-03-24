@@ -7,9 +7,9 @@ namespace MolecularSurvivors.Environment
         [SerializeField] private Transform[] _spawnPoints;
         [SerializeField] private Transform[] _prefabs;
 
-        private void Start() => SetRandomSurroundings();
+        private void Start() => SpawnRandomSurroundings();
 
-        private void SetRandomSurroundings()
+        private void SpawnRandomSurroundings()
         {
             foreach (var point in _spawnPoints)
             {

@@ -9,18 +9,21 @@ namespace MolecularSurvivors
 
         public PlayerData PlayerData => _playerData;
 
-        public Health Health { get; private set; }
+        public CharactersHealth Health { get; private set; }
 
         public PlayerMovement Movement { get; private set; }
 
         public SpriteRenderer Renderer { get; private set; }
 
+        public GoldCollector GoldCollector {get; private set;}
+
         private void Awake()
         {
-            Health = GetComponentInChildren<Health>();
+            Health = GetComponentInChildren<CharactersHealth>();
             Movement = GetComponent<PlayerMovement>();
             Health.SetDisplay(_healthChangesDisplay);
             Renderer = GetComponentInChildren<SpriteRenderer>();
+            GoldCollector = GetComponentInChildren<GoldCollector>();
         }
     }
 }

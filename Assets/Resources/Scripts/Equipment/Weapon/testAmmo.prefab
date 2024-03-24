@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6622748722160161327}
   - component: {fileID: 6009400563114569454}
   - component: {fileID: 853872879145074082}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: testAmmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8192
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0

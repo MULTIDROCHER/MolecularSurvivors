@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace MolecularSurvivors
@@ -24,13 +25,6 @@ namespace MolecularSurvivors
             _inventory.EquipmentAdded -= OnAdded;
         }
 
-        private void OnAdded(EquipmentData data)
-        {
-            if (data is T t)
-                Add(t);
-        }
-
-
         private void Update() => Timer.Update();
 
         public virtual void Add(T data)
@@ -40,6 +34,19 @@ namespace MolecularSurvivors
 
             Equipment.Add(equipment);
             Timer.Add(equipment);
+        }
+
+        private void OnAdded(EquipmentData data)
+        {
+            if (data is T t)
+            {
+                var equipment = Equipment.FirstOrDefault(item => item.Data == t);
+                
+                if (equipment != null)
+                    equipment.Data.LevelData.LevelUp();
+                else
+                    Add(t);
+            }
         }
 
         private void OnReadyToExecute(int index) => Equipment[index].Execute();

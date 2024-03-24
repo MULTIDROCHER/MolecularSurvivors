@@ -9,8 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6111814350192211840}
-  - component: {fileID: 7811285291111244278}
-  - component: {fileID: 548049405516311625}
+  - component: {fileID: 6284870773602290498}
   m_Layer: 13
   m_Name: health
   m_TagString: Untagged
@@ -33,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7924608326366968726}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7811285291111244278
+--- !u!114 &6284870773602290498
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,26 +41,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 815465226917815510}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cffa50b75252914fbfd7f90bb50d3e8, type: 3}
+  m_Script: {fileID: 11500000, guid: c33836f420f3f9d43a4bea4b4237b2be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _character: {fileID: 11400000, guid: ce09a4f62bfb9fe4f9ebff61f1656282, type: 2}
---- !u!114 &548049405516311625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 815465226917815510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0f70ac7e2d3f844998ed1411af8c5e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefab: {fileID: 3572096709030747066, guid: 0c3e126101519a342a6ad305a2704a3f, type: 3}
-  _poolAmount: 3
-  _duration: 1
-  _offset: {x: 0, y: 0.3, z: 0}
 --- !u!1 &7677036699583615682
 GameObject:
   m_ObjectHideFlags: 0
@@ -77,7 +60,6 @@ GameObject:
   - component: {fileID: 6639151753742746132}
   - component: {fileID: -2747576458375046529}
   - component: {fileID: -8334809330927208758}
-  - component: {fileID: 5288040992542408990}
   m_Layer: 13
   m_Name: enemy2
   m_TagString: Untagged
@@ -227,7 +209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2dfbdb8cf8f914794f132f69221102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyData: {fileID: 11400000, guid: ce09a4f62bfb9fe4f9ebff61f1656282, type: 2}
+  <EnemyData>k__BackingField: {fileID: 11400000, guid: ce09a4f62bfb9fe4f9ebff61f1656282,
+    type: 2}
 --- !u!114 &-2747576458375046529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,17 +235,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4df2f73ac345932428f2a7a410412232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5288040992542408990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7677036699583615682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d92e589dac221df4d896640ee976a79d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _lootList: []
-  _pool: {fileID: 0}

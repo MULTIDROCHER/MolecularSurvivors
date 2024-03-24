@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e986363c0aa6582459f44521e87bf845, type: 3}
+  m_Name: HPReward
+  m_EditorClassIdentifier: 
+  <TextData>k__BackingField:
+    rid: 7958124974406107169
+  <Loot>k__BackingField: {fileID: 11400000, guid: f4f1cbacc8ad4f145a32765b7a747276,
+    type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 7958124974406107169
+      type: {class: TextComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        _nameCode:
+          <Ru>k__BackingField: ru hp
+          <En>k__BackingField: en hp
+          <Tr>k__BackingField: tr hp
+        _descriptionCode:
+          <Ru>k__BackingField: ' hp hp'
+          <En>k__BackingField: ' hp hp'
+          <Tr>k__BackingField: ' hp hp'

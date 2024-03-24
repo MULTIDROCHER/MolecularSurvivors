@@ -3,53 +3,41 @@ using UnityEngine;
 
 namespace MolecularSurvivors
 {
-    public class Health : MonoBehaviour
+    public abstract class Health : MonoBehaviour
     {
-        [SerializeField] private CharacterData _character;
+        private HealthOperations _operations;
 
-        private HealthChangesDisplay _changesDisplay;
+        public virtual event Action<int> HealthChanged;
 
-        public event Action<string, Vector3> DamageTaken;
-        public event Action<int> HealthChanged;
-
-        public HealthOperations Operations { get; private set; }
-
+        public int MaxAmount { get; protected set; }
         public int Current { get; private set; }
 
-        public int MaxAmount { get; private set; }
+        private void Awake() => Set();
 
-        private void Awake()
+        public virtual void ApplyDamage(int damage)
         {
-            MaxAmount = _character.MaxHealth;
-            Current = _character.MaxHealth;
-            Operations = new(this);
+            if (Current <= 0)
+                return;
+
+            Current = _operations.ApplyDamage(damage);
+            HealthChanged?.Invoke(Current);
+
+            if (Current <= 0)
+                Die();
         }
 
-        public void SetDisplay(HealthChangesDisplay changesDisplay)
+        public virtual void Recover(int amount)
         {
-            _changesDisplay = changesDisplay;
-            _changesDisplay.Subscribe(this);
-        }
-
-        private void OnDestroy()
-        {
-            _changesDisplay?.Remove(this);
-        }
-
-        public void ApplyDamage(int damage)
-        {
-            Current = Operations.ApplyDamage(damage);
-
-            DamageTaken?.Invoke("-" + damage, transform.position);
+            Current = _operations.Recover(amount);
             HealthChanged?.Invoke(Current);
         }
 
-        public void Recover(int amount)
+        protected virtual void Set()
         {
-            Current = Operations.Recover(amount);
-
-            DamageTaken?.Invoke("++++++++++" + amount, transform.position);
-            HealthChanged?.Invoke(Current);
+            Current = MaxAmount;
+            _operations = new(this);
         }
+
+        protected abstract void Die();
     }
 }
