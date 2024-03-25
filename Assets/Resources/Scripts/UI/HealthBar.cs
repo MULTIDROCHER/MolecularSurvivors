@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace MolecularSurvivors
 {
-    [RequireComponent(typeof(CharactersHealth))]
+    [RequireComponent(typeof(CharacterHealth))]
     public class HealthBar : MonoBehaviour
     {
         [SerializeField] private Slider _bar;

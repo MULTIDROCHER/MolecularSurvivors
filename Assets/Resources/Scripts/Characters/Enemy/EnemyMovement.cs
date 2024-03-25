@@ -23,7 +23,7 @@ namespace MolecularSurvivors
             if (_target != null)
             {
                 _direction = (_target.position - transform.position).normalized;
-                _rigidbody.velocity = _direction * _enemy.EnemyData.MoveSpeed;
+                _rigidbody.velocity = _direction * _enemy.Data.MoveSpeed;
             }
         }
     }

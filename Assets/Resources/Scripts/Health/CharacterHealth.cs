@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace MolecularSurvivors
 {
-    public class CharactersHealth : Health
+    public class CharacterHealth : Health
     {
         [SerializeField] private CharacterData _character;
 

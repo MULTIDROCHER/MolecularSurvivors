@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2dfbdb8cf8f914794f132f69221102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <EnemyData>k__BackingField: {fileID: 11400000, guid: ce09a4f62bfb9fe4f9ebff61f1656282,
+  <Data>k__BackingField: {fileID: 11400000, guid: ce09a4f62bfb9fe4f9ebff61f1656282,
     type: 2}
 --- !u!114 &-2747576458375046529
 MonoBehaviour:

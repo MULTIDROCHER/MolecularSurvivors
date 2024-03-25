@@ -23,8 +23,8 @@ namespace MolecularSurvivors
 
         private void Start()
         {
-            Add(_player.PlayerData.StartWeapon);
-            Add(_player.PlayerData.StartAbility);
+            Add(_player.Data.StartWeapon);
+            Add(_player.Data.StartAbility);
         }
 
         public void Add(EquipmentData equipment)

@@ -2,28 +2,25 @@ using UnityEngine;
 
 namespace MolecularSurvivors
 {
-    public class Player : MonoBehaviour
+    public class Player : Character<PlayerData>
     {
-        [SerializeField] private PlayerData _playerData;
         [SerializeField] private HealthChangesDisplay _healthChangesDisplay;
-
-        public PlayerData PlayerData => _playerData;
-
-        public CharactersHealth Health { get; private set; }
+        [SerializeField] private LevelProgress _levelProgress;
+        [SerializeField] private GoldCollector _goldCollector;
 
         public PlayerMovement Movement { get; private set; }
-
         public SpriteRenderer Renderer { get; private set; }
+        public ResourceHandler ResourceHandler { get; private set; }
 
-        public GoldCollector GoldCollector {get; private set;}
-
-        private void Awake()
+        protected override void Awake()
         {
-            Health = GetComponentInChildren<CharactersHealth>();
+            base.Awake();
+
             Movement = GetComponent<PlayerMovement>();
             Health.SetDisplay(_healthChangesDisplay);
             Renderer = GetComponentInChildren<SpriteRenderer>();
-            GoldCollector = GetComponentInChildren<GoldCollector>();
+
+            ResourceHandler = new(_levelProgress, Health, _goldCollector);
         }
     }
 }

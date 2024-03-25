@@ -15,7 +15,7 @@ namespace MolecularSurvivors
         {
             _enemy = GetComponent<Enemy>();
             _player = _enemy.Player;
-            _wait = new(_enemy.EnemyData.AttackDelay);
+            _wait = new(_enemy.Data.AttackDelay);
         }
         
         private void OnCollisionEnter2D(Collision2D other)
@@ -37,7 +37,7 @@ namespace MolecularSurvivors
         {
             while (_inContact)
             {
-                _player.Health.ApplyDamage(_enemy.EnemyData.Damage);
+                _player.Health.ApplyDamage(_enemy.Data.Damage);
                 yield return _wait;
             }
         }

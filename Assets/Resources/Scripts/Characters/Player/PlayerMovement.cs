@@ -17,7 +17,7 @@ namespace MolecularSurvivors
 
         private void Awake()
         {
-            _player = GetComponent<Player>().PlayerData;
+            _player = GetComponent<Player>().Data;
             _rigidbody = GetComponent<Rigidbody2D>();
         }
 
