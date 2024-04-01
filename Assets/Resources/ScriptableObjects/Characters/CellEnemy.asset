@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 1
   _maxHealth: 2
-  _damage: 1
-  _attackDelay: 2
+  <Sprite>k__BackingField: {fileID: 21300000, guid: c400fd8c3e03b404a9f8b68ce12c12ba,
+    type: 3}
+  <Damage>k__BackingField: 1
+  <AttackDelay>k__BackingField: 2

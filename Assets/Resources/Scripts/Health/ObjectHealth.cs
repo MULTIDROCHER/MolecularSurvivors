@@ -9,6 +9,8 @@ namespace MolecularSurvivors
 
         public event Action Died;
 
+        private void Awake() => Set();
+
         protected override void Set()
         {
             MaxAmount = _maxAmount;

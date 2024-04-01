@@ -62,7 +62,7 @@ MonoBehaviour:
     - rid: 7958124908034654217
       type: {class: DamageComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
       data:
-        <Damage>k__BackingField: 2
+        <Damage>k__BackingField: 5
     - rid: 7958124934239879206
       type: {class: UpgradeComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
       data:

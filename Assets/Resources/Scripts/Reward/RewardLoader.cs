@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace MolecularSurvivors
 {
@@ -21,7 +20,6 @@ namespace MolecularSurvivors
             _slots = slots;
             _defaultRewards = defaultRewards;
             _equipmentReward = equipmentReward;
-            Debug.Log("loader loaded");
         }
 
         public void LoadEquipment()

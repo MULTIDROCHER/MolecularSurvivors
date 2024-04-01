@@ -1,29 +1,36 @@
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace MolecularSurvivors
 {
-    public class LevelProgress : MonoBehaviour
+    public class LevelProgress :  CountChanger
     {
         [SerializeField] private RewardWindow _rewardWindow;
-        [SerializeField] private ProgressDisplay _display;
+        [SerializeField] private ProgressBar _bar;
         [SerializeField] private List<LevelRange> _levelRanges;
 
         private int _exp = 0;
         private int _level = 1;
         private int _expGoal;
 
-        private void Start()
+        public event Action LevelChanged;
+        public override event Action<int> CountChanged;
+
+        public LevelRange CurrentLevelRange { get; private set; }
+
+        private void Awake()
         {
+            CurrentLevelRange = _levelRanges[0];
             _expGoal = _levelRanges[0].GoalIncrease;
-            _display.Set(_expGoal, _exp, _level);
+            CountChanged?.Invoke(_level);
+            UpdateDisplay();
         }
 
         public void IncreaseExperience(int amount)
         {
             _exp += amount;
-            _display.UpdateBar(amount);
+            _bar.UpdateBar(amount);
 
             if (_exp >= _expGoal)
                 LevelUp();
@@ -40,13 +47,24 @@ namespace MolecularSurvivors
                 if (_level >= levelRange.StartLevel && _level <= levelRange.EndLevel)
                 {
                     goalIncrease = levelRange.GoalIncrease;
+
+                    if (CurrentLevelRange != levelRange)
+                        CurrentLevelRange = levelRange;
+
                     break;
                 }
             }
 
+            LevelChanged?.Invoke();
             _expGoal += goalIncrease;
-            _display.Set(_expGoal, _exp, _level);
+            UpdateDisplay();
             _rewardWindow.gameObject.SetActive(true);
+        }
+
+        private void UpdateDisplay()
+        {
+            _bar.Set(_expGoal, _exp);
+            CountChanged?.Invoke(1);
         }
     }
 }

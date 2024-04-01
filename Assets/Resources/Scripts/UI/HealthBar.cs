@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace MolecularSurvivors
 {
-    [RequireComponent(typeof(CharacterHealth))]
+    [RequireComponent(typeof(PlayerHealth))]
     public class HealthBar : MonoBehaviour
     {
         [SerializeField] private Slider _bar;
@@ -15,13 +15,14 @@ namespace MolecularSurvivors
         private void Start()
         {
             _bar.maxValue = _health.MaxAmount;
-            OnHealthChanged(_health.Current);
+            OnHealthChanged(_health.Current, _health);
         }
 
         private void OnEnable() => _health.HealthChanged += OnHealthChanged;
 
         private void OnDisable() => _health.HealthChanged -= OnHealthChanged;
 
-        private void OnHealthChanged(int value) => _bar.DOValue(value, _duration, true);
+        private void OnHealthChanged(int value, Health health) => _bar.DOValue(value, _duration, true);
+        //todo rewrite event - health is unrequired in this method
     }
 }

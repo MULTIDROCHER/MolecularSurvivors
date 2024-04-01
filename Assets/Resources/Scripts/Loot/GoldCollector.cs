@@ -1,22 +1,16 @@
-using TMPro;
-using UnityEngine;
+using System;
 
 namespace MolecularSurvivors
 {
-    public class GoldCollector : MonoBehaviour
+    public class GoldCollector :  CountChanger
     {
-        [SerializeField] private TMP_Text _display;
-
-        private int _count;
-
-        private void Awake() => UpdateDisplay();
+        public int Count { get; private set; }
+        public override event Action<int> CountChanged;
 
         public void Collect(int amount)
         {
-            _count += amount;
-            UpdateDisplay();
+            Count += amount;
+            CountChanged?.Invoke(amount);
         }
-
-        private void UpdateDisplay() => _display.text = _count.ToString();
     }
 }

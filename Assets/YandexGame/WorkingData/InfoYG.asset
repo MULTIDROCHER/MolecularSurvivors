@@ -245,7 +245,8 @@ MonoBehaviour:
     de: []
     hi: []
   fontsTMP:
-    defaultFont: []
+    defaultFont:
+    - {fileID: 11400000, guid: 44ce2511d93b4e543803828d0dd24145, type: 2}
     ru: []
     en: []
     tr: []

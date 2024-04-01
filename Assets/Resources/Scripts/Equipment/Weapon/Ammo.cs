@@ -17,8 +17,8 @@ namespace MolecularSurvivors
                 if (other.TryGetComponent(out Enemy enemy))
                     enemy.Health.ApplyDamage(_weapon.GetDamage());
 
-                if (other.TryGetComponent(out ObjectHealth health))
-                    health.ApplyDamage(_weapon.GetDamage());
+                if (other.TryGetComponent(out BreakableObject breakable))
+                    breakable.Health.ApplyDamage(_weapon.GetDamage());
             /* } */
         }
 

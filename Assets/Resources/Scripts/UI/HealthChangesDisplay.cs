@@ -24,24 +24,24 @@ namespace MolecularSurvivors
             Initialize();
         }
 
-        public void Subscribe(CharacterHealth health)
+        public void Subscribe(Health health)
         {
             _healthInstances.Add(health);
-            health.DamageTaken += OnDamageTaken;
+            health.HealthChanged += OnDamageTaken;
         }
 
-        public void Remove(CharacterHealth health)
+        public void Remove(Health health)
         {
             _healthInstances.Remove(health);
-            health.DamageTaken -= OnDamageTaken;
+            health.HealthChanged -= OnDamageTaken;
         }
 
-        private void OnDamageTaken(string value, Vector3 position)
+        private void OnDamageTaken(int amount, Health health)
         {
-            var text = GetText(value, Color.white);
+            var text = GetText(amount.ToString(), amount > 0 ? Color.green : Color.red);
 
             if (text != null)
-                StartCoroutine(ShowChange(text, position));
+                StartCoroutine(ShowChange(text, health.transform.position));
         }
 
         private TMP_Text GetText(string text, Color color)

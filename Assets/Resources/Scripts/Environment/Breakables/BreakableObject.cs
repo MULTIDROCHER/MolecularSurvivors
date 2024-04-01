@@ -5,18 +5,19 @@ namespace MolecularSurvivors
 {
     public class BreakableObject : MonoBehaviour
     {
-        private ObjectHealth _health;
+        public ObjectHealth Health { get; private set; }
         private BreakablesSpawner _spawner;
 
         private void Awake()
         {
-            _health = GetComponent<ObjectHealth>();
+            Health = GetComponentInChildren<ObjectHealth>();
             _spawner = GetComponentInParent<BreakablesSpawner>();
 
-            _health.Died += OnBreaked;
+            Health.Initialize();
+            Health.Died += OnBreaked;
         }
 
-        private void OnDisable() => _health.Died -= OnBreaked;
+        private void OnDisable() => Health.Died -= OnBreaked;
 
         private void OnBreaked() => _spawner.OnBreaked(transform);
     }

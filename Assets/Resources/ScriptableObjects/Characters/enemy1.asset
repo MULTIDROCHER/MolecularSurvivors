@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c532a032c9472ac40b190ffeeaf8d605, type: 3}
-  m_Name: redPill
+  m_Script: {fileID: 11500000, guid: 4008ef5f5c631df418d72461456694d9, type: 3}
+  m_Name: enemy1
   m_EditorClassIdentifier: 
-  <Sprite>k__BackingField: {fileID: 2068994445, guid: ece9ea5ef5be73540b9fb497086e6c3d,
+  _moveSpeed: 2
+  _maxHealth: 3
+  <Sprite>k__BackingField: {fileID: 21300000, guid: 17f8c2e6392bcca41b3a41e01322068c,
     type: 3}
-  <DropChance>k__BackingField: 20
-  <Exp>k__BackingField: 4
+  <Damage>k__BackingField: 1
+  <AttackDelay>k__BackingField: 1

@@ -9,5 +9,6 @@ namespace MolecularSurvivors
         [field: SerializeField] public int StartLevel { get; private set; }
         [field: SerializeField] public int EndLevel { get; private set; }
         [field: SerializeField] public int GoalIncrease { get; private set; }
+        [field: SerializeField] public EnemyWave EnemyWave { get; private set; }
     }
 }

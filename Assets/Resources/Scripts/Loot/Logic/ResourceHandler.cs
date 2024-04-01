@@ -5,10 +5,10 @@ namespace MolecularSurvivors
     public class ResourceHandler
     {
         private readonly LevelProgress _progressChanger;
-        private readonly CharacterHealth _health;
+        private readonly Health _health;
         private readonly GoldCollector _goldCollector;
 
-        public ResourceHandler(LevelProgress progress, CharacterHealth health, GoldCollector goldCollector)
+        public ResourceHandler(LevelProgress progress, Health health, GoldCollector goldCollector)
         {
             _progressChanger = progress;
             _health = health;

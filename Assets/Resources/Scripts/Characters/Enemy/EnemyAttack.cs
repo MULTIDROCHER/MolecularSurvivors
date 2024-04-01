@@ -17,7 +17,7 @@ namespace MolecularSurvivors
             _player = _enemy.Player;
             _wait = new(_enemy.Data.AttackDelay);
         }
-        
+
         private void OnCollisionEnter2D(Collision2D other)
         {
             if (_player != null && other.gameObject == _player.gameObject)
@@ -42,7 +42,9 @@ namespace MolecularSurvivors
             }
         }
 
-        private void OnDisable() {
+        private void OnDisable()
+        {
+            _inContact = false;
             StopAllCoroutines();
         }
     }
