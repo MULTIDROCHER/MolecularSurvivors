@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
 using MoreMountains.Tools;
 using UnityEditor;
 
 namespace MoreMountains.InventoryEngine
-{	
-	/// <summary>
-	/// Adds a dedicated InventoryEngine menu into the top bar More Mountains entry
-	/// </summary>
-	public static class InventoryEngineMenu 
+{
+    /// <summary>
+    /// Adds a dedicated InventoryEngine menu into the top bar More Mountains entry
+    /// </summary>
+    public static class InventoryEngineMenu 
 	{
 		const string _saveFolderName = "InventoryEngine"; 
 

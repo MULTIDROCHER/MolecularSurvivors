@@ -1,10 +1,8 @@
-﻿using UnityEngine;
-using System.Collections;
-using System;
+﻿using System;
 
 namespace MoreMountains.Tools
 {
-	[Serializable]
+    [Serializable]
 	/// <summary>
 	/// A serializable class used to store an achievement into a save file
 	/// </summary>

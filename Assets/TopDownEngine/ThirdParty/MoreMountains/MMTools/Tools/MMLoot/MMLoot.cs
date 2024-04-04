@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using MoreMountains.Tools;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace  MoreMountains.Tools
+namespace MoreMountains.Tools
 {
     /// <summary>
     /// A class defining the contents of a MMLootTable

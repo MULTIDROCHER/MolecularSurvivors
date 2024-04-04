@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 namespace MoreMountains.Tools
-{	
-	[System.Serializable]
+{
+    [System.Serializable]
 	public class AxisEvent : UnityEvent<float> {}
 
     /// <summary>

@@ -1,9 +1,6 @@
 ﻿using MoreMountains.Feedbacks;
 using MoreMountains.Tools;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace MoreMountains.TopDownEngine
 {

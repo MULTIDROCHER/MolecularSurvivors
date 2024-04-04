@@ -1,16 +1,14 @@
-﻿using UnityEngine;
-using System.Collections;
-using MoreMountains.Tools;
+﻿using MoreMountains.Tools;
 using MoreMountains.InventoryEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This class describes how the Top Down Engine demo achievements are triggered.
-	/// It extends the base class MMAchievementRules
-	/// It listens for different event types
-	/// </summary>
-	public class AchievementRules : MMAchievementRules, 
+    /// <summary>
+    /// This class describes how the Top Down Engine demo achievements are triggered.
+    /// It extends the base class MMAchievementRules
+    /// It listens for different event types
+    /// </summary>
+    public class AchievementRules : MMAchievementRules, 
 									MMEventListener<MMGameEvent>, 
 									MMEventListener<MMCharacterEvent>, 
 									MMEventListener<TopDownEngineEvent>,

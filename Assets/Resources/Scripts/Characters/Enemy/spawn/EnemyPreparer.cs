@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,8 +6,10 @@ namespace MolecularSurvivors
 {
     public class EnemyPreparer
     {
+        private readonly RandomPointOutOfCamera _randomPointGenerator;
+        private readonly WaitForSeconds _duration = new(.5f);
+        
         private List<EnemyData> _enemies = new();
-        private RandomPointOutOfCamera _randomPointGenerator;
 
         public EnemyPreparer(Camera camera) => _randomPointGenerator = new(camera);
 
@@ -16,14 +19,16 @@ namespace MolecularSurvivors
                 _enemies = wave.Enemies;
         }
 
-        public Enemy Set(Enemy enemy)
+        public IEnumerator Set(Enemy enemy)
         {
+            enemy.gameObject.SetActive(false);
+
+            yield return _duration;
+
             var data = GetRandomData();
             enemy.Set(data);
             enemy.transform.position = _randomPointGenerator.GetRandomPoint();
             enemy.gameObject.SetActive(true);
-
-            return enemy;
         }
 
         private EnemyData GetRandomData() => _enemies[Random.Range(0, _enemies.Count)];

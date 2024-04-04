@@ -1,13 +1,10 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
-using MoreMountains.Tools;
 using System;
 using System.Collections.Generic;
 
 namespace MoreMountains.Tools
 {
-	public struct MMStateChangeEvent<T> where T: struct, IComparable, IConvertible, IFormattable
+    public struct MMStateChangeEvent<T> where T: struct, IComparable, IConvertible, IFormattable
 	{
 		public GameObject Target;
 		public MMStateMachine<T> TargetStateMachine;

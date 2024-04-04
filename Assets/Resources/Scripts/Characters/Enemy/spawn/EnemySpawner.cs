@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using UnityEngine;
 
 namespace MolecularSurvivors
@@ -14,39 +13,55 @@ namespace MolecularSurvivors
 
         private Pool _pool;
         private EnemyPreparer _preparer;
+        private EnemyDistanceController _distanceController;
 
         public override event Action<int> CountChanged;
 
-        private void Start()
+        #region mono
+            private void Awake()
+            {
+                _preparer = new(Camera.main);
+                _pool = new(_template, transform);
+                _distanceController = new(_player.transform, _pool, this);
+                _levelProgress.LevelChanged += OnLevelChanged;
+            }
+    
+            private void Start()
+            {
+                StartCoroutine(_distanceController.ResetEnemies());
+                OnLevelChanged();
+            }
+    
+            private void OnDisable()
+            {
+                _levelProgress.LevelChanged -= OnLevelChanged;
+    
+                foreach (var enemy in _pool.Spawned)
+                    enemy.Died -= OnEnemyDied;
+            }
+        #endregion
+
+        public void SetEnemy(Enemy enemy)
         {
-            _preparer = new(Camera.main);
-            _pool = new(_template, transform);
-            OnLevelChanged();
+            if (_preparer.Set(enemy) != null)
+                StartCoroutine(_preparer.Set(enemy));
         }
 
-        private void OnEnable() => _levelProgress.LevelChanged += OnLevelChanged;
-
-        private void OnDisable()
-        {
-            _levelProgress.LevelChanged -= OnLevelChanged;
-
-            foreach (var enemy in _pool.Spawned)
-                enemy.Health.Died -= OnEnemyDied;
-        }
-
-        private void OnEnemyDied(Enemy enemy)
-        {
-            if (ResetEnemy(enemy) != null)
-                StartCoroutine(ResetEnemy(enemy));
-        }
-
-        private IEnumerator ResetEnemy(Enemy enemy)
+        private void OnEnemyDied(Character<EnemyData> enemy)
         {
             CountChanged?.Invoke(1);
             _lootManager.InstantiateLoot(enemy.transform.position);
-            enemy.gameObject.SetActive(false);
-            yield return new WaitForSeconds(.5f);
-            _preparer.Set(enemy);
+            SetEnemy((Enemy)enemy);
+        }
+
+        private void SetNewEnemies(Enemy[] enemies)
+        {
+            foreach (var enemy in enemies)
+            {
+                enemy.Initialize(_player, _healthChangesDisplay);
+                enemy.Died += OnEnemyDied;
+                SetEnemy(enemy);
+            }
         }
 
         private void OnLevelChanged()
@@ -55,18 +70,7 @@ namespace MolecularSurvivors
             var enemies = _pool.CreateNewEnemies(wave.EnemiesCountIncrease);
 
             _preparer.UpdateDataList(wave);
-            StartCoroutine(SetNewEnemies(enemies));
-        }
-
-        private IEnumerator SetNewEnemies(Enemy[] enemies)
-        {
-            foreach (var enemy in enemies)
-            {
-                enemy.Initialize(_player, _healthChangesDisplay);
-                _preparer.Set(enemy);
-                enemy.Health.Died += OnEnemyDied;
-                yield return new WaitForSeconds(.5f);
-            }
+            SetNewEnemies(enemies);
         }
     }
 }

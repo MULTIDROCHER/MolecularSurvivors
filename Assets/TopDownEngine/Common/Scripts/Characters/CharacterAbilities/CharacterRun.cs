@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
 using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
-{	
-	/// <summary>
-	/// Add this component to a character and it'll be able to run
-	/// Animator parameters : Running
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Run")] 
+{
+    /// <summary>
+    /// Add this component to a character and it'll be able to run
+    /// Animator parameters : Running
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/Abilities/Character Run")] 
 	public class CharacterRun : CharacterAbility
 	{	
 		/// This method is only used to display a helpbox text at the beginning of the ability's inspector

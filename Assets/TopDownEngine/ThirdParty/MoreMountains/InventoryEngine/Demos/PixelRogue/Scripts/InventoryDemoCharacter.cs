@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
 using MoreMountains.Tools;
 
 namespace MoreMountains.InventoryEngine
-{	
+{
 
-	[RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Rigidbody2D))]
 	/// <summary>
 	/// Demo character controller, very basic stuff
 	/// </summary>

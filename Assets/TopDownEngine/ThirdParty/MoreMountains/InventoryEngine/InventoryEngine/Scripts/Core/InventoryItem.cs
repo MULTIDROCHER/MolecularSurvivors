@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
 using MoreMountains.Tools;
 using System;
 
 
 namespace MoreMountains.InventoryEngine
 {
-	[Serializable]
+    [Serializable]
 	/// <summary>
 	/// Base class for inventory items, meant to be extended.
 	/// Will handle base properties and drop spawn

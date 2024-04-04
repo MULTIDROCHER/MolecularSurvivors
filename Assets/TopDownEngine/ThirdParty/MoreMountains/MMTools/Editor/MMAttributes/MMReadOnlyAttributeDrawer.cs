@@ -1,13 +1,10 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
-using System;
 using UnityEditor;
 
 namespace MoreMountains.Tools
-{	
+{
 
-	[CustomPropertyDrawer(typeof(MMReadOnlyAttribute))]
+    [CustomPropertyDrawer(typeof(MMReadOnlyAttribute))]
 
 	public class MMReadOnlyAttributeDrawer : PropertyDrawer
 	{

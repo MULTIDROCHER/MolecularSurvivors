@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using MoreMountains.Feedbacks;
 using MoreMountains.Tools;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace  MoreMountains.TopDownEngine
+namespace MoreMountains.TopDownEngine
 {
     /// <summary>
     /// A class meant to spawn objects (usually item pickers, but not necessarily)

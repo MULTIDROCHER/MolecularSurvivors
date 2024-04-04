@@ -5,15 +5,14 @@ namespace MolecularSurvivors
     public class ResourceHandler
     {
         private readonly LevelProgress _progressChanger;
-        private readonly Health _health;
+        private readonly Player _player;
         private readonly GoldCollector _goldCollector;
 
-        public ResourceHandler(LevelProgress progress, Health health, GoldCollector goldCollector)
+        public ResourceHandler(LevelProgress progress, Player player, GoldCollector goldCollector)
         {
             _progressChanger = progress;
-            _health = health;
+            _player = player;
             _goldCollector = goldCollector;
-            Debug.Log("handler loaded");
         }
 
         public void GetLoot(Loot loot)
@@ -24,7 +23,7 @@ namespace MolecularSurvivors
                     _progressChanger.IncreaseExperience(expLoot.Exp);
                     break;
                 case HpLoot hpLoot:
-                    _health.Recover(hpLoot.HealthRecovery);
+                    _player.Recover(hpLoot.HealthRecovery);
                     break;
                 case GoldLoot goldLoot:
                     _goldCollector.Collect(goldLoot.Gold);

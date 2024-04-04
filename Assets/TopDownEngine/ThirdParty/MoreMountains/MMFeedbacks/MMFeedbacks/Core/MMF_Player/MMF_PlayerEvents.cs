@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace  MoreMountains.Feedbacks
+namespace MoreMountains.Feedbacks
 {
     /// <summary>
     /// Events triggered by a MMFeedbacks when playing a series of feedbacks

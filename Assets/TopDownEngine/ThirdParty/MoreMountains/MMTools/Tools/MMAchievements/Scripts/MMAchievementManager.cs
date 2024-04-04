@@ -1,13 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace MoreMountains.Tools
 {
-	[ExecuteAlways]
+    [ExecuteAlways]
 	/// <summary>
 	/// This static class is in charge of storing the current state of the achievements, unlocking/locking them, and saving them to data files
 	/// </summary>

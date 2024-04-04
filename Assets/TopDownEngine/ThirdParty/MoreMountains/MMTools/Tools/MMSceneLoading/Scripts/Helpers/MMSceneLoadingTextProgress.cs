@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace MoreMountains.Tools
-{	
+{
     /// <summary>
     /// A very simple class, meant to be used within a MMSceneLoading screen, to update a Text
     /// based on loading progress

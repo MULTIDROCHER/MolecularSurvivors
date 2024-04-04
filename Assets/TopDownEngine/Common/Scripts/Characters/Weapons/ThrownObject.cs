@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
-using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
-{	
+{
     /// <summary>
     /// A thrown object type of projectile, useful for grenades and such
     /// </summary>
-	[RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Rigidbody2D))]
 	[AddComponentMenu("TopDown Engine/Weapons/ThrownObject")]
 	public class ThrownObject : Projectile 
 	{

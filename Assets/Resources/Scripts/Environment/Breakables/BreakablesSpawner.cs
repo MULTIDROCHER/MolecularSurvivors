@@ -1,10 +1,14 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MolecularSurvivors.Environment
 {
     public class BreakablesSpawner : MonoBehaviour
     {
+        private readonly List<BreakableObject> _spawned = new();
+
         [SerializeField] private Transform[] _spawnPoints;
+        
         private BreakablesController _controller;
 
         public void GetController(BreakablesController controller) => _controller = controller;
@@ -20,14 +24,30 @@ namespace MolecularSurvivors.Environment
             {
                 var itemIndex = Random.Range(0, _controller.Templates.Count);
 
-                Instantiate(_controller.Templates[itemIndex], _spawnPoints[i].position, Quaternion.identity, transform);
+                var obj = Instantiate(_controller.Templates[itemIndex], _spawnPoints[i].position, Quaternion.identity, transform);
+                obj.Breaked += OnBreaked;
+                _spawned.Add(obj);
             }
         }
 
-        public void OnBreaked(Transform transform)
+        private void OnEnable()
         {
-            _controller.SetLoot(transform);
-            transform.gameObject.SetActive(false);
+            if (_spawned.Count > 0)
+                foreach (var obj in _spawned)
+                    if (obj.gameObject.activeSelf == false)
+                        obj.Rebuild();
+        }
+
+        public void OnBreaked(BreakableObject breakable)
+        {
+            _controller.SetLoot(breakable.transform);
+            breakable.gameObject.SetActive(false);
+        }
+
+        private void OnDestroy()
+        {
+            foreach (var obj in _spawned)
+                obj.Breaked -= OnBreaked;
         }
     }
 }

@@ -1,17 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
-using MoreMountains.Tools;
 using UnityEngine.SceneManagement;
 
 namespace MoreMountains.Tools
-{	
-	/// <summary>
-	/// Add this component on an object, specify a scene name in its inspector, and call LoadScene() to load the desired scene.
-	/// </summary>
-	public class MMLoadScene : MonoBehaviour 
+{
+    /// <summary>
+    /// Add this component on an object, specify a scene name in its inspector, and call LoadScene() to load the desired scene.
+    /// </summary>
+    public class MMLoadScene : MonoBehaviour 
 	{
 		/// the possible modes to load scenes. Either Unity's native API, or MoreMountains' LoadingSceneManager
 		public enum LoadingSceneModes { UnityNative, MMSceneLoadingManager, MMAdditiveSceneLoadingManager }

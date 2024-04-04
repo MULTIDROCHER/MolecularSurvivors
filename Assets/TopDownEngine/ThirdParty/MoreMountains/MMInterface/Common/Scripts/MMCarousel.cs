@@ -1,17 +1,15 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System;
 using MoreMountains.Tools;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 namespace MoreMountains.MMInterface
-{	
-	/// <summary>
-	/// A class to handle a carousel of UI elements, placed in an HorizontalLayoutGroup. 
-	/// All elements of the carousel need to have the same width.
-	/// </summary>
-	public class MMCarousel : MonoBehaviour
+{
+    /// <summary>
+    /// A class to handle a carousel of UI elements, placed in an HorizontalLayoutGroup. 
+    /// All elements of the carousel need to have the same width.
+    /// </summary>
+    public class MMCarousel : MonoBehaviour
 	{
 		[Header("Binding")]
 		/// the layout group that contains all carousel's elements

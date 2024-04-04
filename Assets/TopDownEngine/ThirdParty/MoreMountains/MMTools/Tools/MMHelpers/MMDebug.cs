@@ -1,24 +1,21 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using System.Reflection;
 using System.Linq;
-using UnityEngine.SceneManagement;
 using Debug = UnityEngine.Debug;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
 namespace MoreMountains.Tools
-{	
-	/// <summary>
-	/// Debug helpers
-	/// </summary>
-	public static class MMDebug 
+{
+    /// <summary>
+    /// Debug helpers
+    /// </summary>
+    public static class MMDebug 
 	{
         #region Commands
 

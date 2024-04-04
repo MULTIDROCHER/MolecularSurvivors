@@ -1,16 +1,14 @@
 ﻿using UnityEngine;
-using System.Collections;
 using MoreMountains.Tools;
 using MoreMountains.Feedbacks;
-using System.Linq;
 
 namespace MoreMountains.TopDownEngine
-{	
-	/// <summary>
-	/// A class meant to be overridden that handles a character's ability. 
-	/// </summary>
-	//[RequireComponent(typeof(Character))]
-	public class CharacterAbility : MonoBehaviour 
+{
+    /// <summary>
+    /// A class meant to be overridden that handles a character's ability. 
+    /// </summary>
+    //[RequireComponent(typeof(Character))]
+    public class CharacterAbility : MonoBehaviour 
 	{
 		/// the sound fx to play when the ability starts
 		[Tooltip("the sound fx to play when the ability starts")]

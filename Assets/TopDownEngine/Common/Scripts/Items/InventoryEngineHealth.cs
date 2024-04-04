@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
 using MoreMountains.Tools;
 using System;
 using MoreMountains.InventoryEngine;
 
 namespace MoreMountains.TopDownEngine
-{	
-	[CreateAssetMenu(fileName = "InventoryEngineHealth", menuName = "MoreMountains/TopDownEngine/InventoryEngineHealth", order = 1)]
+{
+    [CreateAssetMenu(fileName = "InventoryEngineHealth", menuName = "MoreMountains/TopDownEngine/InventoryEngineHealth", order = 1)]
 	[Serializable]
 	/// <summary>
 	/// Pickable health item

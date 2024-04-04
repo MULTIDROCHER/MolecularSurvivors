@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Text;
 using MoreMountains.Tools;
 using UnityEngine.UI;

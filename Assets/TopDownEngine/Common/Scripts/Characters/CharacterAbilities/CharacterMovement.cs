@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
 using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
-{	
-	/// <summary>
-	/// Add this ability to a Character to have it handle ground movement (walk, and potentially run, crawl, etc) in x and z direction for 3D, x and y for 2D
-	/// Animator parameters : Speed (float), Walking (bool)
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Movement")] 
+{
+    /// <summary>
+    /// Add this ability to a Character to have it handle ground movement (walk, and potentially run, crawl, etc) in x and z direction for 3D, x and y for 2D
+    /// Animator parameters : Speed (float), Walking (bool)
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/Abilities/Character Movement")] 
 	public class CharacterMovement : CharacterAbility 
 	{
         /// the possible rotation modes for the character

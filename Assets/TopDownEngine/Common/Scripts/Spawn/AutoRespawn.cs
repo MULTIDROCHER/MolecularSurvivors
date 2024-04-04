@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
 using MoreMountains.Tools;
 using System.Collections.Generic;
 
 namespace MoreMountains.TopDownEngine
-{	
-	/// <summary>
-	/// Add this script to an object and it will automatically be reactivated and revived when the player respawns.
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Spawn/Auto Respawn")]
+{
+    /// <summary>
+    /// Add this script to an object and it will automatically be reactivated and revived when the player respawns.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Spawn/Auto Respawn")]
 	public class AutoRespawn : MonoBehaviour, Respawnable 
 	{
 		[Header("Respawn when the player respawns")]

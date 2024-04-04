@@ -6,15 +6,13 @@ namespace MolecularSurvivors.Environment
     {
         [SerializeField] private MapChunk[] _templates;
         [SerializeField] private Player _player;
-        [SerializeField] private LayerMask _layer;
-        [SerializeField] private float _spawnDelay;
         [SerializeField] private BreakablesController _breakablesController;
 
         private ChunkVisibility _chunkVisibility;
         private ChunkSpawner _spawner;
-        private PlayerMovement _movement;
+        private MapUpdater _mapUpdater;
+        private Movement _movement;
         private MapChunk _current;
-        private float _delay;
 
         public MapChunk CurrentChunk => _current;
 
@@ -23,11 +21,12 @@ namespace MolecularSurvivors.Environment
             _movement = _player.Movement;
             _chunkVisibility = new(_player);
             _spawner = new(_templates, transform);
+            _mapUpdater = new();
         }
 
         private void Update()
         {
-            _delay -= Time.deltaTime;
+            _mapUpdater.Update();
             UpdateMap();
         }
 
@@ -38,40 +37,12 @@ namespace MolecularSurvivors.Environment
             if (_current == null)
                 return;
 
-            switch (_movement.Movement)
-            {
-                case { x: > 0, y: 0 }:
-                    SetChunkAtPoint(_current.ChunkSpawnPoints.Right.position);
-                    break;
-                case { x: < 0, y: 0 }:
-                    SetChunkAtPoint(_current.ChunkSpawnPoints.Left.position);
-                    break;
-                case { x: 0, y: > 0 }:
-                    SetChunkAtPoint(_current.ChunkSpawnPoints.Up.position);
-                    break;
-                case { x: 0, y: < 0 }:
-                    SetChunkAtPoint(_current.ChunkSpawnPoints.Down.position);
-                    break;
-                case { x: > 0, y: > 0 }:
-                    SetChunkAtPoint(_current.ChunkSpawnPoints.RightUp.position);
-                    break;
-                case { x: < 0, y: > 0 }:
-                    SetChunkAtPoint(_current.ChunkSpawnPoints.LeftUp.position);
-                    break;
-                case { x: > 0, y: < 0 }:
-                    SetChunkAtPoint(_current.ChunkSpawnPoints.RightDown.position);
-                    break;
-                case { x: < 0, y: < 0 }:
-                    SetChunkAtPoint(_current.ChunkSpawnPoints.LeftDown.position);
-                    break;
-                default:
-                    return;
-            }
+            SetChunkAtPoint(GetSpawnPoint());
         }
 
         private void SetChunkAtPoint(Vector3 position)
         {
-            if (ChunkIsAbcent(position) && TryToSpawnChunk())
+            if (ChunkIsAbcent(position) && _mapUpdater.TryToSpawnChunk())
             {
                 _spawner.Spawn(position, out MapChunk chunk);
                 _breakablesController.Spawn(chunk);
@@ -85,17 +56,20 @@ namespace MolecularSurvivors.Environment
             return transform.Find(position.ToString()) == null;
         }
 
-        private bool TryToSpawnChunk()
+        private Vector3 GetSpawnPoint()
         {
-            if (_delay <= 0)
+            return _movement.MovementDirection switch
             {
-                _delay = _spawnDelay;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+                { x: > 0, y: 0 } => _current.ChunkSpawnPoints.Right.position,
+                { x: < 0, y: 0 } => _current.ChunkSpawnPoints.Left.position,
+                { x: 0, y: > 0 } => _current.ChunkSpawnPoints.Up.position,
+                { x: 0, y: < 0 } => _current.ChunkSpawnPoints.Down.position,
+                { x: > 0, y: > 0 } => _current.ChunkSpawnPoints.RightUp.position,
+                { x: < 0, y: > 0 } => _current.ChunkSpawnPoints.LeftUp.position,
+                { x: > 0, y: < 0 } => _current.ChunkSpawnPoints.RightDown.position,
+                { x: < 0, y: < 0 } => _current.ChunkSpawnPoints.LeftDown.position,
+                _ => Vector3.zero,
+            };
         }
     }
 }

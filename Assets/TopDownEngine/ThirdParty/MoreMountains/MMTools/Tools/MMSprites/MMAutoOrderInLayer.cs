@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace MoreMountains.Tools
 {
-	[RequireComponent(typeof(SpriteRenderer))]
+    [RequireComponent(typeof(SpriteRenderer))]
     /// <summary>
     /// Add this component to an object to have it pick a new order in layer on start, useful to have unique sorting layer numbers
     /// </summary>

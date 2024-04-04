@@ -1,15 +1,12 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
-using System;
 
 namespace MoreMountains.Tools
-{	
-	/// <summary>
-	/// Math helpers
-	/// </summary>
+{
+    /// <summary>
+    /// Math helpers
+    /// </summary>
 
-	public static class MMMaths
+    public static class MMMaths
     {
         /// <summary>
         /// Internal method used to compute the spring velocity

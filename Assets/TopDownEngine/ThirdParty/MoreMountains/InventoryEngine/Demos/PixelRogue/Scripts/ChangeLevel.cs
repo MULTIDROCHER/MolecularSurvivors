@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.SceneManagement;
 using MoreMountains.Tools;
 
 namespace MoreMountains.InventoryEngine
-{	
-	/// <summary>
-	/// Demo class to go from one level to another
-	/// </summary>
-	public class ChangeLevel : MonoBehaviour 
+{
+    /// <summary>
+    /// Demo class to go from one level to another
+    /// </summary>
+    public class ChangeLevel : MonoBehaviour 
 	{
 		/// <summary>
 		/// The name of the level to go to when entering the ChangeLevel zone

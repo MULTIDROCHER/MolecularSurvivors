@@ -2,31 +2,21 @@ using UnityEngine;
 
 namespace MolecularSurvivors
 {
-    public class Enemy : MonoBehaviour
+    public class Enemy : Character<EnemyData>
     {
-        [field: SerializeField] public EnemyData Data { get; protected set; }
-        public EnemyHealth Health { get; private set; }
-        private SpriteRenderer _renderer;
-
         public Player Player { get; private set; }
-
-        //maybe separete settings like public enemysettings(nomono)
-        private void Awake()
-        {
-            _renderer = GetComponent<SpriteRenderer>();
-            Health = GetComponentInChildren<EnemyHealth>();
-        }
 
         public void Initialize(Player player, HealthChangesDisplay healthChanges)
         {
             Player = player;
-            Health.Initialize(this, healthChanges);
+            Health = new(transform, healthChanges);
+            Movement = new EnemyMovement(GetComponent<Rigidbody2D>(), Data.MoveSpeed, Player.transform);
         }
 
         public virtual void Set(EnemyData data)
         {
             Data = data;
-            _renderer.sprite = Data.Sprite;
+            Renderer.sprite = Data.Sprite;
             Health.Set(data);
         }
     }

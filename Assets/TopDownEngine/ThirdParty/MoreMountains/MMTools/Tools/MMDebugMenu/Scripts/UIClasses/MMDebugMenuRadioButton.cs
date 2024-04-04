@@ -1,17 +1,12 @@
-﻿using UnityEngine;
-using System.Collections;
-using System;
-using MoreMountains.Tools;
-using UnityEngine.UI;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace MoreMountains.Tools
-{	
-	/// <summary>
-	/// A class to handle radio buttons.
-	/// To group them, just use the same RadioButtonGroupName string for all radio buttons in the group
-	/// </summary>
-	public class MMDebugMenuRadioButton : MMDebugMenuSpriteReplace 
+{
+    /// <summary>
+    /// A class to handle radio buttons.
+    /// To group them, just use the same RadioButtonGroupName string for all radio buttons in the group
+    /// </summary>
+    public class MMDebugMenuRadioButton : MMDebugMenuSpriteReplace 
 	{
 		/// The name of the radio button group. Use the same one for each buttons in the group
 		public string RadioButtonGroupName;

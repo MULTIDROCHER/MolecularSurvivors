@@ -2,20 +2,18 @@ using UnityEngine;
 
 namespace MolecularSurvivors
 {
-    public class PlayerHealth : Health
+    public class CharacterHealth : Health
     {
-        private PlayerData _data;
+        private CharacterData _data;
         private HealthChangesDisplay _changesDisplay;
 
-        public void Initialize(HealthChangesDisplay healthChanges = null)
+        public CharacterHealth(Transform damagable, HealthChangesDisplay healthChanges = null) : base(damagable)
         {
-            base.Initialize();
-
             if (healthChanges != null)
                 SetDisplay(healthChanges);
         }
 
-        public void Set(PlayerData data)
+        public void Set(CharacterData data)
         {
             _data = data;
             MaxAmount = _data.MaxHealth;
@@ -29,10 +27,5 @@ namespace MolecularSurvivors
         }
 
         private void OnDestroy() => _changesDisplay?.Remove(this);
-
-        protected override void Die()
-        {
-            Debug.Log("player died");
-        }
     }
 }

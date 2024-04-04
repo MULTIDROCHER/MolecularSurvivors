@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
 using MoreMountains.Tools;
 using UnityEngine.EventSystems;
 
 namespace MoreMountains.InventoryEngine
-{	
-	[RequireComponent(typeof(RectTransform))]
+{
+    [RequireComponent(typeof(RectTransform))]
 	/// <summary>
 	/// This class handles the selection marker, that will mark the currently selected slot
 	/// </summary>

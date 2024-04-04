@@ -12,14 +12,8 @@ namespace MolecularSurvivors
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            /* if (other.gameObject.layer == gameObject.layer)
-            { */
-                if (other.TryGetComponent(out Enemy enemy))
-                    enemy.Health.ApplyDamage(_weapon.GetDamage());
-
-                if (other.TryGetComponent(out BreakableObject breakable))
-                    breakable.Health.ApplyDamage(_weapon.GetDamage());
-            /* } */
+            if (other.TryGetComponent(out IDamagable damagable))
+                damagable.ApplyDamage(_weapon.GetDamage());
         }
 
         public void Initialize(Weapon weapon)

@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace MoreMountains.Tools
+﻿namespace MoreMountains.Tools
 {
     /// <summary>
     /// An event used to broadcast button events from a MMDebugMenu

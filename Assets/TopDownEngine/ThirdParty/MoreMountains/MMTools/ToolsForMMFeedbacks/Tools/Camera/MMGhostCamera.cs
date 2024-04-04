@@ -1,14 +1,9 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
-using System;
-using MoreMountains.Tools;
 using MoreMountains.Feedbacks;
 #if UNITY_EDITOR
-using UnityEditor;
 #endif
 
-namespace MoreMountains.Tools 
+namespace MoreMountains.Tools
 {
     /// <summary>
     /// Add this class to a camera and you'll be able to pilot it using the horizontal/vertical axis, and up/down controls set via its inspector. 

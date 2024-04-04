@@ -1,10 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
 using MoreMountains.Tools;
-using System;
-using System.Collections.Generic;
-using UnityEngine.Audio;
-using MoreMountains.Feedbacks;
 
 namespace MoreMountains.TopDownEngine
 {

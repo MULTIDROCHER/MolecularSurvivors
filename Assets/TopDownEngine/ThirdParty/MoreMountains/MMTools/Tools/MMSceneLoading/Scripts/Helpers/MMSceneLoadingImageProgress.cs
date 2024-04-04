@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace MoreMountains.Tools
-{	
+{
     /// <summary>
     /// A very simple class, meant to be used within a MMSceneLoading screen, to update the fill amount of an Image
     /// based on loading progress

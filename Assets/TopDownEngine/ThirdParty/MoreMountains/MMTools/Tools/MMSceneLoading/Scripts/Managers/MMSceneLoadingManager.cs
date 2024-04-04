@@ -1,18 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using System.Collections.Generic;
-using MoreMountains.Tools;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 namespace MoreMountains.Tools
-{	
-	/// <summary>
-	/// A class to load scenes using a loading screen instead of just the default API
-	/// This class used to be known as LoadingSceneManager, and has now been renamed to MMSceneLoadingManager for consistency
-	/// </summary>
-	public class MMSceneLoadingManager : MonoBehaviour 
+{
+    /// <summary>
+    /// A class to load scenes using a loading screen instead of just the default API
+    /// This class used to be known as LoadingSceneManager, and has now been renamed to MMSceneLoadingManager for consistency
+    /// </summary>
+    public class MMSceneLoadingManager : MonoBehaviour 
 	{
 		public enum LoadingStatus
 		{

@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
 using MoreMountains.Tools;
-using UnityEngine.UI;
 
 namespace MoreMountains.TopDownEngine
 {

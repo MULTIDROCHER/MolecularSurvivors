@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
-using MoreMountains.Tools;
 using System;
 
 namespace MoreMountains.InventoryEngine
-{	
-	[CreateAssetMenu(fileName = "HealthBonusItem", menuName = "MoreMountains/InventoryEngine/HealthBonusItem", order = 1)]
+{
+    [CreateAssetMenu(fileName = "HealthBonusItem", menuName = "MoreMountains/InventoryEngine/HealthBonusItem", order = 1)]
 	[Serializable]
 	/// <summary>
 	/// Demo class for a health item

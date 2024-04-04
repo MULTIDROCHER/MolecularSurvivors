@@ -1,10 +1,8 @@
-﻿using UnityEngine;
-using System.Collections;
-using System;
+﻿using System;
 
 namespace MoreMountains.InventoryEngine
 {
-	[Serializable]
+    [Serializable]
 	/// <summary>
 	/// Serialized class to help store / load inventories from files.
 	/// </summary>

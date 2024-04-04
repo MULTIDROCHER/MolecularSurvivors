@@ -1,16 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
 using MoreMountains.Tools;
 
 namespace MoreMountains.MMInterface
-{	
-	/// <summary>
-	/// A component to handle popups, their opening and closing
-	/// </summary>
-	public class MMPopup : MonoBehaviour 
+{
+    /// <summary>
+    /// A component to handle popups, their opening and closing
+    /// </summary>
+    public class MMPopup : MonoBehaviour 
 	{
 		/// true if the popup is currently open
 		public bool CurrentlyOpen = false;

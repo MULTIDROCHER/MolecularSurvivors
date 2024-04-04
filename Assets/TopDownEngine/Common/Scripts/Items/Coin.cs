@@ -1,13 +1,11 @@
 using UnityEngine;
-using System.Collections;
-using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Coin manager
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Items/Coin")]
+    /// <summary>
+    /// Coin manager
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Items/Coin")]
 	public class Coin : PickableItem
 	{
 		/// The amount of points to add when collected

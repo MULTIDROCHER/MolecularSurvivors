@@ -1,12 +1,8 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
 
 namespace MoreMountains.Tools
-{	
-	[RequireComponent(typeof(CanvasGroup))]
+{
+    [RequireComponent(typeof(CanvasGroup))]
     [AddComponentMenu("More Mountains/Tools/Controls/MMTouchControls")]
     public class MMTouchControls : MonoBehaviour 
 	{

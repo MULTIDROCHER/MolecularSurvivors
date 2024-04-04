@@ -1,14 +1,10 @@
-﻿using UnityEngine;
-using System.Collections;
-using MoreMountains.Tools;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEditor;
-using UnityEngine.UI;
 
 
 namespace MoreMountains.InventoryEngine
-{	
-	[CustomEditor(typeof(InventoryItem),true)]
+{
+    [CustomEditor(typeof(InventoryItem),true)]
 	/// <summary>
 	/// Custom editor for the InventoryItem component
 	/// </summary>

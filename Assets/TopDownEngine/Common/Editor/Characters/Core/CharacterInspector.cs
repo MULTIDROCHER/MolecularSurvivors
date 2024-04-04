@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
-using MoreMountains.Tools;
 using UnityEngine.Rendering;
 
 namespace MoreMountains.TopDownEngine
 {
 
-	[CustomEditor (typeof(Character))]
+    [CustomEditor (typeof(Character))]
 	[CanEditMultipleObjects]
 
 	/// <summary>

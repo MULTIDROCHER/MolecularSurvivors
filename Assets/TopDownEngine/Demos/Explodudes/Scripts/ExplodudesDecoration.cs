@@ -1,7 +1,4 @@
-﻿using MoreMountains.Feedbacks;
-using MoreMountains.Tools;
-using System.Collections;
-using System.Collections.Generic;
+﻿using MoreMountains.Tools;
 using UnityEngine;
 
 namespace MoreMountains.TopDownEngine

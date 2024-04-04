@@ -1,12 +1,7 @@
 ﻿using MoreMountains.Feedbacks;
 using MoreMountains.Tools;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.Serialization;
-using Random = System.Random;
 
 namespace MoreMountains.TopDownEngine
 {

@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace MoreMountains.Tools
-{ 
+{
     /// <summary>
     /// Use this class to bind a number of UI layers to the movements of a mouse cursor, or a mobile device gyroscope, or even have it be piloted by another script
     /// By setting different speed/amplitude values for each of your UI layers, you'll be able to create a nice parallax effect

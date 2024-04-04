@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 namespace MoreMountains.Tools
-{	
-	/// <summary>
-	/// The possible directions a swipe can have
-	/// </summary>
-	public enum MMPossibleSwipeDirections { Up, Down, Left, Right }
+{
+    /// <summary>
+    /// The possible directions a swipe can have
+    /// </summary>
+    public enum MMPossibleSwipeDirections { Up, Down, Left, Right }
 
 
 	[System.Serializable]

@@ -1,16 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.Tools;
 using UnityEngine.Events;
 
 namespace MoreMountains.TopDownEngine
-{	
-	/// <summary>
-	/// Add this component to a collider 2D and you'll be able to have it perform an action when 
-	/// a character equipped with the specified key enters it.
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Environment/Key Operated Zone")]
+{
+    /// <summary>
+    /// Add this component to a collider 2D and you'll be able to have it perform an action when 
+    /// a character equipped with the specified key enters it.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Environment/Key Operated Zone")]
 	public class KeyOperatedZone : ButtonActivated 
 	{
 		[Header("Key")]

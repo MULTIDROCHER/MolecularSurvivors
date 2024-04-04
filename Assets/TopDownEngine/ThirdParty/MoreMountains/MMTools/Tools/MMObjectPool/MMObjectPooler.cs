@@ -1,16 +1,15 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 namespace MoreMountains.Tools
-{	
-	/// <summary>
-	/// A base class, meant to be extended depending on the use (simple, multiple object pooler), and used as an interface by the spawners.
-	/// Still handles common stuff like singleton and initialization on start().
-	/// DO NOT add this class to a prefab, nothing would happen. Instead, add SimpleObjectPooler or MultipleObjectPooler.
-	/// </summary>
-	public abstract class MMObjectPooler : MonoBehaviour
+{
+    /// <summary>
+    /// A base class, meant to be extended depending on the use (simple, multiple object pooler), and used as an interface by the spawners.
+    /// Still handles common stuff like singleton and initialization on start().
+    /// DO NOT add this class to a prefab, nothing would happen. Instead, add SimpleObjectPooler or MultipleObjectPooler.
+    /// </summary>
+    public abstract class MMObjectPooler : MonoBehaviour
 	{
 		/// singleton pattern
 		public static MMObjectPooler Instance;

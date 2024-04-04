@@ -1,15 +1,12 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
 using System.Collections.Generic;
-using MoreMountains.Feedbacks;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// A list of the methods available to change the current score
-	/// </summary>
-	public enum MMTimeScaleMethods
+    /// <summary>
+    /// A list of the methods available to change the current score
+    /// </summary>
+    public enum MMTimeScaleMethods
 	{
 		For,
 		Reset,

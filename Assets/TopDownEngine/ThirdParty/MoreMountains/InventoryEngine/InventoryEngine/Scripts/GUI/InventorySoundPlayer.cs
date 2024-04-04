@@ -1,15 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
 using MoreMountains.Tools;
-using System.Collections.Generic;
-using UnityEngine.UI;
-using System;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace MoreMountains.InventoryEngine
-{	
-	[RequireComponent(typeof(InventoryDisplay))]
+{
+    [RequireComponent(typeof(InventoryDisplay))]
 	/// <summary>
 	/// A component that will handle the playing of songs when paired with an InventoryDisplay
 	/// </summary>

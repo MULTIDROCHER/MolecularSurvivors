@@ -2,56 +2,34 @@ using UnityEngine;
 
 namespace MolecularSurvivors
 {
-    [RequireComponent(typeof(Player))]
-    [RequireComponent(typeof(Rigidbody2D))]
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : Movement
     {
-        private PlayerData _player;
-        private Rigidbody2D _rigidbody;
-
-        private float _speed => _player.MoveSpeed;
-
-        public Vector2 Movement { get; private set; }
-
         public Vector3 LastMovementVector { get; private set; } = new(1, 0);
+        private float _moveX;
+        private float _moveY;
 
-        private void Awake()
+        public PlayerMovement(Rigidbody2D rigidbody, float startSpeed) : base(rigidbody, startSpeed)
         {
-            _player = GetComponent<Player>().Data;
-            _rigidbody = GetComponent<Rigidbody2D>();
-        }
-
-        private void Update() => GetInput();
-
-        private void LateUpdate() => Move();
-
-        private void GetInput()
-        {
-            var moveX = Input.GetAxisRaw("Horizontal");
-            var moveY = Input.GetAxisRaw("Vertical");
-
-            Movement = new Vector2(moveX, moveY).normalized;
-            SetLastMovementVector();
         }
 
         private void SetLastMovementVector()
         {
-            float moveX = 0;
-            float moveY = 0;
+            if (MovementDirection.x != 0)
+                _moveX = MovementDirection.x;
+            if (MovementDirection.y != 0)
+                _moveY = MovementDirection.y;
 
-            if (Movement.x != 0)
-                moveX = Movement.x;
-            if (Movement.y != 0)
-                moveY = Movement.y;
-
-            if (moveX != 0 || moveY != 0)
-                LastMovementVector = new(moveX, moveY);
+            if (_moveX != 0 || _moveY != 0)
+                LastMovementVector = new(_moveX, _moveY);
         }
 
-        private void Move()
+        public override void SetDirection()
         {
-            Movement *= _speed;
-            _rigidbody.velocity = Movement;
+            var moveX = Input.GetAxisRaw("Horizontal");
+            var moveY = Input.GetAxisRaw("Vertical");
+
+            MovementDirection = new Vector2(moveX, moveY).normalized;
+            SetLastMovementVector();
         }
     }
 }

@@ -41,7 +41,7 @@ namespace MolecularSurvivors
             var text = GetText(amount.ToString(), amount > 0 ? Color.green : Color.red);
 
             if (text != null)
-                StartCoroutine(ShowChange(text, health.transform.position));
+                StartCoroutine(ShowChange(text, health.Damagable.position));
         }
 
         private TMP_Text GetText(string text, Color color)

@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using MoreMountains.Tools;
 
 namespace MoreMountains.InventoryEngine
-{	
-	/// <summary>
-	/// Add this component to an object so it can be picked and added to an inventory
-	/// </summary>
-	public class ItemPicker : MonoBehaviour 
+{
+    /// <summary>
+    /// Add this component to an object so it can be picked and added to an inventory
+    /// </summary>
+    public class ItemPicker : MonoBehaviour 
 	{
 		/// the item that should be picked 
 		[MMInformation("Add this component to a Trigger box collider 2D and it'll make it pickable, and will add the specified item to its target inventory. Just drag a previously created item into the slot below. For more about how to create items, have a look at the documentation. Here you can also specify how many of that item should be picked when picking the object.",MMInformationAttribute.InformationType.Info,false)]

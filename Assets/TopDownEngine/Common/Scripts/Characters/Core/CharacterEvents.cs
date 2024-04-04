@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
 using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
-{	
-	/// <summary>
-	/// A list of possible events used by the character
-	/// </summary>
-	public enum MMCharacterEventTypes
+{
+    /// <summary>
+    /// A list of possible events used by the character
+    /// </summary>
+    public enum MMCharacterEventTypes
 	{
 		ButtonActivation,
 		Jump

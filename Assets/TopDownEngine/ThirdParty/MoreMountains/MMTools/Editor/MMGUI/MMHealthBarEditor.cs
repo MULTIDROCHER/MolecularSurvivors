@@ -1,11 +1,8 @@
-﻿using UnityEngine;
-using MoreMountains.Tools;
-using UnityEditor;
-using UnityEngine.UI;
+﻿using UnityEditor;
 
 namespace MoreMountains.Tools
-{	
-	[CustomEditor(typeof(MMHealthBar),true)]
+{
+    [CustomEditor(typeof(MMHealthBar),true)]
 	/// <summary>
 	/// Custom editor for health bars (mostly a switch for prefab based / drawn bars
 	/// </summary>

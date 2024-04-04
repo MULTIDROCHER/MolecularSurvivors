@@ -1,19 +1,15 @@
 ﻿using UnityEngine;
-using System.Collections;
 using MoreMountains.Tools;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using System;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine.EventSystems;
 #if UNITY_EDITOR
-	using UnityEditor;
+using UnityEditor;
 #endif
 
 namespace MoreMountains.InventoryEngine
-{	
-	[SelectionBase]
+{
+    [SelectionBase]
 	/// <summary>
 	/// A component that handles the visual representation of an Inventory, allowing the user to interact with it
 	/// </summary>

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace  MoreMountains.Tools
+namespace MoreMountains.Tools
 {
     /// <summary>
     /// Add this class to an object and it will automatically teleport to the other end of the screen when reaching the screen's edges

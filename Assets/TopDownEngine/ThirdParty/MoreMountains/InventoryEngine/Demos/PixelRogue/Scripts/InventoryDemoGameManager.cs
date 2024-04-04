@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
 using MoreMountains.Tools;
 
 namespace MoreMountains.InventoryEngine
 {
-	/// <summary>
-	/// An example of a game manager, the only significant part being how we trigger in a single place the load of all inventories, in the Start method.
-	/// </summary>
-	public class InventoryDemoGameManager : MMSingleton<InventoryDemoGameManager> 
+    /// <summary>
+    /// An example of a game manager, the only significant part being how we trigger in a single place the load of all inventories, in the Start method.
+    /// </summary>
+    public class InventoryDemoGameManager : MMSingleton<InventoryDemoGameManager> 
 	{
 		public InventoryDemoCharacter Player { get; protected set; }
 

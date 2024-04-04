@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using MoreMountains.Feedbacks;
+﻿using UnityEngine;
 using System;
 
 namespace MoreMountains.Feedbacks
 {
-	[Serializable]
+    [Serializable]
 	/// <summary>
 	/// Camera shake properties
 	/// </summary>

@@ -1,13 +1,12 @@
 using UnityEngine;
-using System.Collections;
 using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Coin manager
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Items/ExplodudesBombPicker")]
+    /// <summary>
+    /// Coin manager
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Items/ExplodudesBombPicker")]
 	public class ExplodudesBombPicker : PickableItem
 	{
         [Header("Explodudes Bomb Picker")]

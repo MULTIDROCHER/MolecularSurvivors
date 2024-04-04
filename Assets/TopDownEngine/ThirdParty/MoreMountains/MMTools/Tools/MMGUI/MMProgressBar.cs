@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using System.Collections.Generic;
-using MoreMountains.Tools;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 

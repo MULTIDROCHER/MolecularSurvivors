@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
-using MoreMountains.Tools;
 using System;
 
 namespace MoreMountains.InventoryEngine
-{	
-	[CreateAssetMenu(fileName = "ArmorItem", menuName = "MoreMountains/InventoryEngine/ArmorItem", order = 2)]
+{
+    [CreateAssetMenu(fileName = "ArmorItem", menuName = "MoreMountains/InventoryEngine/ArmorItem", order = 2)]
 	[Serializable]
 	/// <summary>
 	/// Demo class for an example armor item

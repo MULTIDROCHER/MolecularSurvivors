@@ -8,10 +8,16 @@ namespace MolecularSurvivors
     {
         [field: SerializeField] public Player Player { get; private set; }
         [SerializeField] protected Equipment<T> Template;
-        [SerializeField] private Inventory _inventory;
 
         protected TimeController<T> Timer = new();
         protected List<Equipment<T>> Equipment = new();
+
+        private Inventory _inventory;
+
+        private void Awake()
+        {
+            _inventory = Player.Inventory;
+        }
 
         private void OnEnable()
         {
@@ -41,7 +47,7 @@ namespace MolecularSurvivors
             if (data is T t)
             {
                 var equipment = Equipment.FirstOrDefault(item => item.Data == t);
-                
+
                 if (equipment != null)
                     equipment.Data.LevelData.LevelUp();
                 else

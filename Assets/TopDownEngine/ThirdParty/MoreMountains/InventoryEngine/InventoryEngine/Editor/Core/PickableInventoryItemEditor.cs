@@ -1,14 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
-using MoreMountains.Tools;
 using System.Collections.Generic;
 using UnityEditor;
-using UnityEngine.UI;
 using System.Reflection;
 
 namespace MoreMountains.InventoryEngine
-{	
-	[CustomEditor(typeof(ItemPicker), true)]
+{
+    [CustomEditor(typeof(ItemPicker), true)]
 	/// <summary>
 	/// Pickable inventory item editor.
 	/// </summary>

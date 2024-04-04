@@ -1,24 +1,32 @@
-using MolecularSurvivors.Environment;
+using System;
 using UnityEngine;
 
 namespace MolecularSurvivors
 {
-    public class BreakableObject : MonoBehaviour
+    public class BreakableObject : MonoBehaviour, IDamagable
     {
+        [SerializeField] private int _maxHealth = 3;
         public ObjectHealth Health { get; private set; }
-        private BreakablesSpawner _spawner;
+
+        public event Action<BreakableObject> Breaked;
 
         private void Awake()
         {
-            Health = GetComponentInChildren<ObjectHealth>();
-            _spawner = GetComponentInParent<BreakablesSpawner>();
-
-            Health.Initialize();
-            Health.Died += OnBreaked;
+            Health = new ObjectHealth(transform, _maxHealth);
         }
 
-        private void OnDisable() => Health.Died -= OnBreaked;
+        public void ApplyDamage(int amount)
+        {
+            Health.ApplyDamage(amount);
 
-        private void OnBreaked() => _spawner.OnBreaked(transform);
+            if (Health.Current <= 0)
+                Breaked?.Invoke(this);
+        }
+
+        public void Rebuild()
+        {
+            gameObject.SetActive(true);
+            Health.Recover(_maxHealth);
+        }
     }
 }

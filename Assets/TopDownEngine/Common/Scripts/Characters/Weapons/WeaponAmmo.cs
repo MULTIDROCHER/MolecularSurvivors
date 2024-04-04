@@ -1,13 +1,11 @@
-﻿using System;
-using UnityEngine;
-using System.Collections;
+﻿using UnityEngine;
 using System.Collections.Generic;
 using MoreMountains.Tools;
 using MoreMountains.InventoryEngine;
 
 namespace MoreMountains.TopDownEngine
-{	
-	[RequireComponent(typeof(Weapon))]
+{
+    [RequireComponent(typeof(Weapon))]
     [AddComponentMenu("TopDown Engine/Weapons/Weapon Ammo")]
     public class WeaponAmmo : MonoBehaviour, MMEventListener<MMStateChangeEvent<MoreMountains.TopDownEngine.Weapon.WeaponStates>>, MMEventListener<MMInventoryEvent>, MMEventListener<MMGameEvent>
 	{

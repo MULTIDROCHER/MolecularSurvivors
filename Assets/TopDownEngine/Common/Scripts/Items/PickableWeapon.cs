@@ -1,13 +1,12 @@
 using UnityEngine;
-using System.Collections;
 using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this class to a collectible to have the player change weapon when collecting it
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Items/Pickable Weapon")]
+    /// <summary>
+    /// Add this class to a collectible to have the player change weapon when collecting it
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Items/Pickable Weapon")]
 	public class PickableWeapon : PickableItem
 	{
 		/// the new weapon the player gets when collecting this object

@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
 using MoreMountains.Tools;
 using System;
 using MoreMountains.InventoryEngine;
 
 namespace MoreMountains.TopDownEngine
-{	
-	[CreateAssetMenu(fileName = "InventoryWeapon", menuName = "MoreMountains/TopDownEngine/InventoryWeapon", order = 2)]
+{
+    [CreateAssetMenu(fileName = "InventoryWeapon", menuName = "MoreMountains/TopDownEngine/InventoryWeapon", order = 2)]
 	[Serializable]
     /// <summary>
     /// Weapon item in the TopDown Engine

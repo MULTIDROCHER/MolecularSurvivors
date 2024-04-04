@@ -2,27 +2,26 @@ using UnityEngine;
 
 namespace MolecularSurvivors
 {
-    [RequireComponent(typeof(PlayerMovement))]
-    public class PlayerAnimator : MonoBehaviour
+    public class PlayerAnimator
     {
-        private PlayerMovement _movement;
-        private Animator _animator;
-        private int _horizontalHash;
-        private int _verticalHash;
+        private readonly Movement _movement;
+        private readonly Animator _animator;
+        private readonly int _horizontalHash;
+        private readonly int _verticalHash;
 
-        private void Awake()
+        public PlayerAnimator(Movement movement, Animator animator)
         {
-            _movement = GetComponent<PlayerMovement>();
-            _animator = GetComponentInChildren<Animator>();
+            _movement = movement;
+            _animator = animator;
 
             _horizontalHash = Animator.StringToHash("Horizontal");
             _verticalHash = Animator.StringToHash("Vertical");
         }
 
-        private void Update()
+        public void Update()
         {
-            _animator.SetFloat(_horizontalHash, _movement.Movement.x);
-            _animator.SetFloat(_verticalHash, _movement.Movement.y);
+            _animator.SetFloat(_horizontalHash, _movement.MovementDirection.x);
+            _animator.SetFloat(_verticalHash, _movement.MovementDirection.y);
         }
     }
 }

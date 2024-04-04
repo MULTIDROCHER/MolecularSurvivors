@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace MoreMountains.TopDownEngine
+﻿namespace MoreMountains.TopDownEngine
 {
     /// <summary>
     /// A simple static class that keeps track of layer names, holds ready to use layermasks for most common layers and layermasks combinations

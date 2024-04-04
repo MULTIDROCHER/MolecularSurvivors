@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace MoreMountains.Tools
 {
-	[RequireComponent(typeof(Camera))]
+    [RequireComponent(typeof(Camera))]
     /// <summary>
     /// Forces an aspect ratio on a camera
     /// </summary>

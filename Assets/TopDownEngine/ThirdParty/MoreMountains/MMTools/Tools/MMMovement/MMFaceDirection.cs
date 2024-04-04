@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace  MoreMountains.Tools
+namespace MoreMountains.Tools
 {
     /// <summary>
     /// Use this script to have a Transform automatically face a certain direction, whether its own movement direction, or a specific target Transform

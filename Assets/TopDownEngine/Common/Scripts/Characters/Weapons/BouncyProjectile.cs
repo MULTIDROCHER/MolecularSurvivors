@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
 using MoreMountains.Tools;
 using MoreMountains.Feedbacks;
 
 namespace MoreMountains.TopDownEngine
-{	
+{
     /// <summary>
     /// Projectile class that will bounce off walls instead of exploding on impact
     /// </summary>
-	[AddComponentMenu("TopDown Engine/Weapons/BouncyProjectile")]
+    [AddComponentMenu("TopDown Engine/Weapons/BouncyProjectile")]
 	public class BouncyProjectile : Projectile 
 	{
         [Header("Bounciness Tech")]

@@ -1,16 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
-using MoreMountains.Tools;
-using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 namespace MoreMountains.InventoryEngine
-{	
-	/// <summary>
-	/// This class handles the display of the items in an inventory and will trigger the various things you can do with an item (equip, use, etc.)
-	/// </summary>
-	public class InventorySlot : Button
+{
+    /// <summary>
+    /// This class handles the display of the items in an inventory and will trigger the various things you can do with an item (equip, use, etc.)
+    /// </summary>
+    public class InventorySlot : Button
 	{
 		/// the sprite used as a background for the slot while an item is being moved
 		public Sprite MovedSprite;

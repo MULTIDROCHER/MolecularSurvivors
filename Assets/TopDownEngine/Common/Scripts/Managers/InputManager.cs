@@ -1,18 +1,16 @@
 using UnityEngine;
-using System.Collections;
 using MoreMountains.Tools;
-using UnityEngine.Events;
 using System.Collections.Generic;
 
 namespace MoreMountains.TopDownEngine
-{	
-	/// <summary>
-	/// This persistent singleton handles the inputs and sends commands to the player.
-	/// IMPORTANT : this script's Execution Order MUST be -100.
-	/// You can define a script's execution order by clicking on the script's file and then clicking on the Execution Order button at the bottom right of the script's inspector.
-	/// See https://docs.unity3d.com/Manual/class-ScriptExecution.html for more details
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Managers/Input Manager")]
+{
+    /// <summary>
+    /// This persistent singleton handles the inputs and sends commands to the player.
+    /// IMPORTANT : this script's Execution Order MUST be -100.
+    /// You can define a script's execution order by clicking on the script's file and then clicking on the Execution Order button at the bottom right of the script's inspector.
+    /// See https://docs.unity3d.com/Manual/class-ScriptExecution.html for more details
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Managers/Input Manager")]
 	public class InputManager : MMSingleton<InputManager>
 	{
 		[Header("Settings")]

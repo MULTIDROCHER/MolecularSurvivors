@@ -1,21 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace MolecularSurvivors
 {
-    public class IDamagable : MonoBehaviour
+    public interface IDamagable
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
+        public abstract void ApplyDamage(int amount);
     }
 }

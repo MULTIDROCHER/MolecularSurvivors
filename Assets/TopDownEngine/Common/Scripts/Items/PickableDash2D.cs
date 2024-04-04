@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using MoreMountains.Tools;
 
-namespace  MoreMountains.TopDownEngine
+namespace MoreMountains.TopDownEngine
 {
     /// <summary>
     /// This class is an example of how you can create pickable abilities, items that, when picked, enable an ability

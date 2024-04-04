@@ -1,12 +1,9 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
-using System;
 using UnityEngine.EventSystems;
 
 namespace MoreMountains.Tools
 {
-	public static class MMGUI 
+    public static class MMGUI 
 	{
 		/// <summary>
 		/// Sets the size of a rect transform to the specified one

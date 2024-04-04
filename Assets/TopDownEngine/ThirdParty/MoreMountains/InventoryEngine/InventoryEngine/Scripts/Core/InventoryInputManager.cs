@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 using MoreMountains.Tools;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine.UI;
 
 namespace MoreMountains.InventoryEngine

@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
-using MoreMountains.Tools;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using System;
 
-namespace MoreMountains.Tools 
+namespace MoreMountains.Tools
 {
-	[System.Serializable]
+    [System.Serializable]
 	public class JoystickEvent : UnityEvent<Vector2> {}
 
 	/// <summary>

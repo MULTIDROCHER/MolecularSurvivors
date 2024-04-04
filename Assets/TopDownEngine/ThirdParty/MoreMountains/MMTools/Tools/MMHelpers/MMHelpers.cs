@@ -1,16 +1,13 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
-using System;
 using System.Reflection;
 
 namespace MoreMountains.Tools
-{	
-	/// <summary>
-	/// Various helpers
-	/// </summary>
+{
+    /// <summary>
+    /// Various helpers
+    /// </summary>
 
-	public static class MMHelpers 
+    public static class MMHelpers 
 	{
 		public static T CopyComponent<T>(T original, GameObject destination) where T : Component
 		{

@@ -1,22 +1,13 @@
-using System;
 using UnityEngine;
 
 namespace MolecularSurvivors
 {
     public class ObjectHealth : Health
     {
-        [SerializeField] private int _maxAmount;
-
-        public event Action Died;
-
-        private void Awake() => Set();
-
-        protected override void Set()
+        public ObjectHealth(Transform damagable, int maxAmount) : base(damagable)
         {
-            MaxAmount = _maxAmount;
+            MaxAmount = maxAmount;
             base.Set();
         }
-
-        protected override void Die() => Died?.Invoke();
     }
 }

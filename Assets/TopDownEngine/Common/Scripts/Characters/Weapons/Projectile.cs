@@ -1,14 +1,13 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
-{	
+{
     /// <summary>
     /// Projectile class to be used along with projectile weapons
     /// </summary>
-	[AddComponentMenu("TopDown Engine/Weapons/Projectile")]
+    [AddComponentMenu("TopDown Engine/Weapons/Projectile")]
 	public class Projectile : MMPoolableObject  
 	{
 		public enum MovementVectors { Forward, Right, Up}

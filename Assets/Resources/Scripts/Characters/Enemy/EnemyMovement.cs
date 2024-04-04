@@ -2,29 +2,19 @@ using UnityEngine;
 
 namespace MolecularSurvivors
 {
-    [RequireComponent(typeof(Enemy))]
-    [RequireComponent(typeof(Rigidbody2D))]
-    public class EnemyMovement : MonoBehaviour
+    public class EnemyMovement : Movement
     {
-        private Rigidbody2D _rigidbody;
-        private Vector3 _direction;
-        private Enemy _enemy;
-        private Transform _target;
+        private readonly Transform _target;
 
-        private void Start()
+        public EnemyMovement(Rigidbody2D rigidbody, float startSpeed, Transform player) : base(rigidbody, startSpeed)
         {
-            _rigidbody = GetComponent<Rigidbody2D>();
-            _enemy = GetComponent<Enemy>();
-            _target = _enemy.Player.transform;
+            _target = player;
         }
 
-        private void FixedUpdate()
+        public override void SetDirection()
         {
             if (_target != null)
-            {
-                _direction = (_target.position - transform.position).normalized;
-                _rigidbody.velocity = _direction * _enemy.Data.MoveSpeed;
-            }
+                MovementDirection = (_target.position - Rigidbody.transform.position).normalized;
         }
     }
 }

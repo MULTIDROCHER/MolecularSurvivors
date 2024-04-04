@@ -1,15 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
 using MoreMountains.Tools;
-using UnityEngine.EventSystems;
-using System.Collections.Generic;
 
 namespace MoreMountains.InventoryEngine
-{	
-	/// <summary>
-	/// A very simple input manager to handle the demo character's input and make it move
-	/// </summary>
-	public class DemoCharacterInputManager : MonoBehaviour, MMEventListener<MMInventoryEvent>
+{
+    /// <summary>
+    /// A very simple input manager to handle the demo character's input and make it move
+    /// </summary>
+    public class DemoCharacterInputManager : MonoBehaviour, MMEventListener<MMInventoryEvent>
 	{
 		/// The character that'll move through the level
 		[MMInformation("This component is a very simple input manager that handles the demo character's input and makes it move. If you remove it from the scene your character won't move anymore.", MMInformationAttribute.InformationType.Info,false)]

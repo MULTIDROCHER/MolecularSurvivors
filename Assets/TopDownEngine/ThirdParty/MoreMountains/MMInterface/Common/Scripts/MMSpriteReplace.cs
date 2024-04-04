@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System;
 using MoreMountains.Tools;
 using UnityEngine.UI;
 
 namespace MoreMountains.MMInterface
-{	
-	/// <summary>
-	/// A class to add to an Image or SpriteRenderer to have it act like a button with a different sprite for on and off states
-	/// </summary>
-	public class MMSpriteReplace : MonoBehaviour 
+{
+    /// <summary>
+    /// A class to add to an Image or SpriteRenderer to have it act like a button with a different sprite for on and off states
+    /// </summary>
+    public class MMSpriteReplace : MonoBehaviour 
 	{
 
         [Header("Sprites")]

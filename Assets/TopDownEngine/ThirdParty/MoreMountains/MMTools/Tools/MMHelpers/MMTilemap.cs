@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Tilemaps;
-using Random = System.Random;
 
 namespace MoreMountains.Tools
-{	
+{
     /// <summary>
     /// A collection of helper methods for interacting with Tilemaps
     /// </summary>

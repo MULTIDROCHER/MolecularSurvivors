@@ -1,8 +1,4 @@
-﻿using UnityEngine;
-using UnityEditor;
-using UnityEngine.UI;
-using System.Collections;
-using MoreMountains.InventoryEngine;
+﻿using UnityEditor;
 
 namespace MoreMountains.InventoryEngine
 {

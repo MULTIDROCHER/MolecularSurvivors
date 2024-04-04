@@ -37,7 +37,7 @@ namespace MolecularSurvivors
         {
             while (_inContact)
             {
-                _player.Health.ApplyDamage(_enemy.Data.Damage);
+                _player.ApplyDamage(_enemy.Data.Damage);
                 yield return _wait;
             }
         }

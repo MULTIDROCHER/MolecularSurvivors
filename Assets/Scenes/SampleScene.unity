@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 10435421}
   - component: {fileID: 10435422}
-  - component: {fileID: 10435423}
   m_Layer: 0
   m_Name: HEALTH
   m_TagString: Untagged
@@ -170,19 +169,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bar: {fileID: 362367746}
-  _health: {fileID: 10435423}
---- !u!114 &10435423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 10435420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2180dcd125aa3e4895be4a656f71e9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &102554187
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,6 +292,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134225959}
   m_CullTransparentMesh: 1
+--- !u!1 &170225722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 170225723}
+  - component: {fileID: 170225724}
+  m_Layer: 0
+  m_Name: TimeControl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &170225723
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170225722}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 190286965}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &170225724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170225722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7206aa5f1ac5a494fa8d8347291f553e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &173692612
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,6 +411,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173692612}
   m_CullTransparentMesh: 1
+--- !u!1 &190286964
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 190286965}
+  m_Layer: 0
+  m_Name: SYSTEM-----------------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &190286965
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190286964}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 170225723}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &204484926
 GameObject:
   m_ObjectHideFlags: 0
@@ -1406,6 +1468,11 @@ PrefabInstance:
         type: 3}
       propertyPath: TargetRectTransform
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114374147977182758, guid: b6993e89d9af3f64182a41c77cf345c2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114410653571050902, guid: b6993e89d9af3f64182a41c77cf345c2,
         type: 3}
@@ -2645,7 +2712,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 41e18c08fad59494db5daf0047b707a6, type: 2}
       - {fileID: 11400000, guid: 11b9c7fe3742f7f45a1b804bdae8a7b0, type: 2}
       - {fileID: 11400000, guid: fd5ba72aaed95604e8547ecd678baf39, type: 2}
-      <EnemiesCountIncrease>k__BackingField: 45
+      <EnemiesCountIncrease>k__BackingField: 5
   - <StartLevel>k__BackingField: 10
     <EndLevel>k__BackingField: 25
     <GoalIncrease>k__BackingField: 20
@@ -4126,13 +4193,13 @@ MonoBehaviour:
   _container: {fileID: 1678086878}
   _slotTemplate: {fileID: 2814147322246906813, guid: d58a0803466379947b587b0f6a28be4f,
     type: 3}
-  _inventory: {fileID: 420948150}
   _assets: {fileID: 420948154}
   _defaultRewards:
   - {fileID: 11400000, guid: 1dffac5b3f400d2408ef01dfc26940f6, type: 2}
   - {fileID: 11400000, guid: 0de68b4f9de37614e96027661e56b7ff, type: 2}
   _player: {fileID: 1949637307}
   _equipmentReward: {fileID: 11400000, guid: f7b4a276222bf6e4f9a32ee171f2d746, type: 2}
+  _timeController: {fileID: 170225724}
 --- !u!1 &1678086877
 GameObject:
   m_ObjectHideFlags: 0
@@ -4543,8 +4610,6 @@ GameObject:
   - component: {fileID: 1949637304}
   - component: {fileID: 1949637301}
   - component: {fileID: 1949637307}
-  - component: {fileID: 1949637300}
-  - component: {fileID: 1949637303}
   m_Layer: 0
   m_Name: PLAYER------------------
   m_TagString: Untagged
@@ -4552,18 +4617,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1949637300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1949637299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4daf56333c9a3c64ab8bbc5ff5b5ac7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &1949637301
 Rigidbody2D:
   serializedVersion: 4
@@ -4610,18 +4663,6 @@ Transform:
   - {fileID: 2000669255}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1949637303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1949637299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 356f27a85dbaa5d48b407b835deb30a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1949637304
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4682,8 +4723,10 @@ MonoBehaviour:
   <Data>k__BackingField: {fileID: 11400000, guid: be99385e192789c4ca405d214103f463,
     type: 2}
   _healthChangesDisplay: {fileID: 1372090670}
+  _healthbar: {fileID: 10435422}
   _levelProgress: {fileID: 713674412}
   _goldCollector: {fileID: 1801783806}
+  <Inventory>k__BackingField: {fileID: 420948150}
 --- !u!1 &1954619201
 GameObject:
   m_ObjectHideFlags: 0
@@ -5083,10 +5126,6 @@ MonoBehaviour:
   - {fileID: 2011285227136746211, guid: 800c9b6efa7e983439483b32e1b57ae8, type: 3}
   - {fileID: 2011285227136746211, guid: af4d81d5e84db6c40be8f98e93c9d4bd, type: 3}
   _player: {fileID: 1949637307}
-  _layer:
-    serializedVersion: 2
-    m_Bits: 8
-  _spawnDelay: 1
   _breakablesController: {fileID: 2094002434}
 --- !u!4 &2120732018
 Transform:
@@ -5290,3 +5329,4 @@ SceneRoots:
   - {fileID: 2120732018}
   - {fileID: 852691463}
   - {fileID: 426740430}
+  - {fileID: 190286965}

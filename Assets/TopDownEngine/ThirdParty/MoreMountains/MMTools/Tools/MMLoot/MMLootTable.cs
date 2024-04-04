@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace  MoreMountains.Tools
+namespace MoreMountains.Tools
 {
     /// <summary>
     /// A loot table helper that can be used to randomly pick objects out of a weighted list

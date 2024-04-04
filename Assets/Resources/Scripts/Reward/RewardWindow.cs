@@ -10,29 +10,33 @@ namespace MolecularSurvivors
         [SerializeField] private int _slotsAmount;
         [SerializeField] private Transform _container;
         [SerializeField] private RewardSlot _slotTemplate;
-        [SerializeField] private Inventory _inventory;
         [SerializeField] private EquipmentAssets _assets;
         [SerializeField] private DefaultReward[] _defaultRewards;
         [SerializeField] private Player _player;
         [SerializeField] private EquipmentReward _equipmentReward;
+        [SerializeField] private TimeControl _timeController;
 
         private RewardLoader _loader;
+        private ResourceHandler _resourceHandler;
+        private Inventory _inventory;
 
         private void Awake()
         {
             Initialize();
+            _resourceHandler = _player.ResourceHandler;
+            _inventory = _player.Inventory;
             _loader = new(_inventory, _slotsAmount, _assets, _slots.ToArray(), _defaultRewards, _equipmentReward);
         }
 
         private void OnEnable()
         {
-            Time.timeScale = 0;
+            _timeController.StopTime();
             LoadRewards();
         }
 
         private void OnDisable()
         {
-            Time.timeScale = 1;
+            _timeController.StartTime();
             _loader.Reset();
         }
 
@@ -45,7 +49,7 @@ namespace MolecularSurvivors
                     _inventory.Add(equipment.Data);
                     break;
                 case DefaultReward defaultReward:
-                    _player.ResourceHandler.GetLoot(defaultReward.Loot);
+                    _resourceHandler.GetLoot(defaultReward.Loot);
                     break;
             }
 

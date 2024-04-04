@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using System.Reflection;
+﻿using UnityEngine;
 using System;
-using UnityEngine.Events;
 
-namespace MoreMountains.Tools 
+namespace MoreMountains.Tools
 {
     /// <summary>
     /// A class used to pick a property and modify its value

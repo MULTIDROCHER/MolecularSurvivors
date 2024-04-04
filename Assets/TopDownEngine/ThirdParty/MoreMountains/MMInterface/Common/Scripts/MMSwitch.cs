@@ -1,17 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System;
 using MoreMountains.Tools;
-using UnityEngine.UI;
-using System.Collections.Generic;
 using UnityEngine.Events;
 
 namespace MoreMountains.MMInterface
-{	
-	/// <summary>
-	/// A component to handle switches 
-	/// </summary>
-	public class MMSwitch : MMTouchButton 
+{
+    /// <summary>
+    /// A component to handle switches 
+    /// </summary>
+    public class MMSwitch : MMTouchButton 
 	{
 		[Header("Switch")]
 		/// a SpriteReplace to represent the switch knob

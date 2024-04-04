@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
 using MoreMountains.Tools;
 
 namespace MoreMountains.InventoryEngine
-{	
-	/// <summary>
-	/// Special kind of inventory display, with a dedicated key associated to it, to allow for shortcuts for use and equip
-	/// </summary>
-	public class InventoryHotbar : InventoryDisplay 
+{
+    /// <summary>
+    /// Special kind of inventory display, with a dedicated key associated to it, to allow for shortcuts for use and equip
+    /// </summary>
+    public class InventoryHotbar : InventoryDisplay 
 	{
 		/// the possible actions that can be done on objects in the hotbar
 		public enum HotbarPossibleAction { Use, Equip }

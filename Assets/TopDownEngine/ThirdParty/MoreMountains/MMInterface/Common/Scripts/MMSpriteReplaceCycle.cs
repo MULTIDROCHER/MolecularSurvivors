@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System;
 using MoreMountains.Tools;
 using UnityEngine.UI;
 
 namespace MoreMountains.MMInterface
-{	
-	/// <summary>
-	/// A class to add to a button so that its sprite cycles through X sprites when pressed
-	/// </summary>
-	public class MMSpriteReplaceCycle : MonoBehaviour 
+{
+    /// <summary>
+    /// A class to add to a button so that its sprite cycles through X sprites when pressed
+    /// </summary>
+    public class MMSpriteReplaceCycle : MonoBehaviour 
 	{
 		/// the list of sprites to cycle through
 		public Sprite[] Sprites;

@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using  MoreMountains.Tools;
+﻿using UnityEngine;
+using MoreMountains.Tools;
 using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 

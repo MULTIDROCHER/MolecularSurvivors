@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
 using MoreMountains.Tools;
-using UnityEngine.UI;
 
 namespace MoreMountains.TopDownEngine
-{	
-	[RequireComponent(typeof(Weapon))]
+{
+    [RequireComponent(typeof(Weapon))]
 	/// <summary>
 	/// Add this component to a Weapon and you'll be able to aim it (meaning you'll rotate it)
 	/// Supported control modes are mouse, primary movement (you aim wherever you direct your character) and secondary movement (using a secondary axis, separate from the movement).
