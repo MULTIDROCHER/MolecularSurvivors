@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace MolecularSurvivors
@@ -5,6 +6,8 @@ namespace MolecularSurvivors
     public class Enemy : Character<EnemyData>
     {
         public Player Player { get; private set; }
+
+        public event Action<Enemy> Died;
 
         public void Initialize(Player player, HealthChangesDisplay healthChanges)
         {
@@ -19,5 +22,7 @@ namespace MolecularSurvivors
             Renderer.sprite = Data.Sprite;
             Health.Set(data);
         }
+
+        protected override void Die() => Died.Invoke(this);
     }
 }

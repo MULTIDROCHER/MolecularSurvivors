@@ -7,8 +7,9 @@ namespace MolecularSurvivors
     {
         public override void Execute()
         {
-            Player.Renderer.DOColor(Data.Color, Data.DurationData.Duration)
-            .OnComplete(() => Player.Renderer.DOColor(Color.white, Data.DurationData.Duration));
+            Controller.Player.Renderer.DOColor(Data.Color, Data.DurationData.Duration)
+            .OnComplete(() => 
+            Controller.Player.Renderer.DOColor(Color.white, Data.DurationData.Duration));
         }
     }
 }

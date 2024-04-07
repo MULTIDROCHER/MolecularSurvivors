@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace MolecularSurvivors
@@ -11,6 +12,8 @@ namespace MolecularSurvivors
         [SerializeField] private GoldCollector _goldCollector;
 
         private PlayerAnimator _animator;
+
+        public event Action Died;
 
         [field: SerializeField] public Inventory Inventory { get; private set; }
         public ResourceHandler ResourceHandler { get; private set; }
@@ -33,5 +36,7 @@ namespace MolecularSurvivors
             base.Update();
             _animator.Update();
         }
+
+        protected override void Die() => Died.Invoke();
     }
 }

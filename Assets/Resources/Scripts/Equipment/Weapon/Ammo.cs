@@ -1,43 +1,51 @@
-using System.Collections;
-using DG.Tweening;
 using UnityEngine;
 
 namespace MolecularSurvivors
 {
     public class Ammo : MonoBehaviour
     {
-        private SpriteRenderer _renderer;
-        private Weapon _weapon;
-        private WaitForSeconds _wait;
+        private AmmoStateMachine _stateMachine;
+        private Sprite _defaultSprite;
+
+        public SpriteRenderer Renderer { get; private set; }
+        public Weapon Weapon { get; private set; }
+        public AmmoData Data { get; private set; }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.TryGetComponent(out IDamagable damagable))
-                damagable.ApplyDamage(_weapon.GetDamage());
+                damagable.ApplyDamage(Weapon.GetDamage());
         }
+
+        private void Update() => _stateMachine.Update(Time.deltaTime);
 
         public void Initialize(Weapon weapon)
         {
-            _weapon = weapon;
-            SetDuration();
-            _renderer = GetComponent<SpriteRenderer>();
-            _renderer.color = _weapon.Data.Color;
+            Renderer = GetComponent<SpriteRenderer>();
+            _defaultSprite = Renderer.sprite;
+            Weapon = weapon;
+            Data = weapon.Data.AmmoData;
+            _stateMachine = new(this);
+        }
+
+        public void Activate() => _stateMachine.Enter();
+
+        public void Deactivate()
+        {
+            Debug.Log("Deactivate");
+            _stateMachine.Exit();
+            Renderer.sprite = _defaultSprite;
             gameObject.SetActive(false);
         }
 
-        public IEnumerator Shoot()
+        public Vector3 GetRandomPosition()
         {
-            transform.DOScale(new Vector3(2, 2, 2), _weapon.Data.DurationData.Duration / 2);
+            var controller = Weapon.Controller as WeaponController;
 
-            yield return _wait;
-
-            transform.DOScale(Vector3.zero, _weapon.Data.DurationData.Duration / 2);
-            gameObject.SetActive(false);
-        }
-
-        public void SetDuration()
-        {
-            _wait = new(_weapon.Data.DurationData.Duration);
+            if (controller != null)
+                return controller.GetRandomShootPoint();
+            else
+                return Weapon.transform.position;
         }
     }
 }

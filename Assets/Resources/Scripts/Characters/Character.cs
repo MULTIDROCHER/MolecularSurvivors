@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace MolecularSurvivors
@@ -8,12 +7,10 @@ namespace MolecularSurvivors
     {
         [field: SerializeField] public T Data { get; protected set; }
 
-        public SpriteRenderer Renderer { get; private set; }
-
-        public Movement Movement { get; protected set; }
         protected CharacterHealth Health;
 
-        public virtual event Action<Character<T>> Died;
+        public SpriteRenderer Renderer { get; private set; }
+        public Movement Movement { get; protected set; }
 
         protected virtual void Awake()
         {
@@ -37,10 +34,7 @@ namespace MolecularSurvivors
                 Die();
         }
 
-        private void Die()
-        {
-            Died?.Invoke(this);
-        }
+        protected abstract void Die();
         #endregion
 
         #region Update

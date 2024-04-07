@@ -20,8 +20,7 @@ namespace MolecularSurvivors
 
         public IEnumerator ResetEnemies()
         {
-            //todo rewrite condition
-            while (true)
+            while (_spawner != null)
             {
                 yield return _waitBeforeCheck;
 

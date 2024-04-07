@@ -5,57 +5,30 @@ namespace MolecularSurvivors
 {
     public class Weapon : Equipment<WeaponData>
     {
-        private List<Ammo> _ammos = new();
+        private AmmoPool _pool;
 
         public override void Initialize(WeaponData data, EquipmentController<WeaponData> controller)
         {
             base.Initialize(data, controller);
-            CreateAmmos();
+            _pool = new(this, Data.AmmoData.Template, Data.AmountData.MaxAmount);
+            _pool.CreateAmmos();
         }
 
         public override void Execute()
         {
-            var ammos = GetAmmos();
+            var ammos = _pool.GetAmmos();
 
             foreach (var ammo in ammos)
             {
                 if (ammo != null)
                 {
-                    ammo.gameObject.SetActive(true);
-                    ammo.StartCoroutine(ammo.Shoot());
+                    ammo.Activate();
                 }
                 else
-                    Debug.Log("null ammo");
+                    Debug.Log("null ammo at weapon");
             }
-        }
-
-        private Ammo[] GetAmmos()
-        {
-            var ammos = new Ammo[Data.AmountData.Amount];
-
-            for (int i = 0; i < ammos.Length; i++)
-            {
-                if (_ammos[i] != null && _ammos[i].gameObject.activeSelf == false)
-                    ammos[i] = _ammos[i];
-                else
-                    Debug.Log("null ammo");
-            }
-
-            return ammos;
         }
 
         public int GetDamage() => Data.DamageData.Damage;
-
-        private void CreateAmmos()
-        {
-            int maxAmount = Data.AmountData.MaxAmount;
-
-            for (int i = 0; i < maxAmount; i++)
-            {
-                var ammo = Instantiate(Data.Ammo, transform);
-                ammo.Initialize(this);
-                _ammos.Add(ammo);
-            }
-        }
     }
 }

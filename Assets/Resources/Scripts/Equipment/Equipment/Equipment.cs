@@ -5,7 +5,6 @@ namespace MolecularSurvivors
     public abstract class Equipment<T> : MonoBehaviour where T : EquipmentData
     {
         public EquipmentController<T> Controller { get; private set; }
-        public Player Player { get; private set; }
 
         public T Data { get; private set; }
 
@@ -13,7 +12,6 @@ namespace MolecularSurvivors
         {
             Data = data;
             Controller = controller;
-            Player = Controller.Player;
             gameObject.name = Data.name;
         }
 

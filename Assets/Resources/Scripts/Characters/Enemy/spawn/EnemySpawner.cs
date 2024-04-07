@@ -47,11 +47,11 @@ namespace MolecularSurvivors
                 StartCoroutine(_preparer.Set(enemy));
         }
 
-        private void OnEnemyDied(Character<EnemyData> enemy)
+        private void OnEnemyDied(Enemy enemy)
         {
             CountChanged?.Invoke(1);
             _lootManager.InstantiateLoot(enemy.transform.position);
-            SetEnemy((Enemy)enemy);
+            SetEnemy(enemy);
         }
 
         private void SetNewEnemies(Enemy[] enemies)
