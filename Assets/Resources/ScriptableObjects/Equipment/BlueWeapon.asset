@@ -23,8 +23,8 @@ MonoBehaviour:
   <LevelData>k__BackingField:
     rid: 7958124934239879205
   <Color>k__BackingField: {r: 0, g: 0, b: 1, a: 1}
-  <Ammo>k__BackingField: {fileID: 853872879145074082, guid: 72f1bfbd9d923ae4a8b8f7f82d837d26,
-    type: 3}
+  <AmmoData>k__BackingField: {fileID: 11400000, guid: 98d42ea400e62284dbf12d4894b155ac,
+    type: 2}
   <AmountData>k__BackingField:
     rid: 7958124888173576212
   <DamageData>k__BackingField:
