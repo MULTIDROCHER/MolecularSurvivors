@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7233c59058043a41a3ed5ce839cc5bc, type: 3}
+  m_Name: WeapKnife
+  m_EditorClassIdentifier: 
+  <Icon>k__BackingField: {fileID: 1206989470, guid: 331c8196c25d99b41bb16e0ae098e86b,
+    type: 3}
+  <TextData>k__BackingField:
+    rid: 4307792212432257071
+  <TimerData>k__BackingField:
+    rid: 4307792212432257072
+  <DurationData>k__BackingField:
+    rid: 4307792212432257073
+  <LevelData>k__BackingField:
+    rid: 4307792212432257074
+  <Ammo>k__BackingField: {fileID: 2230756706352432247, guid: 7e9c095fab9e9a3418654d8b71ff6f23,
+    type: 3}
+  <AmountData>k__BackingField:
+    rid: 4307792212432257075
+  <DamageData>k__BackingField:
+    rid: 4307792212432257076
+  <PositionSetter>k__BackingField: {fileID: 8275994428514363493, guid: a2a19cc68a024b14c8abccbc0074cc0e,
+    type: 3}
+  <SpeedData>k__BackingField:
+    rid: 4307792212432257077
+  references:
+    version: 2
+    RefIds:
+    - rid: 4307792212432257071
+      type: {class: TextComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        _nameCode:
+          <Ru>k__BackingField: knife ru
+          <En>k__BackingField: knife en
+          <Tr>k__BackingField: knife tr
+        _descriptionCode:
+          <Ru>k__BackingField: 'knife knife '
+          <En>k__BackingField: 'knife knife '
+          <Tr>k__BackingField: 'knife knife '
+    - rid: 4307792212432257072
+      type: {class: TimerComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <Cooldown>k__BackingField: 3
+    - rid: 4307792212432257073
+      type: {class: DurationComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <Duration>k__BackingField: 2
+    - rid: 4307792212432257074
+      type: {class: UpgradeComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <MaxLevel>k__BackingField: 2
+    - rid: 4307792212432257075
+      type: {class: AmountComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <MaxAmount>k__BackingField: 5
+        <Amount>k__BackingField: 1
+    - rid: 4307792212432257076
+      type: {class: DamageComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <Damage>k__BackingField: 1
+    - rid: 4307792212432257077
+      type: {class: SpeedComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <Speed>k__BackingField: 10

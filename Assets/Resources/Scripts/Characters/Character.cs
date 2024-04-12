@@ -8,10 +8,9 @@ namespace MolecularSurvivors
         [field: SerializeField] public T Data { get; protected set; }
 
         protected CharacterHealth Health;
+        protected Movement Movement;
 
         public SpriteRenderer Renderer { get; private set; }
-        public Movement Movement { get; protected set; }
-
         protected virtual void Awake()
         {
             Renderer = GetComponentInChildren<SpriteRenderer>();

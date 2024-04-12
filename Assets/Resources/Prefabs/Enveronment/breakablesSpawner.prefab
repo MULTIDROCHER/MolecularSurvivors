@@ -223,6 +223,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2282187787127570387}
+  - {fileID: 223363623946036943}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9070126077128072767
@@ -244,6 +245,7 @@ MonoBehaviour:
   - {fileID: 1080911334547282232}
   - {fileID: 8616256885282510994}
   - {fileID: 6045158700513960074}
+  _effect: {fileID: 8284863170796442824}
 --- !u!1 &8172657319943873091
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,3 +277,83 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2282187787127570387}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &3377151594707562292
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1576536590800188880}
+    m_Modifications:
+    - target: {fileID: 481947888716730270, guid: b4f04d135faa2bc42b6a131603b9e813,
+        type: 3}
+      propertyPath: m_Name
+      value: CFXR Smoke Poof Circle Flat
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298747586587658747, guid: b4f04d135faa2bc42b6a131603b9e813,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298747586587658747, guid: b4f04d135faa2bc42b6a131603b9e813,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298747586587658747, guid: b4f04d135faa2bc42b6a131603b9e813,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298747586587658747, guid: b4f04d135faa2bc42b6a131603b9e813,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298747586587658747, guid: b4f04d135faa2bc42b6a131603b9e813,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298747586587658747, guid: b4f04d135faa2bc42b6a131603b9e813,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298747586587658747, guid: b4f04d135faa2bc42b6a131603b9e813,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298747586587658747, guid: b4f04d135faa2bc42b6a131603b9e813,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298747586587658747, guid: b4f04d135faa2bc42b6a131603b9e813,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298747586587658747, guid: b4f04d135faa2bc42b6a131603b9e813,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b4f04d135faa2bc42b6a131603b9e813, type: 3}
+--- !u!4 &223363623946036943 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3298747586587658747, guid: b4f04d135faa2bc42b6a131603b9e813,
+    type: 3}
+  m_PrefabInstance: {fileID: 3377151594707562292}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8284863170796442824 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6640472245791226876, guid: b4f04d135faa2bc42b6a131603b9e813,
+    type: 3}
+  m_PrefabInstance: {fileID: 3377151594707562292}
+  m_PrefabAsset: {fileID: 0}

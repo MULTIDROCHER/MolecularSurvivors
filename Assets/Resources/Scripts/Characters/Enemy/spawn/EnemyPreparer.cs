@@ -6,12 +6,12 @@ namespace MolecularSurvivors
 {
     public class EnemyPreparer
     {
-        private readonly RandomPointOutOfCamera _randomPointGenerator;
+        private readonly EnemySpawnArea _spawnArea;
         private readonly WaitForSeconds _duration = new(.5f);
         
         private List<EnemyData> _enemies = new();
 
-        public EnemyPreparer(Camera camera) => _randomPointGenerator = new(camera);
+        public EnemyPreparer(Camera camera) => _spawnArea = new(camera);
 
         public void UpdateDataList(EnemyWave wave)
         {
@@ -27,7 +27,7 @@ namespace MolecularSurvivors
 
             var data = GetRandomData();
             enemy.Set(data);
-            enemy.transform.position = _randomPointGenerator.GetRandomPoint();
+            enemy.transform.position = _spawnArea.GetRandomPoint();
             enemy.gameObject.SetActive(true);
         }
 

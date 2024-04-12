@@ -6,17 +6,16 @@ namespace MolecularSurvivors
 {
     public class AmmoPool
     {
-        private List<Ammo> _ammos = new();
-        private Weapon _weapon;
-        private Ammo _template;
-        private int _maxAmount = 10;
-        private int _currentAmount;
+        private readonly Weapon _weapon;
+        private readonly Ammo _template;
+        private readonly int _maxAmount = 20;
 
-        public AmmoPool(Weapon weapon, Ammo template, int amount)
+        public List<Ammo> Ammos { get; private set; } = new();
+
+        public AmmoPool(Weapon weapon, Ammo template)
         {
             _weapon = weapon;
             _template = template;
-            _currentAmount = amount;
         }
 
         public void CreateAmmos()
@@ -25,19 +24,22 @@ namespace MolecularSurvivors
             {
                 var ammo = Object.Instantiate(_template, _weapon.transform);
                 ammo.Initialize(_weapon);
-                _ammos.Add(ammo);
+                Ammos.Add(ammo);
                 ammo.gameObject.SetActive(false);
             }
         }
 
-        public Ammo[] GetAmmos()
+        public Ammo[] GetAmmos(int amount)
         {
-            var ammos = new Ammo[_currentAmount];
+            if (amount > _maxAmount)
+                amount = _maxAmount;
+
+            var ammos = new Ammo[amount];
 
             for (int i = 0; i < ammos.Length; i++)
             {
-                if (_ammos[i] != null && _ammos[i].gameObject.activeSelf == false)
-                    ammos[i] = _ammos[i];
+                if (Ammos[i] != null && Ammos[i].Active == false)
+                    ammos[i] = Ammos[i];
                 else
                     Debug.Log("null ammo at pool");
             }

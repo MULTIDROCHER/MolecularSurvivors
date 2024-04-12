@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7233c59058043a41a3ed5ce839cc5bc, type: 3}
+  m_Name: WeapGarlic
+  m_EditorClassIdentifier: 
+  <Icon>k__BackingField: {fileID: 21300000, guid: 45d75f755c2de1243b17d4e33f44f966,
+    type: 3}
+  <TextData>k__BackingField:
+    rid: 4307792197479563312
+  <TimerData>k__BackingField:
+    rid: 4307792197479563313
+  <DurationData>k__BackingField:
+    rid: 4307792197479563314
+  <LevelData>k__BackingField:
+    rid: 4307792197479563315
+  <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+  <Ammo>k__BackingField: {fileID: 1350108666658979030, guid: a13bcfc1ad431f148ae7091782d075b3,
+    type: 3}
+  <AmountData>k__BackingField:
+    rid: 4307792197479563316
+  <DamageData>k__BackingField:
+    rid: 4307792197479563317
+  <PositionSetter>k__BackingField: {fileID: 8275994428514363493, guid: a2a19cc68a024b14c8abccbc0074cc0e,
+    type: 3}
+  references:
+    version: 2
+    RefIds:
+    - rid: 4307792197479563312
+      type: {class: TextComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        _nameCode:
+          <Ru>k__BackingField: garlic ru
+          <En>k__BackingField: garlic en
+          <Tr>k__BackingField: garlic tr
+        _descriptionCode:
+          <Ru>k__BackingField: 'garlic garlic '
+          <En>k__BackingField: 'garlic garlic '
+          <Tr>k__BackingField: 'garlic garlic '
+    - rid: 4307792197479563313
+      type: {class: TimerComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <Cooldown>k__BackingField: 2
+    - rid: 4307792197479563314
+      type: {class: DurationComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <Duration>k__BackingField: 0.5
+    - rid: 4307792197479563315
+      type: {class: UpgradeComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <MaxLevel>k__BackingField: 4
+    - rid: 4307792197479563316
+      type: {class: AmountComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <MaxAmount>k__BackingField: 1
+        <Amount>k__BackingField: 1
+    - rid: 4307792197479563317
+      type: {class: DamageComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <Damage>k__BackingField: 1

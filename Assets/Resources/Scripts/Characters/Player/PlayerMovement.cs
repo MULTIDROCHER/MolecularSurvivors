@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace MolecularSurvivors
@@ -14,9 +15,10 @@ namespace MolecularSurvivors
 
         private void SetLastMovementVector()
         {
-            if (MovementDirection.x != 0)
+            //if (MovementDirection.x != 0)
                 _moveX = MovementDirection.x;
-            if (MovementDirection.y != 0)
+
+            //if (MovementDirection.y != 0)
                 _moveY = MovementDirection.y;
 
             if (_moveX != 0 || _moveY != 0)

@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace MolecularSurvivors
@@ -9,8 +10,5 @@ namespace MolecularSurvivors
         [field: SerializeReference] public TimerComponent TimerData { get; private set; } = new();
         [field: SerializeReference] public DurationComponent DurationData { get; private set; } = new();
         [field: SerializeReference] public UpgradeComponent LevelData { get; private set; } = new();
-
-        //test prop
-        [field: SerializeReference] public Color Color { get; private set; }
     }
 }

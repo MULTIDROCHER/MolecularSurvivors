@@ -18,7 +18,7 @@ namespace MolecularSurvivors.Environment
 
         private void Start()
         {
-            _movement = _player.Movement;
+            _movement = _player.PlayerMovement;
             _chunkVisibility = new(_player);
             _spawner = new(_templates, transform);
             _mapUpdater = new();

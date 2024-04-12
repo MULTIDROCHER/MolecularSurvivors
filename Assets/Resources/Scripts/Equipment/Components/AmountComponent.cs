@@ -6,13 +6,14 @@ namespace MolecularSurvivors
     {
         public AmountComponent()
         {
-            MaxAmount = 100;
+            MaxAmount = 15;
             Amount = 1;
         }
 
         [field: SerializeField] public int MaxAmount { get; private set; }
         
         [field: SerializeField] public int Amount { get; private set; }
+
 
         public void Increase(float value, bool isPercent = false)
         {

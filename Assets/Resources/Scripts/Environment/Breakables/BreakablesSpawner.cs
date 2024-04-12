@@ -8,6 +8,7 @@ namespace MolecularSurvivors.Environment
         private readonly List<BreakableObject> _spawned = new();
 
         [SerializeField] private Transform[] _spawnPoints;
+        [SerializeField] private ParticleSystem _effect;
         
         private BreakablesController _controller;
 
@@ -41,6 +42,8 @@ namespace MolecularSurvivors.Environment
         public void OnBreaked(BreakableObject breakable)
         {
             _controller.SetLoot(breakable.transform);
+            _effect.transform.position = breakable.transform.position;
+            _effect.Play();
             breakable.gameObject.SetActive(false);
         }
 

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 10
   _maxHealth: 50
-  _startWeapon: {fileID: 11400000, guid: 083092ed290c06e46bc2df03ceecdb37, type: 2}
+  _startWeapon: {fileID: 11400000, guid: 050da6e53c766d2479eeed421df0917b, type: 2}
   _startAbility: {fileID: 11400000, guid: c6aa788bf61636440986b34edb97bd94, type: 2}

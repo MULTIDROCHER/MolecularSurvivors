@@ -17,6 +17,8 @@ namespace MolecularSurvivors
 
         [field: SerializeField] public Inventory Inventory { get; private set; }
         public ResourceHandler ResourceHandler { get; private set; }
+        public PlayerStats Stats { get; private set; } = new();
+        public PlayerMovement PlayerMovement => (PlayerMovement)Movement;
 
         protected override void Awake()
         {
@@ -37,6 +39,6 @@ namespace MolecularSurvivors
             _animator.Update();
         }
 
-        protected override void Die() => Died.Invoke();
+        protected override void Die() => Died?.Invoke();
     }
 }

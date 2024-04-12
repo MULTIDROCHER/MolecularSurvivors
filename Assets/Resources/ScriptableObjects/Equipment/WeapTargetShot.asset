@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7233c59058043a41a3ed5ce839cc5bc, type: 3}
+  m_Name: WeapTargetShot
+  m_EditorClassIdentifier: 
+  <Icon>k__BackingField: {fileID: -816018159, guid: 4242025b6f382e04eacdc01ba0d6dc10,
+    type: 3}
+  <TextData>k__BackingField:
+    rid: 4307792212432257105
+  <TimerData>k__BackingField:
+    rid: 4307792212432257106
+  <DurationData>k__BackingField:
+    rid: 4307792212432257107
+  <LevelData>k__BackingField:
+    rid: 4307792212432257108
+  <Ammo>k__BackingField: {fileID: 3087750718926828644, guid: f04e21da8413db842a6d04be89cf8738,
+    type: 3}
+  <AmountData>k__BackingField:
+    rid: 4307792212432257109
+  <DamageData>k__BackingField:
+    rid: 4307792212432257110
+  <PositionSetter>k__BackingField: {fileID: 8275994428514363493, guid: a2a19cc68a024b14c8abccbc0074cc0e,
+    type: 3}
+  <SpeedData>k__BackingField:
+    rid: 4307792212432257111
+  references:
+    version: 2
+    RefIds:
+    - rid: 4307792212432257105
+      type: {class: TextComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        _nameCode:
+          <Ru>k__BackingField: target ru
+          <En>k__BackingField: target en
+          <Tr>k__BackingField: target tr
+        _descriptionCode:
+          <Ru>k__BackingField: 'target target '
+          <En>k__BackingField: 'target target '
+          <Tr>k__BackingField: 'target target '
+    - rid: 4307792212432257106
+      type: {class: TimerComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <Cooldown>k__BackingField: 4
+    - rid: 4307792212432257107
+      type: {class: DurationComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <Duration>k__BackingField: 1
+    - rid: 4307792212432257108
+      type: {class: UpgradeComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <MaxLevel>k__BackingField: 2
+    - rid: 4307792212432257109
+      type: {class: AmountComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <MaxAmount>k__BackingField: 15
+        <Amount>k__BackingField: 1
+    - rid: 4307792212432257110
+      type: {class: DamageComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <Damage>k__BackingField: 1
+    - rid: 4307792212432257111
+      type: {class: SpeedComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
+      data:
+        <Speed>k__BackingField: 1
