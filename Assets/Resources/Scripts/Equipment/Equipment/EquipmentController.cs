@@ -11,14 +11,15 @@ namespace MolecularSurvivors
         [SerializeField] private Equipment<T> _template;
 
         private TimeController<T> _timer = new();
-        private List<Equipment<T>> _equipment = new();
+        private UpgradesController<T> _upgradesController;
+        public List<Equipment<T>> Equipment { get; private set; } = new();
 
         private Inventory _inventory;
 
-        private void Awake()
-        {
+        private void Awake(){
             _inventory = Player.Inventory;
-        }
+            _upgradesController = new (this);
+        } 
 
         private void OnEnable()
         {
@@ -38,10 +39,10 @@ namespace MolecularSurvivors
         {
             if (data is T controlable)
             {
-                var equipment = _equipment.FirstOrDefault(item => item.Data == controlable);
+                var equipment = Equipment.FirstOrDefault(item => item.Data == controlable);
 
                 if (equipment != null)
-                    equipment.Data.LevelData.LevelUp();
+                    _upgradesController.Upgrade(equipment);
                 else
                     Add(controlable);
             }
@@ -52,10 +53,11 @@ namespace MolecularSurvivors
             var equipment = Instantiate(_template, transform);
             equipment.Initialize(data, this);
 
-            _equipment.Add(equipment);
+            Equipment.Add(equipment);
             _timer.Add(equipment);
+            _upgradesController.Add(equipment);
         }
 
-        private void OnReadyToExecute(int index) => _equipment[index].Execute();
+        private void OnReadyToExecute(int index) => Equipment[index].Execute();
     }
 }

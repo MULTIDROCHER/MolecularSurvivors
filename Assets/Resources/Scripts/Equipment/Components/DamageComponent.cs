@@ -1,14 +1,17 @@
+using System;
 using UnityEngine;
 
 namespace MolecularSurvivors
 {
-    public class DamageComponent : ComponentData, IIncreasable
+    public class DamageComponent : ComponentData
     {
         [field: SerializeField] public int Damage { get; private set; }
 
+        public override ComponentType Type => ComponentType.Damage;
+
         public DamageComponent() => Damage = 1;
 
-        public void Increase(float value, bool isPercent = false)
+        public override void ChangeValue(float value, bool isPercent = false)
         {
             var amount = value;
 
@@ -16,6 +19,7 @@ namespace MolecularSurvivors
                 amount = PercentConverter.GetValueByPercent(Damage, value);
 
             Damage += (int)amount;
+            base.ChangeValue(value, isPercent);
         }
     }
 }

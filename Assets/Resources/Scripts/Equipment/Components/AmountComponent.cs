@@ -1,8 +1,9 @@
+using System;
 using UnityEngine;
 
 namespace MolecularSurvivors
 {
-    public class AmountComponent : ComponentData, IIncreasable
+    public class AmountComponent : ComponentData
     {
         public AmountComponent()
         {
@@ -11,11 +12,12 @@ namespace MolecularSurvivors
         }
 
         [field: SerializeField] public int MaxAmount { get; private set; }
-        
+
         [field: SerializeField] public int Amount { get; private set; }
 
+        public override ComponentType Type => ComponentType.Amount;
 
-        public void Increase(float value, bool isPercent = false)
+        public override void ChangeValue(float value, bool isPercent = false)
         {
             var amount = value;
 
@@ -23,6 +25,7 @@ namespace MolecularSurvivors
                 amount = PercentConverter.GetValueByPercent(MaxAmount, value);
 
             Amount += (int)amount;
+            base.ChangeValue(value, isPercent);
         }
     }
 }

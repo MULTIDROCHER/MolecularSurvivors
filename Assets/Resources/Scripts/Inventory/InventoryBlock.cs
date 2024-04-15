@@ -8,6 +8,7 @@ namespace MolecularSurvivors
     {
         private readonly List<InventorySlot> _slots = new();
         private readonly List<EquipmentData> _equipment = new();
+        public List<EquipmentData> Upgradables { get; private set; } = new();
 
         public void Initialize(InventorySlot template, int amount)
         {
@@ -29,10 +30,15 @@ namespace MolecularSurvivors
             if (_equipment.Contains(equipment))
             {
                 slot = _slots.FirstOrDefault(slot => slot.Equipment == equipment);
+
+                if (Upgradables.Contains(equipment))
+                    Upgradables.Remove(equipment);
             }
             else
             {
                 _equipment.Add(equipment);
+                if (equipment.LevelData.CanLevelUp)
+                    Upgradables.Add(equipment);
                 slot = _slots.FirstOrDefault(slot => slot.Empty);
             }
 

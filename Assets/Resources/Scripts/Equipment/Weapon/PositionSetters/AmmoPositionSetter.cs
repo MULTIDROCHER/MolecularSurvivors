@@ -1,13 +1,18 @@
-using UnityEngine;
-
 namespace MolecularSurvivors
 {
-    public abstract class AmmoPositionSetter : MonoBehaviour
+    public abstract class AmmoPositionSetter
     {
         protected Weapon Weapon { get; private set; }
 
-        protected virtual void Awake() => Weapon = GetComponentInParent<Weapon>();
+        public AmmoPositionSetter(Weapon weapon) => Weapon = weapon;
 
         public abstract void SetPositions(Ammo[] ammos);
+    }
+
+    public enum AmmoPositionType
+    {
+        Default,
+        Whip,
+        FromRandomPoint,
     }
 }

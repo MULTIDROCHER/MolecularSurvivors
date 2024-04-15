@@ -964,7 +964,6 @@ GameObject:
   - component: {fileID: 420948152}
   - component: {fileID: 420948150}
   - component: {fileID: 420948153}
-  - component: {fileID: 420948154}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -1005,7 +1004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 133001bb0cc94b24199e5ee20c963c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAmount: 1
+  _maxAmount: 2
   _slotTemplate: {fileID: -1118646529173501477, guid: c31d278cbf78e2f49927cb815e84fbb5,
     type: 3}
   _weaponContainer: {fileID: 424036094}
@@ -1051,26 +1050,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
---- !u!114 &420948154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 420948148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1806a3bb502ab34d971d73d36ae40dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _weaponDatas:
-  - {fileID: 11400000, guid: 083092ed290c06e46bc2df03ceecdb37, type: 2}
-  - {fileID: 11400000, guid: 5256b26967a7ff94793be147b5ec3491, type: 2}
-  - {fileID: 11400000, guid: 32e8400901252a541b70aff166751b50, type: 2}
-  _abilityDatas:
-  - {fileID: 11400000, guid: 017b98fa256ea6f429e4720d469f6d9a, type: 2}
-  - {fileID: 11400000, guid: 90a43d1babc80f04a9b7e1961900e279, type: 2}
-  - {fileID: 11400000, guid: c6aa788bf61636440986b34edb97bd94, type: 2}
 --- !u!1 &424036092
 GameObject:
   m_ObjectHideFlags: 0
@@ -3007,7 +2986,6 @@ MonoBehaviour:
   _container: {fileID: 1678086878}
   _slotTemplate: {fileID: 2814147322246906813, guid: d58a0803466379947b587b0f6a28be4f,
     type: 3}
-  _assets: {fileID: 420948154}
   _defaultRewards:
   - {fileID: 11400000, guid: 1dffac5b3f400d2408ef01dfc26940f6, type: 2}
   - {fileID: 11400000, guid: 0de68b4f9de37614e96027661e56b7ff, type: 2}

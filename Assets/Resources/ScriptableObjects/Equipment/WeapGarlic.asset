@@ -18,19 +18,12 @@ MonoBehaviour:
     rid: 4307792197479563312
   <TimerData>k__BackingField:
     rid: 4307792197479563313
-  <DurationData>k__BackingField:
-    rid: 4307792197479563314
   <LevelData>k__BackingField:
     rid: 4307792197479563315
-  <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+  <Components>k__BackingField: []
   <Ammo>k__BackingField: {fileID: 1350108666658979030, guid: a13bcfc1ad431f148ae7091782d075b3,
     type: 3}
-  <AmountData>k__BackingField:
-    rid: 4307792197479563316
-  <DamageData>k__BackingField:
-    rid: 4307792197479563317
-  <PositionSetter>k__BackingField: {fileID: 8275994428514363493, guid: a2a19cc68a024b14c8abccbc0074cc0e,
-    type: 3}
+  <PositionSetterType>k__BackingField: 0
   references:
     version: 2
     RefIds:
@@ -49,20 +42,31 @@ MonoBehaviour:
       type: {class: TimerComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
       data:
         <Cooldown>k__BackingField: 2
-    - rid: 4307792197479563314
-      type: {class: DurationComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
-      data:
-        <Duration>k__BackingField: 0.5
     - rid: 4307792197479563315
       type: {class: UpgradeComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
       data:
-        <MaxLevel>k__BackingField: 4
-    - rid: 4307792197479563316
-      type: {class: AmountComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
-      data:
-        <MaxAmount>k__BackingField: 1
-        <Amount>k__BackingField: 1
-    - rid: 4307792197479563317
-      type: {class: DamageComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
-      data:
-        <Damage>k__BackingField: 1
+        _upgrades:
+        - <Description>k__BackingField:
+            <Ru>k__BackingField: garlic 1
+            <En>k__BackingField: garlic 1
+            <Tr>k__BackingField: garlic 1
+          <Type>k__BackingField: 0
+          <ForAll>k__BackingField: 0
+          <Value>k__BackingField: 0
+          <IsPercent>k__BackingField: 0
+        - <Description>k__BackingField:
+            <Ru>k__BackingField: garlic 2
+            <En>k__BackingField: garlic 2
+            <Tr>k__BackingField: garlic 2
+          <Type>k__BackingField: 0
+          <ForAll>k__BackingField: 0
+          <Value>k__BackingField: 0
+          <IsPercent>k__BackingField: 0
+        - <Description>k__BackingField:
+            <Ru>k__BackingField: garlic 3
+            <En>k__BackingField: garlic 3
+            <Tr>k__BackingField: garlic 3
+          <Type>k__BackingField: 0
+          <ForAll>k__BackingField: 0
+          <Value>k__BackingField: 0
+          <IsPercent>k__BackingField: 0

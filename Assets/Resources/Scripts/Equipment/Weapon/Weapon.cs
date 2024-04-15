@@ -15,22 +15,24 @@ namespace MolecularSurvivors
         public override void Initialize(WeaponData data, EquipmentController<WeaponData> controller)
         {
             base.Initialize(data, controller);
+
             _pool = new(this, Data.Ammo);
             _pool.CreateAmmos();
+            _positionSetter = Controller.GetPositionSetter(this);
             SetScale();
-            _positionSetter = Instantiate(Data.PositionSetter, transform);
         }
 
         public override void Execute()
         {
-            var ammos = _pool.GetAmmos(Data.AmountData.Amount);
+            var ammos = _pool.GetAmmos();
             _positionSetter.SetPositions(ammos);
             StartCoroutine(Execute(ammos));
         }
 
         public int SetDamage() => Data.DamageData.Damage + EquipmentController.Player.Stats.Damage;
 
-        public float SetSpeed() => Data.SpeedData.Speed + Controller.Player.Stats.AmmoSpeed + Controller.Player.Data.MoveSpeed;
+        //create projectile weapon
+        public float SetSpeed() => 10 + Controller.Player.Stats.AmmoSpeed + Controller.Player.Data.MoveSpeed;
 
         public void SetScale()
         {

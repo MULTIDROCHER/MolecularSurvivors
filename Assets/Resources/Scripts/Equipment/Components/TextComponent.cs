@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 namespace MolecularSurvivors
 {
-    public class TextComponent : ComponentData
+    [Serializable]
+    public class TextComponent
     {
         [SerializeField] private TranslatableText _nameCode;
         [SerializeField] private TranslatableText _descriptionCode;

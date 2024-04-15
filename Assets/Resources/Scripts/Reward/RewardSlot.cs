@@ -20,7 +20,6 @@ namespace MolecularSurvivors
             _window = transform.parent.parent.GetComponentInParent<RewardWindow>();
         }
 
-        //todo rewrite for ireward not only for equipment
         public void Set(IReward reward, bool isNew = false)
         {
             _data = reward;
@@ -40,6 +39,14 @@ namespace MolecularSurvivors
             _name.text = reward.TextData.Name;
             _description.text = reward.TextData.Description;
             _newEquipmentMark.SetActive(isNew);
+        }
+
+        public void SetAsUpgrade(EquipmentData equipment){
+            _image.sprite = equipment.Icon;
+            _name.text = equipment.TextData.Name;
+            var upgrade = equipment.LevelData.ShowNext();
+            _description.text = Translator.GetText(upgrade.Description);
+            _newEquipmentMark.SetActive(false);
         }
 
         private void SetDefault(DefaultReward reward) => _image.sprite = reward.Loot.Sprite;

@@ -39,7 +39,7 @@ namespace MolecularSurvivors
 
         private void Upgrade()
         {
-            _level.text = Equipment.LevelData.Level + "/" + Equipment.LevelData.MaxLevel;
+            _level.text = Equipment.LevelData.CurrentLevel + "/" + Equipment.LevelData.MaxLevel;
         }
     }
 }

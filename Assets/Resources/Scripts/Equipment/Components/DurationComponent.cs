@@ -3,11 +3,13 @@ using UnityEngine;
 
 namespace MolecularSurvivors
 {
-    public class DurationComponent : ComponentData, IIncreasable
+    public class DurationComponent : ComponentData
     {
         [field: SerializeField] public float Duration { get; private set; }
 
         private WaitForSeconds _wait;
+
+        public override ComponentType Type => ComponentType.Duration;
 
         public DurationComponent()
         {
@@ -15,7 +17,7 @@ namespace MolecularSurvivors
             _wait = new(Duration);
         }
 
-        public void Increase(float value, bool isPercent = false)
+        public override void ChangeValue(float value, bool isPercent = false)
         {
             var amount = value;
 
@@ -24,6 +26,7 @@ namespace MolecularSurvivors
 
             Duration += amount;
             _wait = new(Duration);
+            base.ChangeValue(value, isPercent);
         }
 
         public IEnumerator Deactivate(Ammo ammo)

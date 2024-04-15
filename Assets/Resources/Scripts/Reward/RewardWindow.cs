@@ -10,7 +10,6 @@ namespace MolecularSurvivors
         [SerializeField] private int _slotsAmount;
         [SerializeField] private Transform _container;
         [SerializeField] private RewardSlot _slotTemplate;
-        [SerializeField] private EquipmentAssets _assets;
         [SerializeField] private DefaultReward[] _defaultRewards;
         [SerializeField] private Player _player;
         [SerializeField] private EquipmentReward _equipmentReward;
@@ -25,13 +24,13 @@ namespace MolecularSurvivors
             Initialize();
             _resourceHandler = _player.ResourceHandler;
             _inventory = _player.Inventory;
-            _loader = new(_inventory, _slotsAmount, _assets, _slots.ToArray(), _defaultRewards, _equipmentReward);
+            _loader = new(_inventory, _slotsAmount, _slots.ToArray(), _defaultRewards, _equipmentReward);
         }
 
         private void OnEnable()
         {
             _timeController.StopTime();
-            LoadRewards();
+            _loader.LoadRewards();
         }
 
         private void OnDisable()
@@ -54,20 +53,6 @@ namespace MolecularSurvivors
             }
 
             gameObject.SetActive(false);
-        }
-
-        private void LoadRewards()
-        {
-            //add logic for full inventrory but not all equipments has maxlevel
-            switch (_inventory.IsFull)
-            {
-                case false:
-                    _loader.LoadEquipment();
-                    break;
-                default:
-                    _loader.LoadDefault();
-                    break;
-            }
         }
 
         private void Initialize()

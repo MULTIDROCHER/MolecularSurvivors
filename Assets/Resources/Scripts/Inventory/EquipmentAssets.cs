@@ -1,14 +1,22 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace MolecularSurvivors
 {
-    public class EquipmentAssets : MonoBehaviour
+    public class EquipmentAssets
     {
-        [SerializeField] private List<WeaponData> _weaponDatas;
-        [SerializeField] private List<AbilityData> _abilityDatas;
+        private readonly string _equipmentPath = "ScriptableObjects/Equipment";
+        private readonly List<WeaponData> _weaponDatas = new();
+        private readonly List<AbilityData> _abilityDatas = new();
 
         private int _randomIndex;
+
+        public EquipmentAssets()
+        {
+            _weaponDatas = LoadData<WeaponData>(_equipmentPath);
+            _abilityDatas = LoadData<AbilityData>(_equipmentPath);
+        }
 
         public EquipmentData GetRandomEquipment()
         {
@@ -18,6 +26,14 @@ namespace MolecularSurvivors
                 return _weaponDatas[_randomIndex];
             else
                 return _abilityDatas[_randomIndex - _weaponDatas.Count];
+        }
+
+        private List<T> LoadData<T>(string path) where T : EquipmentData
+        {
+            T[] loadedData = Resources.LoadAll<T>(path) ??
+            throw new System.Exception($"Failed to load data from path: {path}");
+
+            return loadedData.ToList();
         }
     }
 }

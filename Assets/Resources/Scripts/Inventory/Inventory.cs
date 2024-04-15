@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MolecularSurvivors
@@ -14,6 +15,8 @@ namespace MolecularSurvivors
         public event Action<EquipmentData> EquipmentAdded;
 
         public bool IsFull => _weaponContainer.HasEmptySlot() == false && _abilityContainer.HasEmptySlot() == false;
+
+        public bool HasUpgradeables => _abilityContainer.Upgradables.Count > 0 || _weaponContainer.Upgradables.Count > 0;
 
         private void Awake()
         {
@@ -52,6 +55,15 @@ namespace MolecularSurvivors
         public bool HasEquipment(EquipmentData equipment)
         {
             return _weaponContainer.HasEquipment(equipment) || _abilityContainer.HasEquipment(equipment);
+        }
+
+        public EquipmentData GetRandomEquipmentsUpgrade()
+        {
+            List<EquipmentData> upgrades = new();
+            upgrades.AddRange(_weaponContainer.Upgradables);
+            upgrades.AddRange(_abilityContainer.Upgradables);
+
+            return upgrades[UnityEngine.Random.Range(0, upgrades.Count)];
         }
     }
 }

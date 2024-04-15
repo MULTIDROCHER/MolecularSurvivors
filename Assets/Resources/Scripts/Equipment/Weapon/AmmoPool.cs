@@ -8,7 +8,9 @@ namespace MolecularSurvivors
     {
         private readonly Weapon _weapon;
         private readonly Ammo _template;
-        private readonly int _maxAmount = 20;
+        private int _maxAmount = 20;
+        private int _amount;
+        private AmountComponent _amountData;
 
         public List<Ammo> Ammos { get; private set; } = new();
 
@@ -16,6 +18,23 @@ namespace MolecularSurvivors
         {
             _weapon = weapon;
             _template = template;
+            SetAmount();
+        }
+
+        private void SetAmount()
+        {
+            _amountData = (AmountComponent)_weapon.Data.GetComponent(ComponentType.Amount);
+
+            if (_amountData != null)
+            {
+                _maxAmount = _amountData.MaxAmount;
+                _amount = _amountData.Amount;
+            }
+            else
+            {
+                _amount = 1;
+                _maxAmount = 1;
+            }
         }
 
         public void CreateAmmos()
@@ -29,12 +48,9 @@ namespace MolecularSurvivors
             }
         }
 
-        public Ammo[] GetAmmos(int amount)
+        public Ammo[] GetAmmos()
         {
-            if (amount > _maxAmount)
-                amount = _maxAmount;
-
-            var ammos = new Ammo[amount];
+            var ammos = new Ammo[_amount];
 
             for (int i = 0; i < ammos.Length; i++)
             {
