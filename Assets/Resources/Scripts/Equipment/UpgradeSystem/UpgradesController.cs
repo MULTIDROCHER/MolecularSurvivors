@@ -19,11 +19,13 @@ namespace MolecularSurvivors
             {
                 equipment.Data.LevelData.Initialize(equipment.Data);
                 _equipment.Add(equipment, equipment.Data.LevelData);
+                Debug.Log($"{equipment.Data.TextData.Name} added to upgrades controller");
             }
         }
 
         public void Upgrade(Equipment<T> equipment)
         {
+            Debug.Log($"{equipment.Data.TextData.Name} upgrades from upgrades controller");
             var newLevel = equipment.Data.LevelData.ShowNext();
 
             if (newLevel.ForAll || equipment.Data.HasComponent(newLevel.Type) == false)

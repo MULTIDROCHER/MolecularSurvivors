@@ -12,31 +12,42 @@ namespace MolecularSurvivors
         [SerializeField] private RewardSlot _slotTemplate;
         [SerializeField] private DefaultReward[] _defaultRewards;
         [SerializeField] private Player _player;
-        [SerializeField] private EquipmentReward _equipmentReward;
         [SerializeField] private TimeControl _timeController;
+        [SerializeField] private EquipmentReward _equipmentTemplate;
 
         private RewardLoader _loader;
         private ResourceHandler _resourceHandler;
         private Inventory _inventory;
+
 
         private void Awake()
         {
             Initialize();
             _resourceHandler = _player.ResourceHandler;
             _inventory = _player.Inventory;
-            _loader = new(_inventory, _slotsAmount, _slots.ToArray(), _defaultRewards, _equipmentReward);
+            _loader = new(_inventory, _slots.ToArray(), _defaultRewards, _equipmentTemplate);
+        }
+
+        private void Initialize()
+        {
+            for (int i = 0; i < _slotsAmount; i++)
+            {
+                var slot = Instantiate(_slotTemplate, _container);
+                slot.gameObject.SetActive(false);
+                _slots.Add(slot);
+            }
         }
 
         private void OnEnable()
         {
-            _timeController.StopTime();
             _loader.LoadRewards();
+            _timeController.StopTime();
         }
 
         private void OnDisable()
         {
-            _timeController.StartTime();
             _loader.Reset();
+            _timeController.StartTime();
         }
 
         public void RewardSelected(IReward data)
@@ -53,16 +64,6 @@ namespace MolecularSurvivors
             }
 
             gameObject.SetActive(false);
-        }
-
-        private void Initialize()
-        {
-            for (int i = 0; i < _slotsAmount; i++)
-            {
-                var slot = Instantiate(_slotTemplate, _container);
-                _slots.Add(slot);
-                slot.gameObject.SetActive(false);
-            }
         }
     }
 }

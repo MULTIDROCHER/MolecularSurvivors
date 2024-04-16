@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -17,6 +18,7 @@ namespace MolecularSurvivors
 
         private void Awake()
         {
+            //todo remove parent.parent
             _window = transform.parent.parent.GetComponentInParent<RewardWindow>();
         }
 
@@ -24,38 +26,39 @@ namespace MolecularSurvivors
         {
             _data = reward;
 
-            switch (reward)
-            {
-                case DefaultReward defaultReward:
-                    SetDefault(defaultReward);
-                    break;
-                case EquipmentReward equipmentReward:
-                    SetEquipment(equipmentReward);
-                    break;
-                default:
-                    return;
-            }
-
-            _name.text = reward.TextData.Name;
-            _description.text = reward.TextData.Description;
-            _newEquipmentMark.SetActive(isNew);
+            if (reward is DefaultReward defaultReward)
+                SetDefault(defaultReward);
+            else if (reward is EquipmentReward equipmentReward)
+                if (isNew)
+                    SetNewEquipment(equipmentReward);
+                else
+                    SetAsUpgrade(equipmentReward);
         }
 
-        public void SetAsUpgrade(EquipmentData equipment){
-            _image.sprite = equipment.Icon;
-            _name.text = equipment.TextData.Name;
-            var upgrade = equipment.LevelData.ShowNext();
-            _description.text = Translator.GetText(upgrade.Description);
+        private void SetAsUpgrade(EquipmentReward reward)
+        {
+            _image.sprite = reward.Data.Icon;
+            _name.text = reward.Data.TextData.Name;
+            _description.text = Translator.GetText(reward.Data.LevelData.ShowNext().Description);
             _newEquipmentMark.SetActive(false);
         }
 
-        private void SetDefault(DefaultReward reward) => _image.sprite = reward.Loot.Sprite;
-
-        private void SetEquipment(EquipmentReward reward) => _image.sprite = reward.Data.Icon;
-
-        public void OnPointerClick(PointerEventData eventData)
+        private void SetDefault(DefaultReward reward)
         {
-            _window.RewardSelected(_data);
+            _image.sprite = reward.Loot.Sprite;
+            _name.text = reward.TextData.Name;
+            _description.text = reward.TextData.Description;
+            _newEquipmentMark.SetActive(true);
         }
+
+        private void SetNewEquipment(EquipmentReward reward)
+        {
+            _image.sprite = reward.Data.Icon;
+            _name.text = reward.Data.TextData.Name;
+            _description.text = reward.Data.TextData.Description;
+            _newEquipmentMark.SetActive(true);
+        }
+
+        public void OnPointerClick(PointerEventData eventData) => _window.RewardSelected(_data);
     }
 }

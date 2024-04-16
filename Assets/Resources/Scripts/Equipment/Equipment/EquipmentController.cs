@@ -39,8 +39,8 @@ namespace MolecularSurvivors
         {
             if (data is T controlable)
             {
-                var equipment = Equipment.FirstOrDefault(item => item.Data == controlable);
-
+                var equipment = Equipment.FirstOrDefault(equipment => equipment.Data == controlable);
+                
                 if (equipment != null)
                     _upgradesController.Upgrade(equipment);
                 else

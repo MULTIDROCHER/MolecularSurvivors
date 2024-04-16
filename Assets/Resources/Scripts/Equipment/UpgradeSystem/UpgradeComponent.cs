@@ -11,7 +11,6 @@ namespace MolecularSurvivors
 
         public int MaxLevel{ get; private set; }
         public int CurrentLevel { get; private set; } = 0;
-
         public bool CanLevelUp => CurrentLevel < MaxLevel;
 
         public void Initialize(EquipmentData equipment)

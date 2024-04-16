@@ -6,20 +6,52 @@ namespace MolecularSurvivors
 {
     public class InventoryBlock : MonoBehaviour
     {
-        private readonly List<InventorySlot> _slots = new();
+        public List<InventorySlot> Slots { get; private set; } = new();
         private readonly List<EquipmentData> _equipment = new();
-        public List<EquipmentData> Upgradables { get; private set; } = new();
 
-        public void Initialize(InventorySlot template, int amount)
+        [SerializeField] private InventorySlot _slotTemplate;
+
+        public void Initialize(int amount)
         {
             for (int i = 0; i < amount; i++)
             {
-                var slot = Instantiate(template, transform);
-                _slots.Add(slot);
+                var slot = Instantiate(_slotTemplate, transform);
+                Slots.Add(slot);
             }
         }
 
-        public bool HasEmptySlot() => _slots.FirstOrDefault(slot => slot.Empty) != null;
+        public void Add(EquipmentData equipment)
+        {
+            switch (_equipment.Contains(equipment))
+            {
+                case true:
+                    UpgradeExisting(equipment);
+                    break;
+                case false:
+                    AddNew(equipment);
+                    break;
+                default:
+                    throw new System.Exception("Unhandled case");
+            }
+        }
+
+        public IEnumerable<InventorySlot> GetEmptySlots() => Slots.Where(slot => slot.Empty);
+
+        private void AddNew(EquipmentData equipment)
+        {
+            _equipment.Add(equipment);
+            var slot = Slots.FirstOrDefault(slot => slot.Empty);
+            slot.Set(equipment);
+        }
+
+        private void UpgradeExisting(EquipmentData equipment)
+        {
+            var slot = Slots.FirstOrDefault(slot => slot.Equipment == equipment);
+            slot.Set(equipment);
+        }
+
+        #region Old
+        /* public bool HasEmptySlot() => _slots.FirstOrDefault(slot => slot.Empty) != null;
 
         public bool HasEquipment(EquipmentData equipment) => _equipment.Contains(equipment);
 
@@ -44,6 +76,8 @@ namespace MolecularSurvivors
 
             if (slot != null)
                 slot.Set(equipment);
-        }
+        } */
+        #endregion
+
     }
 }

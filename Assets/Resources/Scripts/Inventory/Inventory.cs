@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,22 +7,19 @@ namespace MolecularSurvivors
 {
     public class Inventory : MonoBehaviour
     {
-        [SerializeField] private int _maxAmount = 4;
-        [SerializeField] private InventorySlot _slotTemplate;
+        [Min(1)][SerializeField] private int _maxAmount = 4;
         [SerializeField] private InventoryBlock _weaponContainer;
         [SerializeField] private InventoryBlock _abilityContainer;
         [SerializeField] private Player _player;
 
         public event Action<EquipmentData> EquipmentAdded;
 
-        public bool IsFull => _weaponContainer.HasEmptySlot() == false && _abilityContainer.HasEmptySlot() == false;
-
-        public bool HasUpgradeables => _abilityContainer.Upgradables.Count > 0 || _weaponContainer.Upgradables.Count > 0;
+        public List<EquipmentData> Equipment { get; private set; } = new();
 
         private void Awake()
         {
-            _weaponContainer.Initialize(_slotTemplate, _maxAmount);
-            _abilityContainer.Initialize(_slotTemplate, _maxAmount);
+            _weaponContainer.Initialize(_maxAmount);
+            _abilityContainer.Initialize(_maxAmount);
         }
 
         private void Start()
@@ -40,30 +38,30 @@ namespace MolecularSurvivors
                 case AbilityData:
                     Add(_abilityContainer, equipment);
                     break;
+                default:
+                    throw new Exception("Unhandled case");
             }
         }
 
         private void Add(InventoryBlock block, EquipmentData equipment)
         {
-            if (block.HasEmptySlot())
-            {
-                EquipmentAdded?.Invoke(equipment);
-                block.Add(equipment);
-            }
+            EquipmentAdded?.Invoke(equipment);
+            block.Add(equipment);
+
+            if (Equipment.Contains(equipment) == false)
+                Equipment.Add(equipment);
         }
 
-        public bool HasEquipment(EquipmentData equipment)
+        public bool HasEmptySlots()
         {
-            return _weaponContainer.HasEquipment(equipment) || _abilityContainer.HasEquipment(equipment);
+            var slots = _weaponContainer.GetEmptySlots().Concat(_abilityContainer.GetEmptySlots()).ToList();
+            return slots.Count() > 0;
         }
 
-        public EquipmentData GetRandomEquipmentsUpgrade()
+        public bool HasUpgrades()
         {
-            List<EquipmentData> upgrades = new();
-            upgrades.AddRange(_weaponContainer.Upgradables);
-            upgrades.AddRange(_abilityContainer.Upgradables);
-
-            return upgrades[UnityEngine.Random.Range(0, upgrades.Count)];
+            var upgrades = Equipment.Where(equipment => equipment.LevelData.CanLevelUp);
+            return upgrades.Count() > 0;
         }
     }
 }
