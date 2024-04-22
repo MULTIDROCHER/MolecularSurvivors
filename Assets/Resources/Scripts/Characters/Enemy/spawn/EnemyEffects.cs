@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -14,7 +13,7 @@ namespace MolecularSurvivors
 
         private void Awake()
         {
-            Initialize();
+            Initialize(_maxPoolSize);
         }
 
         public void PlayDeathEffect(Vector3 position)
@@ -26,11 +25,15 @@ namespace MolecularSurvivors
                 effect.transform.position = position;
                 effect.Play();
             }
+            else
+            {
+                Initialize(_maxPoolSize);
+            }
         }
 
-        private void Initialize()
+        private void Initialize(int amount)
         {
-            for (int i = 0; i < _maxPoolSize; i++)
+            for (int i = 0; i < amount; i++)
             {
                 var effect = Instantiate(_deathEffect, transform);
                 _effects.Add(effect);

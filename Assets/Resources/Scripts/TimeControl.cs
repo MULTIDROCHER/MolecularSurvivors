@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace MolecularSurvivors
 {
-    public class TimeControl : MonoBehaviour
+    public class TimeControl
     {
         public void StopTime() => Time.timeScale = 0;
 

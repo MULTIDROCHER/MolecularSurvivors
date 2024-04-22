@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace MolecularSurvivors
 {
     public class DefaultPositionSetter : AmmoPositionSetter
@@ -10,7 +12,7 @@ namespace MolecularSurvivors
         public override void SetPositions(Ammo[] ammos)
         {
             foreach (var ammo in ammos)
-                ammo.transform.localPosition = Weapon.transform.position;
+                ammo.transform.localPosition = Vector3.zero;
         }
     }
 }

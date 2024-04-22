@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -11,14 +10,13 @@ namespace MolecularSurvivors
         [SerializeField] private Equipment<T> _template;
 
         private TimeController<T> _timer = new();
-        private UpgradesController<T> _upgradesController;
+        private UpgradesController<T> _upgradesController = new ();
         public List<Equipment<T>> Equipment { get; private set; } = new();
 
         private Inventory _inventory;
 
         private void Awake(){
             _inventory = Player.Inventory;
-            _upgradesController = new (this);
         } 
 
         private void OnEnable()

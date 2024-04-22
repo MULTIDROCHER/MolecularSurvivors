@@ -1,5 +1,3 @@
-using System;
-
 namespace MolecularSurvivors
 {
     public class HealthOperations

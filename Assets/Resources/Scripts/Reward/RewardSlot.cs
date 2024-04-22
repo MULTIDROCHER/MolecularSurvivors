@@ -13,52 +13,36 @@ namespace MolecularSurvivors
         [SerializeField] private TMP_Text _description;
         [SerializeField] private GameObject _newEquipmentMark;
 
-        private RewardWindow _window;
         private IReward _data;
 
-        private void Awake()
-        {
-            //todo remove parent.parent
-            _window = transform.parent.parent.GetComponentInParent<RewardWindow>();
-        }
+        public event Action<IReward> RewardSelected;
 
         public void Set(IReward reward, bool isNew = false)
         {
             _data = reward;
+            _newEquipmentMark.SetActive(isNew);
 
-            if (reward is DefaultReward defaultReward)
-                SetDefault(defaultReward);
-            else if (reward is EquipmentReward equipmentReward)
-                if (isNew)
-                    SetNewEquipment(equipmentReward);
-                else
-                    SetAsUpgrade(equipmentReward);
+            if (reward is DefaultReward common)
+                Set(common.Loot.Sprite,
+                common.TextData.Name,
+                common.TextData.Description);
+            else if (reward is EquipmentReward equipment)
+            {
+                var description = isNew ?
+                equipment.Data.TextData.Description : Translator.GetText(equipment.Data.LevelData.ShowNext().Description);
+                Set(equipment.Data.Icon, equipment.Data.TextData.Name, description);
+            }
+
+            gameObject.SetActive(true);
         }
 
-        private void SetAsUpgrade(EquipmentReward reward)
+        private void Set(Sprite sprite, string name, string description)
         {
-            _image.sprite = reward.Data.Icon;
-            _name.text = reward.Data.TextData.Name;
-            _description.text = Translator.GetText(reward.Data.LevelData.ShowNext().Description);
-            _newEquipmentMark.SetActive(false);
+            _image.sprite = sprite;
+            _name.text = name;
+            _description.text = description;
         }
 
-        private void SetDefault(DefaultReward reward)
-        {
-            _image.sprite = reward.Loot.Sprite;
-            _name.text = reward.TextData.Name;
-            _description.text = reward.TextData.Description;
-            _newEquipmentMark.SetActive(true);
-        }
-
-        private void SetNewEquipment(EquipmentReward reward)
-        {
-            _image.sprite = reward.Data.Icon;
-            _name.text = reward.Data.TextData.Name;
-            _description.text = reward.Data.TextData.Description;
-            _newEquipmentMark.SetActive(true);
-        }
-
-        public void OnPointerClick(PointerEventData eventData) => _window.RewardSelected(_data);
+        public void OnPointerClick(PointerEventData eventData) => RewardSelected?.Invoke(_data);
     }
 }

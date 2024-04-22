@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace MolecularSurvivors
@@ -14,15 +13,7 @@ namespace MolecularSurvivors
 
         [field: SerializeReference] public List<ComponentData> Components { get; protected set; } = new();
 
-        public ComponentData GetComponent(ComponentType type)
-        {
-            var component = Components.FirstOrDefault(comp => comp.Type == type);
-
-            if (component == null)
-                Debug.Log("wtf null component");
-
-            return component;
-        }
+        public ComponentData GetComponent(ComponentType type) => Components.FirstOrDefault(comp => comp.Type == type);
 
         public bool HasComponent(ComponentType type) => GetComponent(type) != null;
 

@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace MolecularSurvivors
 {
@@ -12,6 +13,7 @@ namespace MolecularSurvivors
         public virtual void ChangeValue(float value, bool isPercent = false)
         {
             ValueChanged?.Invoke();
+            Debug.Log($"{Type} changed to {value}");
         }
     }
 }

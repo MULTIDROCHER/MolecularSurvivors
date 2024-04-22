@@ -52,16 +52,8 @@ namespace MolecularSurvivors
                 Equipment.Add(equipment);
         }
 
-        public bool HasEmptySlots()
-        {
-            var slots = _weaponContainer.GetEmptySlots().Concat(_abilityContainer.GetEmptySlots()).ToList();
-            return slots.Count() > 0;
-        }
+        public bool HasEmptyWeaponSlots() => _weaponContainer.GetEmptySlots().Any();
 
-        public bool HasUpgrades()
-        {
-            var upgrades = Equipment.Where(equipment => equipment.LevelData.CanLevelUp);
-            return upgrades.Count() > 0;
-        }
+        public bool HasEmptyAbilitySlots() => _abilityContainer.GetEmptySlots().Any();
     }
 }
