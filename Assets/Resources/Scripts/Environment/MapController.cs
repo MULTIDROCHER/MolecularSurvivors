@@ -1,16 +1,18 @@
 using UnityEngine;
+using Zenject;
 
 namespace MolecularSurvivors.Environment
 {
     public class MapController : MonoBehaviour
     {
+        [Inject] private readonly Player _player;
+
         [SerializeField] private MapChunk[] _templates;
-        [SerializeField] private Player _player;
         [SerializeField] private BreakablesController _breakablesController;
 
         private ChunkVisibility _chunkVisibility;
-        private ChunkSpawner _spawner;
         private MapUpdater _mapUpdater;
+        private ChunkSpawner _spawner;
         private Movement _movement;
         private MapChunk _current;
 
@@ -19,8 +21,8 @@ namespace MolecularSurvivors.Environment
         private void Start()
         {
             _movement = _player.PlayerMovement;
-            _chunkVisibility = new(_player);
             _spawner = new(_templates, transform);
+            _chunkVisibility = new(_player);
             _mapUpdater = new();
         }
 
@@ -52,12 +54,14 @@ namespace MolecularSurvivors.Environment
 
         private bool ChunkIsAbcent(Vector3 position)
         {
+            //todo clean this
             _chunkVisibility.ShowOnlyCloseChunks();
             return transform.Find(position.ToString()) == null;
         }
 
         private Vector3 GetSpawnPoint()
         {
+            //and this(or move)
             return _movement.MovementDirection switch
             {
                 { x: > 0, y: 0 } => _current.ChunkSpawnPoints.Right.position,

@@ -1,18 +1,20 @@
 using System;
 using UnityEngine;
+using Zenject;
 
 namespace MolecularSurvivors
 {
     public class EnemySpawner : CountChanger
     {
-        [SerializeField] private Player _player;
+        [Inject] private readonly Player _player;
+        [Inject] private readonly LevelProgress _levelProgress;
+        [Inject] private HealthChangesDisplay _changesDisplay;
+
         [SerializeField] private Enemy _template;
-        [SerializeField] private HealthChangesDisplay _healthChangesDisplay;
-        [SerializeField] private LevelProgress _levelProgress;
         [SerializeField] private DropLootManager _lootManager;
         [SerializeField] private EnemyEffects _effects;
 
-        private Pool _pool;
+        private EnemyPool _pool;
         private EnemyPreparer _preparer;
         private EnemyDistanceController _distanceController;
         private EnemyTargetProvider _enemyProvider;
@@ -58,7 +60,7 @@ namespace MolecularSurvivors
         {
             CountChanged?.Invoke(1);
             _effects.PlayDeathEffect(enemy.transform.position);
-            _lootManager.InstantiateLoot(enemy.transform.position);
+            _lootManager.Drop(enemy.transform.position);
             SetEnemy(enemy);
         }
 
@@ -66,7 +68,7 @@ namespace MolecularSurvivors
         {
             foreach (var enemy in enemies)
             {
-                enemy.Initialize(_player, _healthChangesDisplay);
+                enemy.Initialize(_player, _changesDisplay);
                 enemy.Died += OnEnemyDied;
                 SetEnemy(enemy);
             }

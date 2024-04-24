@@ -1,23 +1,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Zenject;
 
 namespace MolecularSurvivors
 {
     public abstract class EquipmentController<T> : MonoBehaviour where T : EquipmentData
     {
-        [field: SerializeField] public Player Player { get; private set; }
+        [Inject] private readonly Inventory _inventory;
+        [Inject] public Player Player { get; private set; }
+        
         [SerializeField] private Equipment<T> _template;
 
         private TimeController<T> _timer = new();
-        private UpgradesController<T> _upgradesController = new ();
+        private UpgradesController<T> _upgradesController = new();
         public List<Equipment<T>> Equipment { get; private set; } = new();
 
-        private Inventory _inventory;
-
-        private void Awake(){
-            _inventory = Player.Inventory;
-        } 
 
         private void OnEnable()
         {
@@ -38,7 +36,7 @@ namespace MolecularSurvivors
             if (data is T controlable)
             {
                 var equipment = Equipment.FirstOrDefault(equipment => equipment.Data == controlable);
-                
+
                 if (equipment != null)
                     _upgradesController.Upgrade(equipment);
                 else

@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Zenject;
 
 namespace MolecularSurvivors
 {
     public class RewardSetter
     {
         private readonly Inventory _inventory;
-        private readonly EquipmentAssets _assets;
+        private readonly EquipmentAssets _assets = new();
         private readonly IReward[] _defaultRewards;
         private readonly List<IReward> _equipmentRewards = new();
 
@@ -17,7 +18,6 @@ namespace MolecularSurvivors
         {
             _inventory = inventory;
             _defaultRewards = defaultRewards;
-            _assets = new();
         }
 
         public List<IReward> SetRewards()

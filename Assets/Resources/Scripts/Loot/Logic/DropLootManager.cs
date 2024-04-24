@@ -11,7 +11,24 @@ namespace MolecularSurvivors
         private List<Loot> _possibleItems = new();
 
         //todo create pool for enable loot with SO from this
-        private Loot GetDroppedItem()
+
+        public void Drop(Vector3 position)
+        {
+            var loot = GetRandomLoot();
+
+            if (loot != null)
+            {
+                var template = _pool.GetTemplate();
+
+                if (template != null)
+                {
+                    template.transform.position = position;
+                    template.SetLoot(loot);
+                }
+            }
+        }
+
+        private Loot GetRandomLoot()
         {
             int randomChance = Random.Range(1, 101);
             _possibleItems.Clear();
@@ -26,22 +43,6 @@ namespace MolecularSurvivors
                 return _possibleItems[Random.Range(0, _possibleItems.Count)];
             else
                 return null;
-        }
-
-        public void InstantiateLoot(Vector3 position)
-        {
-            var loot = GetDroppedItem();
-
-            if (loot != null)
-            {
-                var template = _pool.GetTemplate();
-
-                if (template != null)
-                {
-                    template.transform.position = position;
-                    template.SetLoot(loot);
-                }
-            }
         }
     }
 }

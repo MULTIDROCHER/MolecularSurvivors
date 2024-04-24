@@ -9,10 +9,10 @@ namespace MolecularSurvivors
 
         public event Action<Enemy> Died;
 
-        public void Initialize(Player player, HealthChangesDisplay healthChanges)
+        public void Initialize(Player player, HealthChangesDisplay changesDisplay)
         {
             Player = player;
-            Health = new(transform, healthChanges);
+            Health = new(transform, changesDisplay);
             Movement = new EnemyMovement(GetComponent<Rigidbody2D>(), Data.MoveSpeed, Player.transform);
         }
 

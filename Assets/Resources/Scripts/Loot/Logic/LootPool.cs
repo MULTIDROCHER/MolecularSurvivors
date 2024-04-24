@@ -8,40 +8,26 @@ namespace MolecularSurvivors
     {
         [SerializeField] private LootTemplate _template;
         [SerializeField] private int _poolSize = 10;
-        [SerializeField] private int _maxSize = 100;
 
-        private List<LootTemplate> _pool = new();
+        private ObjectPool<LootTemplate> _pool;
 
         private void Awake()
         {
-            Initialize();
-        }
-
-        private void Initialize()
-        {
-            for (int i = 0; i < _poolSize; i++)
-                _pool.Add(CreateTemplate());
+            _pool = new(_template, _poolSize, transform);
         }
 
         public LootTemplate GetTemplate()
         {
-            var template = _pool.Where(obj => obj.gameObject.activeSelf == false).FirstOrDefault();
-
-            if (template == null && _pool.Count + 1 <= _maxSize)
-            {
-                template = CreateTemplate();
-                _pool.Add(template);
-            }
+            var template = _pool.GetObject();
+            template.Collected += OnCollected;
 
             return template;
         }
 
-        private LootTemplate CreateTemplate()
+        private void OnCollected(LootTemplate template)
         {
-            var spawned = Instantiate(_template, transform);
-            spawned.gameObject.SetActive(false);
-
-            return spawned;
+            template.Collected -= OnCollected;
+            _pool.ReturnObject(template);
         }
     }
 }

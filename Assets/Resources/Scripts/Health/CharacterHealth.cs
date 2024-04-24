@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 namespace MolecularSurvivors
 {
@@ -7,10 +8,9 @@ namespace MolecularSurvivors
         private CharacterData _data;
         private HealthChangesDisplay _changesDisplay;
 
-        public CharacterHealth(Transform damagable, HealthChangesDisplay healthChanges = null) : base(damagable)
+        public CharacterHealth(Transform damagable, HealthChangesDisplay changesDisplay) : base(damagable)
         {
-            if (healthChanges != null)
-                SetDisplay(healthChanges);
+            Construct(changesDisplay);
         }
 
         public void Set(CharacterData data)
@@ -20,7 +20,7 @@ namespace MolecularSurvivors
             base.Set();
         }
 
-        private void SetDisplay(HealthChangesDisplay changesDisplay)
+        public void Construct(HealthChangesDisplay changesDisplay)
         {
             _changesDisplay = changesDisplay;
             _changesDisplay.Subscribe(this);

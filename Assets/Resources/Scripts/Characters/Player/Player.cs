@@ -1,22 +1,22 @@
 using System;
 using UnityEngine;
+using Zenject;
 
 namespace MolecularSurvivors
 {
     public class Player : Character<PlayerData>
     {
         //create operator for setting choosen player data on scene start
-        [SerializeField] private HealthChangesDisplay _healthChangesDisplay;
         [SerializeField] private HealthBar _healthbar;
-        [SerializeField] private LevelProgress _levelProgress;
-        [SerializeField] private GoldCollector _goldCollector;
 
         private PlayerAnimator _animator;
+        [Inject] private HealthChangesDisplay _changesDisplay;
+
 
         public event Action Died;
 
-        [field: SerializeField] public Inventory Inventory { get; private set; }
-        public ResourceHandler ResourceHandler { get; private set; }
+        [Inject] public Inventory Inventory { get; private set; }
+        public LootCollector LootCollector { get; private set; }
         public PlayerStats Stats { get; private set; } = new();
         public PlayerMovement PlayerMovement => (PlayerMovement)Movement;
 
@@ -26,11 +26,15 @@ namespace MolecularSurvivors
 
             Movement = new PlayerMovement(GetComponent<Rigidbody2D>(), Data.MoveSpeed);
             _animator = new(Movement, GetComponentInChildren<Animator>());
-            Health = new CharacterHealth(transform, _healthChangesDisplay);
+
+            LootCollector = GetComponentInChildren<LootCollector>();
+
+            Health = new CharacterHealth(transform, _changesDisplay);
             Health.Set(Data);
             _healthbar.Set(Health);
 
-            ResourceHandler = new(_levelProgress, this, _goldCollector);
+            Inventory.Add(Data.StartWeapon);
+            Inventory.Add(Data.StartAbility);
         }
 
         protected override void Update()

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace MolecularSurvivors
 {
@@ -12,15 +13,17 @@ namespace MolecularSurvivors
         [SerializeField] private Transform _container;
         [SerializeField] private RewardSlot _slotTemplate;
         [SerializeField] private DefaultReward[] _defaultRewards;
-        [SerializeField] private Player _player;
         [SerializeField] private ParticleSystem _rewardEffect;
+
+        [Inject] private Player _player;
+        [Inject] private Inventory _inventory;
 
         private RewardSlotsLoader _loader;
 
         private void Awake()
         {
             Initialize();
-            _loader = new(_player.Inventory, _slots, _defaultRewards);
+            _loader = new(_slots, _defaultRewards, _inventory);
             _slots.ForEach(slot => slot.RewardSelected += RewardSelected);
         }
 
@@ -62,7 +65,7 @@ namespace MolecularSurvivors
                     _player.Inventory.Add(equipment.Data);
                     break;
                 case DefaultReward common:
-                    _player.ResourceHandler.GetLoot(common.Loot);
+                    _player.LootCollector.GetLoot(common.Loot);
                     break;
                 default:
                     throw new System.Exception("Unknown reward type");

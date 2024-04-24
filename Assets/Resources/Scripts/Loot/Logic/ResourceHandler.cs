@@ -1,18 +1,19 @@
 using UnityEngine;
+using Zenject;
 
 namespace MolecularSurvivors
 {
     public class ResourceHandler
     {
-        private readonly LevelProgress _progressChanger;
-        private readonly Player _player;
         private readonly GoldCollector _goldCollector;
+        private LevelProgress _progressChanger;
+        private Player _player;
 
-        public ResourceHandler(LevelProgress progress, Player player, GoldCollector goldCollector)
+        public ResourceHandler(GoldCollector goldCollector, LevelProgress progressChanger, Player player)
         {
-            _progressChanger = progress;
-            _player = player;
             _goldCollector = goldCollector;
+            _progressChanger = progressChanger;
+            _player = player;
         }
 
         public void GetLoot(Loot loot)

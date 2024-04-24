@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using Zenject;
 
 namespace MolecularSurvivors
 {
@@ -7,14 +8,13 @@ namespace MolecularSurvivors
     public class EnemyAttack : MonoBehaviour
     {
         private Enemy _enemy;
-        private Player _player;
+        [Inject] private Player _player;
         private WaitForSeconds _wait;
         private bool _inContact = false;
 
         private void Start()
         {
             _enemy = GetComponent<Enemy>();
-            _player = _enemy.Player;
             _wait = new(_enemy.Data.AttackDelay);
         }
 

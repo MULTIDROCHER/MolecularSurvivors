@@ -5,9 +5,9 @@ namespace MolecularSurvivors
     public class EnemyTargetProvider
     {
         private Transform _player;
-        private Pool _pool;
+        private EnemyPool _pool;
 
-        public EnemyTargetProvider(Transform player, Pool pool)
+        public EnemyTargetProvider(Transform player, EnemyPool pool)
         {
             _player = player;
             _pool = pool;

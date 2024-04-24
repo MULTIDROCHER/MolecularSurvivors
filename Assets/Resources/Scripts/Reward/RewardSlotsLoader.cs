@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace MolecularSurvivors
 {
@@ -13,11 +14,11 @@ namespace MolecularSurvivors
         private IReward _reward;
         private int _amount;
 
-        public RewardSlotsLoader(Inventory inventory, List<RewardSlot> slots, DefaultReward[] defaultRewards)
+        public RewardSlotsLoader(List<RewardSlot> slots, DefaultReward[] defaultRewards, Inventory inventory)
         {
-            _inventory = inventory;
             _slots = slots;
-            _setter = new(inventory, defaultRewards);
+            _inventory = inventory;
+            _setter = new(inventory,defaultRewards);
         }
 
         public void Reset()

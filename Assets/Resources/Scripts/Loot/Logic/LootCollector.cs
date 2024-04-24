@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using Zenject;
 
 namespace MolecularSurvivors
 {
@@ -8,11 +9,14 @@ namespace MolecularSurvivors
     {
         private readonly float _collectSpeed = .5f;
 
+        private GoldCollector _goldCollector;
         private ResourceHandler _handler;
 
-        private void Start()
+        [Inject]
+        public void Construct(Player player, LevelProgress progress)
         {
-            _handler = GetComponentInParent<Player>().ResourceHandler;
+            _goldCollector = GetComponent<GoldCollector>();
+            _handler = new(_goldCollector, progress, player);
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -21,10 +25,12 @@ namespace MolecularSurvivors
             {
                 loot.transform.DOMove(transform.parent.position, _collectSpeed).OnComplete(() =>
                 {
-                    _handler.GetLoot(loot.Loot);
                     loot.Collect();
+                    GetLoot(loot.Loot);
                 });
             }
         }
+
+        public void GetLoot(Loot loot) => _handler.GetLoot(loot);
     }
 }

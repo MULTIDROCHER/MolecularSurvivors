@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace MolecularSurvivors
@@ -7,6 +8,7 @@ namespace MolecularSurvivors
         private SpriteRenderer _renderer;
 
         public Loot Loot { get; private set; }
+        public event Action<LootTemplate> Collected;
 
         private void Awake()
         {
@@ -30,7 +32,7 @@ namespace MolecularSurvivors
 
         public void Collect()
         {
-            gameObject.SetActive(false);
+            Collected?.Invoke(this);
         }
     }
 }

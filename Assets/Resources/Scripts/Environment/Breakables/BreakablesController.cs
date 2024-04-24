@@ -21,6 +21,6 @@ namespace MolecularSurvivors
             spawner.Spawn();
         }
 
-        public void SetLoot(Transform breakable) => _lootManager.InstantiateLoot(breakable.position);
+        public void SetLoot(Transform breakable) => _lootManager.Drop(breakable.position);
     }
 }

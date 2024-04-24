@@ -6,12 +6,12 @@ namespace MolecularSurvivors
     public class EnemyDistanceController
     {
         private readonly EnemySpawner _spawner;
-        private readonly Pool _pool;
+        private readonly EnemyPool _pool;
         private readonly Transform _player;
         private readonly WaitForSeconds _waitBeforeCheck = new(4);
         private readonly float _maxDistance = 20;
 
-        public EnemyDistanceController(Transform player, Pool pool, EnemySpawner spawner)
+        public EnemyDistanceController(Transform player, EnemyPool pool, EnemySpawner spawner)
         {
             _player = player;
             _pool = pool;

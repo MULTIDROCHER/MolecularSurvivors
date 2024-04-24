@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace MolecularSurvivors
 {
@@ -10,7 +11,6 @@ namespace MolecularSurvivors
         [Min(1)][SerializeField] private int _maxAmount = 4;
         [SerializeField] private InventoryBlock _weaponContainer;
         [SerializeField] private InventoryBlock _abilityContainer;
-        [SerializeField] private Player _player;
 
         public event Action<EquipmentData> EquipmentAdded;
 
@@ -20,12 +20,6 @@ namespace MolecularSurvivors
         {
             _weaponContainer.Initialize(_maxAmount);
             _abilityContainer.Initialize(_maxAmount);
-        }
-
-        private void Start()
-        {
-            Add(_player.Data.StartWeapon);
-            Add(_player.Data.StartAbility);
         }
 
         public void Add(EquipmentData equipment)

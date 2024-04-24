@@ -10,18 +10,19 @@ namespace MolecularSurvivors
     {
         private List<Health> _healthInstances = new();
 
-        [SerializeField] private Canvas _prefab;
+        [SerializeField] private Canvas _canvas;
+        [SerializeField] private TMP_Text _prefab;
         [SerializeField] private int _poolAmount;
         [SerializeField] private float _duration;
         [SerializeField] private Vector3 _offset;
 
-        private TMP_Text[] _pool;
         private WaitForSeconds _wait;
+        private ObjectPool<TMP_Text> _textPool;
 
         private void Awake()
         {
+            _textPool = new(_prefab, _poolAmount, _canvas.transform);
             _wait = new(_duration);
-            Initialize();
         }
 
         public void Subscribe(Health health)
@@ -46,7 +47,7 @@ namespace MolecularSurvivors
 
         private TMP_Text GetText(string text, Color color)
         {
-            var display = _pool.FirstOrDefault(text => text.gameObject.activeSelf == false);
+            var display = _textPool.GetObject();
 
             if (display != null)
             {
@@ -60,23 +61,10 @@ namespace MolecularSurvivors
         private IEnumerator ShowChange(TMP_Text text, Vector3 position)
         {
             text.transform.localScale = Vector3.one;
-            text.transform.parent.localPosition = position;
+            text.transform.parent.position = position + _offset;
             text.gameObject.SetActive(true);
             yield return _wait;
-            text.gameObject.SetActive(false);
-        }
-
-        private void Initialize()
-        {
-            _pool = new TMP_Text[_poolAmount];
-
-            for (int i = 0; i < _poolAmount; i++)
-            {
-                var display = Instantiate(_prefab, transform);
-                var text = display.GetComponentInChildren<TMP_Text>();
-                text.gameObject.SetActive(false);
-                _pool[i] = text;
-            }
+            _textPool.ReturnObject(text);
         }
     }
 }
