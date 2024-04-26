@@ -1,16 +1,19 @@
+using System;
 using UnityEngine;
 using Zenject;
 
 namespace MolecularSurvivors
 {
-    public class CharacterHealth : Health
+    public class CharacterHealth : Health/* , IDisposable */
     {
         private CharacterData _data;
-        private HealthChangesDisplay _changesDisplay;
+        private EventBus _eventBus;
 
-        public CharacterHealth(Transform damagable, HealthChangesDisplay changesDisplay) : base(damagable)
+        public CharacterHealth(Transform damagable, EventBus eventBus) : base(damagable)
         {
-            Construct(changesDisplay);
+            //Construct(changesDisplay);
+            _eventBus = eventBus;
+            //_eventBus.Subscribe<HealthChangedSignal>(OnHealthChanged);
         }
 
         public void Set(CharacterData data)
@@ -20,12 +23,22 @@ namespace MolecularSurvivors
             base.Set();
         }
 
-        public void Construct(HealthChangesDisplay changesDisplay)
+        public override void ApplyDamage(int damage)
         {
-            _changesDisplay = changesDisplay;
-            _changesDisplay.Subscribe(this);
+            base.ApplyDamage(damage);
+            OnHealthChanged();
         }
 
-        private void OnDestroy() => _changesDisplay?.Remove(this);
+        public override void Recover(int amount)
+        {
+            base.Recover(amount);
+            OnHealthChanged();
+        }
+
+        private void OnHealthChanged()
+        {
+            _eventBus.Invoke(new HealthChangedSignal(this, LastChange));
+            Debug.Log("healthchanged event " + LastChange);
+        }
     }
 }

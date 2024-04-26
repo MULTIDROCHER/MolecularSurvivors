@@ -7,18 +7,24 @@ namespace MolecularSurvivors
     public class Player : Character<PlayerData>
     {
         //create operator for setting choosen player data on scene start
-        [SerializeField] private HealthBar _healthbar;
-
         private PlayerAnimator _animator;
-        [Inject] private HealthChangesDisplay _changesDisplay;
-
 
         public event Action Died;
 
-        [Inject] public Inventory Inventory { get; private set; }
+        public Inventory Inventory { get; private set; }
         public LootCollector LootCollector { get; private set; }
         public PlayerStats Stats { get; private set; } = new();
         public PlayerMovement PlayerMovement => (PlayerMovement)Movement;
+
+        [Inject]
+        private void Construct(Inventory inventory, EventBus eventBus)
+        {
+            Inventory = inventory;
+
+            Health = new CharacterHealth(transform, eventBus);
+            Health.Set(Data);
+            GetComponentInChildren<HealthBar>()?.Set(Health, eventBus);
+        }
 
         protected override void Awake()
         {
@@ -28,10 +34,6 @@ namespace MolecularSurvivors
             _animator = new(Movement, GetComponentInChildren<Animator>());
 
             LootCollector = GetComponentInChildren<LootCollector>();
-
-            Health = new CharacterHealth(transform, _changesDisplay);
-            Health.Set(Data);
-            _healthbar.Set(Health);
 
             Inventory.Add(Data.StartWeapon);
             Inventory.Add(Data.StartAbility);

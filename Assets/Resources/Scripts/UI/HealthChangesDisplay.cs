@@ -1,14 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 namespace MolecularSurvivors
 {
     public class HealthChangesDisplay : MonoBehaviour
     {
-        private List<Health> _healthInstances = new();
+        //private List<Health> _healthInstances = new();
+
+        [Inject] private EventBus _eventBus;
 
         [SerializeField] private Canvas _canvas;
         [SerializeField] private TMP_Text _prefab;
@@ -23,9 +27,20 @@ namespace MolecularSurvivors
         {
             _textPool = new(_prefab, _poolAmount, _canvas.transform);
             _wait = new(_duration);
+            _eventBus.Subscribe<HealthChangedSignal>(OnDamageTaken);
         }
 
-        public void Subscribe(Health health)
+        private void OnDestroy() {
+            _eventBus.Unsubscribe<HealthChangedSignal>(OnDamageTaken);
+        }
+
+        private void OnDamageTaken(HealthChangedSignal signal)
+        {
+            Debug.Log("healthchanged event " + signal.Health.Damagable.name);
+            OnDamageTaken(signal.Health);
+        }
+
+        /* public void Subscribe(Health health)
         {
             _healthInstances.Add(health);
             health.HealthChanged += OnDamageTaken;
@@ -35,10 +50,11 @@ namespace MolecularSurvivors
         {
             _healthInstances.Remove(health);
             health.HealthChanged -= OnDamageTaken;
-        }
+        } */
 
-        private void OnDamageTaken(int amount, Health health)
+        private void OnDamageTaken(Health health)
         {
+            var amount = health.LastChange;
             var text = GetText(amount.ToString(), amount > 0 ? Color.green : Color.red);
 
             if (text != null)

@@ -1,11 +1,11 @@
 using UnityEngine;
+using Zenject;
 
 namespace MolecularSurvivors
 {
     public class WeaponController : EquipmentController<WeaponData>
     {
-        [field: SerializeField] public Transform[] ShootPoints { get; private set; }
-        [SerializeField] private EnemySpawner _enemySpawner;
+        [Inject]private EnemySpawner _enemySpawner;
 
         public AmmoPositionSetter GetPositionSetter(Weapon weapon)
         {
@@ -14,7 +14,6 @@ namespace MolecularSurvivors
                 AmmoPositionType.Whip => new WhipPositionSetter(weapon),
                 _ => new DefaultPositionSetter(weapon),
             };
-
         }
 
         public Enemy GetNearestEnemy() => _enemySpawner.GetNearestEnemy();

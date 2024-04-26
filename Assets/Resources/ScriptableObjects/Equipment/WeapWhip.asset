@@ -67,7 +67,6 @@ MonoBehaviour:
           <ForAll>k__BackingField: 1
           <Value>k__BackingField: -10
           <IsPercent>k__BackingField: 1
-        MaxLevel: 2
     - rid: 4307792283262255146
       type: {class: DurationComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
       data:
@@ -76,4 +75,4 @@ MonoBehaviour:
       type: {class: AmountComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
       data:
         <MaxAmount>k__BackingField: 10
-        <Amount>k__BackingField: 4
+        <Amount>k__BackingField: 2

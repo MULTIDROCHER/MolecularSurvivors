@@ -43,7 +43,6 @@ namespace MolecularSurvivors
 
         private void OnDestroy()
         {
-            _loader.OnDestroy();
             _slots.ForEach(slot => slot.RewardSelected -= RewardSelected);
         }
 

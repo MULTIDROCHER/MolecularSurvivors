@@ -6,7 +6,7 @@ namespace MolecularSurvivors
     {
         private readonly float _offsetX = 1.5f;
         private readonly float _startOffsetY = -.2f;
-        private readonly float _offsetYIncrement = .2f;
+        private readonly float _offsetYIncrement = .1f;
         private readonly int _rotationAngle = 90;
 
         public WhipPositionSetter(Weapon weapon)

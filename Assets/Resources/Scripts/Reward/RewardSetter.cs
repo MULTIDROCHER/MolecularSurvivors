@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -5,7 +6,7 @@ using Zenject;
 
 namespace MolecularSurvivors
 {
-    public class RewardSetter
+    public class RewardSetter : IDisposable
     {
         private readonly Inventory _inventory;
         private readonly EquipmentAssets _assets = new();
@@ -45,8 +46,6 @@ namespace MolecularSurvivors
             return _rewards;
         }
 
-        public void OnDestroy() => _equipmentRewards.Clear();
-
         private void CreateEquipmentRewards(int amount)
         {
             for (int i = 0; i < amount; i++)
@@ -70,5 +69,7 @@ namespace MolecularSurvivors
         private List<EquipmentData> GetNewEquipment() => _assets.Equipment.Where(equip => _inventory.Equipment.Contains(equip) == false).ToList();
 
         private List<EquipmentData> GetUpgrades() => _inventory.Equipment.Where(equipment => equipment.LevelData.CanLevelUp).ToList();
+
+        public void Dispose() => _equipmentRewards.Clear();
     }
 }

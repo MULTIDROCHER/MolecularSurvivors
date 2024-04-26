@@ -8,7 +8,7 @@ namespace MolecularSurvivors
     {
         [Inject] private readonly Player _player;
         [Inject] private readonly LevelProgress _levelProgress;
-        [Inject] private HealthChangesDisplay _changesDisplay;
+        [Inject] private readonly EventBus _eventBus;
 
         [SerializeField] private Enemy _template;
         [SerializeField] private DropLootManager _lootManager;
@@ -68,7 +68,7 @@ namespace MolecularSurvivors
         {
             foreach (var enemy in enemies)
             {
-                enemy.Initialize(_player, _changesDisplay);
+                enemy.Initialize(_player, _eventBus);
                 enemy.Died += OnEnemyDied;
                 SetEnemy(enemy);
             }

@@ -7,15 +7,21 @@ namespace MolecularSurvivors
 {
     public abstract class EquipmentController<T> : MonoBehaviour where T : EquipmentData
     {
-        [Inject] private readonly Inventory _inventory;
-        [Inject] public Player Player { get; private set; }
-        
+        private Inventory _inventory;
+
         [SerializeField] private Equipment<T> _template;
 
+        public Player Player { get; private set; }
         private TimeController<T> _timer = new();
         private UpgradesController<T> _upgradesController = new();
         public List<Equipment<T>> Equipment { get; private set; } = new();
 
+        [Inject]
+        private void Construct(Player player, Inventory inventory)
+        {
+            Player = player;
+            _inventory = inventory;
+        }
 
         private void OnEnable()
         {

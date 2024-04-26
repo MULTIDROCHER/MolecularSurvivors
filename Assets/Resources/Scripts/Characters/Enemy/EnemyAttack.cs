@@ -8,7 +8,6 @@ namespace MolecularSurvivors
     public class EnemyAttack : MonoBehaviour
     {
         private Enemy _enemy;
-        [Inject] private Player _player;
         private WaitForSeconds _wait;
         private bool _inContact = false;
 
@@ -20,7 +19,7 @@ namespace MolecularSurvivors
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (_player != null && other.gameObject == _player.gameObject)
+            if (IsPlayer(other))
             {
                 _inContact = true;
                 StartCoroutine(Attack());
@@ -29,7 +28,7 @@ namespace MolecularSurvivors
 
         private void OnCollisionExit2D(Collision2D other)
         {
-            if (_player != null && other.gameObject == _player.gameObject)
+            if (IsPlayer(other))
                 _inContact = false;
         }
 
@@ -37,7 +36,7 @@ namespace MolecularSurvivors
         {
             while (_inContact)
             {
-                _player.ApplyDamage(_enemy.Data.Damage);
+                _enemy.Player.ApplyDamage(_enemy.Data.Damage);
                 yield return _wait;
             }
         }
@@ -47,5 +46,7 @@ namespace MolecularSurvivors
             _inContact = false;
             StopAllCoroutines();
         }
+
+        private bool IsPlayer(Collision2D other) => _enemy.Player != null && other.gameObject == _enemy.Player.gameObject;
     }
 }

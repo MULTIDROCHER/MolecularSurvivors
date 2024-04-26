@@ -64,4 +64,4 @@ MonoBehaviour:
       type: {class: AmountComponent, ns: MolecularSurvivors, asm: Assembly-CSharp}
       data:
         <MaxAmount>k__BackingField: 10
-        <Amount>k__BackingField: 1
+        <Amount>k__BackingField: 2

@@ -1,27 +1,31 @@
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace MolecularSurvivors
 {
     public class HealthBar : MonoBehaviour
     {
-        [SerializeField] private Slider _bar;
-        private CharacterHealth _health;
-
         private readonly float _duration = .5f;
+        
+        [SerializeField] private Slider _bar;
 
-        public void Set(CharacterHealth health)
+        private EventBus _eventBus;
+
+        public void Set(CharacterHealth health, EventBus eventBus)
         {
-            _health = health;
-            _bar.maxValue = _health.MaxAmount;
-            OnHealthChanged(_health.Current, _health);
-            _health.HealthChanged += OnHealthChanged;
+            _bar.maxValue = health.MaxAmount;
+
+            _eventBus = eventBus;
+            _eventBus?.Subscribe<HealthChangedSignal>(OnHealthChanged);
         }
 
-        private void OnDisable() => _health.HealthChanged -= OnHealthChanged;
+        private void OnDisable() => _eventBus?.Unsubscribe<HealthChangedSignal>(OnHealthChanged);
 
-        private void OnHealthChanged(int value, Health health) => _bar.DOValue(_health.Current, _duration, true);
-        //todo rewrite event - properties are unrequired in this method
+        private void OnHealthChanged(HealthChangedSignal health)
+        {
+            _bar.DOValue(health.Health.Current, _duration, true);
+        }
     }
 }

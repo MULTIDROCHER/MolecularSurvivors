@@ -27,8 +27,6 @@ namespace MolecularSurvivors
             _slots.ForEach(slot => slot.gameObject.SetActive(false));
         }
 
-        public void OnDestroy() => _setter.OnDestroy();
-
         public void LoadSlots()
         {
             var rewards = _setter.SetRewards();

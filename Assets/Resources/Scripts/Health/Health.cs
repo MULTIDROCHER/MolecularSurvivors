@@ -7,10 +7,11 @@ namespace MolecularSurvivors
     {
         private readonly HealthOperations _operations;
 
-        public virtual event Action<int, Health> HealthChanged;
+        //public virtual event Action<Health> HealthChanged;
 
         public int MaxAmount { get; protected set; }
         public int Current { get; private set; }
+        public int LastChange { get; private set; }
         public Transform Damagable { get; private set; }
 
         public Health(Transform damagable)
@@ -19,21 +20,23 @@ namespace MolecularSurvivors
             _operations = new(this);
         }
 
-        public void ApplyDamage(int damage)
+        public virtual void ApplyDamage(int damage)
         {
             if (IsDead() == false)
             {
                 Current = _operations.ApplyDamage(damage);
-                HealthChanged?.Invoke(-damage, this);
+                LastChange = -damage;
+                //HealthChanged?.Invoke(this);
             }
         }
 
-        public void Recover(int amount)
+        public virtual void Recover(int amount)
         {
             if (IsDead() == false)
             {
                 Current = _operations.Recover(amount);
-                HealthChanged?.Invoke(amount, this);
+                LastChange = amount;
+                //HealthChanged?.Invoke(this);
             }
         }
 
