@@ -1,10 +1,14 @@
-using System;
 using UnityEngine;
+using Zenject;
 
 namespace MolecularSurvivors
 {
     public abstract class CountChanger : MonoBehaviour
     {
-        public abstract event Action<int> CountChanged;
+        [Inject] private readonly CountDisplayEventBus _eventBus;
+
+        [SerializeField] private CountableType _type;
+
+        protected void CountChanged(int amount) => _eventBus.Invoke(new CountChangedSignal(_type, amount));
     }
 }

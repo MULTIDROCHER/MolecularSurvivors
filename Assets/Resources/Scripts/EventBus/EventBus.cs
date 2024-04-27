@@ -1,63 +1,42 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace MolecularSurvivors
 {
-    public class EventBus : MonoBehaviour
+    public abstract class EventBus : MonoBehaviour
     {
-        private Dictionary<string, List<Callback>> _signalCallbacks = new();
+        protected Dictionary<string, List<Callback>> _callbacks = new();
 
-        public void Subscribe<T>(Action<T> callback)
+        protected void Subscribe<T>(Action<T> callback, string key)
         {
-            string key = typeof(T).Name;
-            if (_signalCallbacks.ContainsKey(key))
-            {
-                _signalCallbacks[key].Add(new Callback(callback));
-                Debug.Log("added existing for " + key);
-            }
+            if (_callbacks.ContainsKey(key))
+                _callbacks[key].Add(new Callback(callback));
             else
-            {
-                _signalCallbacks.Add(key, new List<Callback>() { new(callback) });
-                Debug.Log("added new for " + key);
-            }
+                _callbacks.Add(key, new List<Callback>() { new(callback) });
 
             //_signalCallbacks[key] = _signalCallbacks[key].OrderByDescending(x => x.Priority).ToList();
         }
 
-        public void Invoke<T>(T signal)
+        protected void Invoke<T>(T signal, string key)
         {
-            string key = typeof(T).Name;
-            if (_signalCallbacks.ContainsKey(key))
-            {
-                foreach (var obj in _signalCallbacks[key])
+            if (_callbacks.ContainsKey(key))
+                foreach (var obj in _callbacks[key])
                 {
                     var callback = obj.Signal as Action<T>;
                     callback?.Invoke(signal);
                 }
-            }
-            else
-            {
-                Debug.Log("No invokes for " + key);
-            }
         }
 
-        public void Unsubscribe<T>(Action<T> callback)
+        protected void Unsubscribe<T>(Action<T> callback, string key)
         {
-            string key = typeof(T).Name;
-
-            if (_signalCallbacks.ContainsKey(key))
+            if (_callbacks.ContainsKey(key))
             {
-                var callbackToDelete = _signalCallbacks[key].FirstOrDefault(x => x.Signal.Equals(callback));
+                var callbackToDelete = _callbacks[key].FirstOrDefault(x => x.Signal.Equals(callback));
 
                 if (callbackToDelete != null)
-                    _signalCallbacks[key].Remove(callbackToDelete);
-            }
-            else
-            {
-                Debug.LogErrorFormat("Trying to unsubscribe for not existing key! {0} ", key);
+                    _callbacks[key].Remove(callbackToDelete);
             }
         }
     }

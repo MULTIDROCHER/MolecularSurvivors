@@ -9,15 +9,7 @@ namespace MolecularSurvivors
     {
         private readonly float _collectSpeed = .5f;
 
-        private GoldCollector _goldCollector;
-        private ResourceHandler _handler;
-
-        [Inject]
-        public void Construct(Player player, LevelProgress progress)
-        {
-            _goldCollector = GetComponent<GoldCollector>();
-            _handler = new(_goldCollector, progress, player);
-        }
+        [Inject] private ResourceHandler _handler;
 
         private void OnTriggerEnter2D(Collider2D other)
         {

@@ -15,7 +15,6 @@ namespace MolecularSurvivors
         private int _expGoal;
 
         public event Action LevelChanged;
-        public override event Action<int> CountChanged;
 
         public LevelRange CurrentLevelRange { get; private set; }
 
@@ -23,7 +22,7 @@ namespace MolecularSurvivors
         {
             CurrentLevelRange = _levelRanges[0];
             _expGoal = _levelRanges[0].GoalIncrease;
-            CountChanged?.Invoke(_level);
+            //CountChanged(_level);
             UpdateDisplay();
         }
 
@@ -64,7 +63,7 @@ namespace MolecularSurvivors
         private void UpdateDisplay()
         {
             _bar.Set(_expGoal, _exp);
-            CountChanged?.Invoke(1);
+            CountChanged(1);
         }
     }
 }

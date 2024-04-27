@@ -2,13 +2,26 @@ namespace MolecularSurvivors
 {
     public class Callback
     {
-        //public readonly int Priority;
         public readonly object Signal;
 
-        public Callback( /* int priority, */  object callback)
+        public Callback(object callback) => Signal = callback;
+    }
+
+    public class CallbackWithType : Callback
+    {
+        public readonly CountableType Type;
+
+        public CallbackWithType(object callback, CountableType type)
+        : base(callback)
         {
-            //Priority = priority;
-            Signal = callback;
+            Type = type;
         }
+    }
+
+    public enum CountableType
+    {
+        Level,
+        Kills,
+        Gold,
     }
 }

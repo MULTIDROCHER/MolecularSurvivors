@@ -1,15 +1,14 @@
-using System;
 using UnityEngine;
-using Zenject;
 
 namespace MolecularSurvivors
 {
     public class CharacterHealth : Health/* , IDisposable */
     {
+        private readonly HealthEventBus _eventBus;
+        
         private CharacterData _data;
-        private EventBus _eventBus;
 
-        public CharacterHealth(Transform damagable, EventBus eventBus) : base(damagable)
+        public CharacterHealth(Transform damagable, HealthEventBus eventBus) : base(damagable)
         {
             //Construct(changesDisplay);
             _eventBus = eventBus;
@@ -38,7 +37,6 @@ namespace MolecularSurvivors
         private void OnHealthChanged()
         {
             _eventBus.Invoke(new HealthChangedSignal(this, LastChange));
-            Debug.Log("healthchanged event " + LastChange);
         }
     }
 }

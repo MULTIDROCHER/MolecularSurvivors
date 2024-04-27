@@ -17,7 +17,7 @@ namespace MolecularSurvivors
         public PlayerMovement PlayerMovement => (PlayerMovement)Movement;
 
         [Inject]
-        private void Construct(Inventory inventory, EventBus eventBus)
+        private void Construct(Inventory inventory, HealthEventBus eventBus)
         {
             Inventory = inventory;
 

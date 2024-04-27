@@ -12,13 +12,15 @@ namespace MolecularSurvivors
         }
     }
 
-    public class ShowHealthChangesSignal
+    public class CountChangedSignal
     {
-        public readonly HealthChangedSignal Signal;
+        public readonly CountableType Type;
+        public readonly int Value;
 
-        public ShowHealthChangesSignal(HealthChangedSignal signal)
+        public CountChangedSignal(CountableType type, int value)
         {
-            Signal = signal;
+            Type = type;
+            Value = value;
         }
     }
 }

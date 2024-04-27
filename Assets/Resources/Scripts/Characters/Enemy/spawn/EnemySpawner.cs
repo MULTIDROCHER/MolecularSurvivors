@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Zenject;
 
@@ -8,7 +7,7 @@ namespace MolecularSurvivors
     {
         [Inject] private readonly Player _player;
         [Inject] private readonly LevelProgress _levelProgress;
-        [Inject] private readonly EventBus _eventBus;
+        [Inject] private readonly HealthEventBus _eventBus;
 
         [SerializeField] private Enemy _template;
         [SerializeField] private DropLootManager _lootManager;
@@ -18,8 +17,6 @@ namespace MolecularSurvivors
         private EnemyPreparer _preparer;
         private EnemyDistanceController _distanceController;
         private EnemyTargetProvider _enemyProvider;
-
-        public override event Action<int> CountChanged;
 
         #region mono
         private void Awake()
@@ -58,7 +55,7 @@ namespace MolecularSurvivors
 
         private void OnEnemyDied(Enemy enemy)
         {
-            CountChanged?.Invoke(1);
+            CountChanged(1);
             _effects.PlayDeathEffect(enemy.transform.position);
             _lootManager.Drop(enemy.transform.position);
             SetEnemy(enemy);

@@ -9,7 +9,7 @@ namespace MolecularSurvivors
 
         public event Action<Enemy> Died;
 
-        public void Initialize(Player player, EventBus eventBus)
+        public void Initialize(Player player, HealthEventBus eventBus)
         {
             Player = player;
             Health = new(transform, eventBus);
