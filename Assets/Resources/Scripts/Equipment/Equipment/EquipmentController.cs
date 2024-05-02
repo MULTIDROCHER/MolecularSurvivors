@@ -7,13 +7,13 @@ namespace MolecularSurvivors
 {
     public abstract class EquipmentController<T> : MonoBehaviour where T : EquipmentData
     {
-        private Inventory _inventory;
-
         [SerializeField] private Equipment<T> _template;
+        
+        private Inventory _inventory;
+        private TimeController<T> _timer;
+        private UpgradesController<T> _upgradesController;
 
         public Player Player { get; private set; }
-        private TimeController<T> _timer = new();
-        private UpgradesController<T> _upgradesController = new();
         public List<Equipment<T>> Equipment { get; private set; } = new();
 
         [Inject]
@@ -23,16 +23,21 @@ namespace MolecularSurvivors
             _inventory = inventory;
         }
 
+        private void Awake(){
+            _timer = new(this);
+            _upgradesController = new(this);
+        }
+
         private void OnEnable()
         {
-            _timer.ReadyToExecute += OnReadyToExecute;
             _inventory.EquipmentAdded += OnAdded;
+            _timer.ReadyToExecute += OnReadyToExecute;
         }
 
         private void OnDisable()
         {
-            _timer.ReadyToExecute -= OnReadyToExecute;
             _inventory.EquipmentAdded -= OnAdded;
+            _timer.ReadyToExecute -= OnReadyToExecute;
         }
 
         private void Update() => _timer.Update();
@@ -56,10 +61,8 @@ namespace MolecularSurvivors
             equipment.Initialize(data, this);
 
             Equipment.Add(equipment);
-            _timer.Add(equipment);
-            _upgradesController.Add(equipment);
         }
 
-        private void OnReadyToExecute(int index) => Equipment[index].Execute();
+        private void OnReadyToExecute(Equipment<T> equipment) => equipment.Execute();
     }
 }

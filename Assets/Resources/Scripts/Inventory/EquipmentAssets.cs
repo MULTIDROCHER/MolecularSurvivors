@@ -10,10 +10,7 @@ namespace MolecularSurvivors
 
         public List<EquipmentData> Equipment{ get; private set; } = new();
 
-        public EquipmentAssets()
-        {
-            Equipment = LoadData<EquipmentData>(_equipmentPath);
-        }
+        public EquipmentAssets() => Equipment = LoadData<EquipmentData>(_equipmentPath);
 
         private List<T> LoadData<T>(string path) where T : EquipmentData
         {

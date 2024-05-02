@@ -22,7 +22,6 @@ namespace MolecularSurvivors
         {
             CurrentLevelRange = _levelRanges[0];
             _expGoal = _levelRanges[0].GoalIncrease;
-            //CountChanged(_level);
             UpdateDisplay();
         }
 

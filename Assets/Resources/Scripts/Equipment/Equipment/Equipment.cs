@@ -13,6 +13,7 @@ namespace MolecularSurvivors
             Data = data;
             EquipmentController = controller;
             gameObject.name = Data.name;
+            data.LevelData.Initialize(data);
         }
 
         public abstract void Execute();

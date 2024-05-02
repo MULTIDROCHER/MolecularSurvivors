@@ -13,11 +13,11 @@ namespace MolecularSurvivors
         private IReward _reward;
         private int _amount;
 
-        public RewardSlotsLoader(List<RewardSlot> slots, DefaultReward[] defaultRewards, Inventory inventory)
+        public RewardSlotsLoader(List<RewardSlot> slots, Inventory inventory)
         {
             _slots = slots;
             _inventory = inventory;
-            _setter = new(inventory,defaultRewards);
+            _setter = new(inventory);
         }
 
         public void Reset()

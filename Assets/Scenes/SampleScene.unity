@@ -1069,7 +1069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 133001bb0cc94b24199e5ee20c963c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAmount: 1
+  _slotsAmount: 2
   _weaponContainer: {fileID: 424036094}
   _abilityContainer: {fileID: 1086201383}
 --- !u!114 &420948152
@@ -3063,9 +3063,6 @@ MonoBehaviour:
   _container: {fileID: 1678086878}
   _slotTemplate: {fileID: 2814147322246906813, guid: d58a0803466379947b587b0f6a28be4f,
     type: 3}
-  _defaultRewards:
-  - {fileID: 11400000, guid: 1dffac5b3f400d2408ef01dfc26940f6, type: 2}
-  - {fileID: 11400000, guid: 0de68b4f9de37614e96027661e56b7ff, type: 2}
   _rewardEffect: {fileID: 79774855}
 --- !u!1 &1678086877
 GameObject:

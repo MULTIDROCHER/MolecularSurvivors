@@ -7,7 +7,7 @@ namespace MolecularSurvivors
 {
     public class Inventory : MonoBehaviour
     {
-        [Min(1)][SerializeField] private int _maxAmount = 4;
+        [Min(1)][SerializeField] private int _slotsAmount = 4;
         [SerializeField] private InventoryBlock _weaponContainer;
         [SerializeField] private InventoryBlock _abilityContainer;
 
@@ -17,8 +17,8 @@ namespace MolecularSurvivors
 
         private void Awake()
         {
-            _weaponContainer.Initialize(_maxAmount);
-            _abilityContainer.Initialize(_maxAmount);
+            _weaponContainer.Initialize(_slotsAmount);
+            _abilityContainer.Initialize(_slotsAmount);
         }
 
         public void Add(EquipmentData equipment)

@@ -5,21 +5,17 @@ namespace MolecularSurvivors
 {
     public class TimeController<T> where T: EquipmentData
     {
-        private readonly List<TimerComponent> _timers = new();
+        private readonly EquipmentController<T> _controller;
 
-        public event Action<int> ReadyToExecute;
+        public event Action<Equipment<T>> ReadyToExecute;
 
-        public void Add(Equipment<T> equipment)
-        {
-            if (_timers.Contains(equipment.Data.TimerData) == false)
-                _timers.Add(equipment.Data.TimerData);
-        }
+        public TimeController(EquipmentController<T> controller) => _controller = controller;
 
         public void Update()
         {
-            foreach (var timer in _timers)
-                if (timer.ReadyToAttack())
-                    ReadyToExecute?.Invoke(_timers.IndexOf(timer));
+            foreach (var equipment in _controller.Equipment)
+                if (equipment.Data.TimerData.ReadyToAttack())
+                    ReadyToExecute?.Invoke(equipment);
         }
     }
 }

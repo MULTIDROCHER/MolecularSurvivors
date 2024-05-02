@@ -25,7 +25,9 @@ namespace MolecularSurvivors
             InventorySlot slot;
 
             if (_equipment.Contains(equipment))
+            {
                 slot = _slots.FirstOrDefault(slot => slot.Equipment == equipment);
+            }
             else
             {
                 slot = _slots.FirstOrDefault(slot => slot.Empty);

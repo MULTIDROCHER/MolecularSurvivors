@@ -4,30 +4,23 @@ namespace MolecularSurvivors
 {
     public class UpgradesController<T> where T : EquipmentData
     {
-        private readonly Dictionary<Equipment<T>, UpgradeComponent> _equipment = new();
+        private readonly EquipmentController<T> _controller;
 
-        public void Add(Equipment<T> equipment)
-        {
-            if (_equipment.ContainsKey(equipment) == false)
-            {
-                _equipment.Add(equipment, equipment.Data.LevelData);
-                equipment.Data.LevelData.Initialize(equipment.Data);
-            }
-        }
+        public UpgradesController(EquipmentController<T> controller) => _controller = controller;
 
         public void Upgrade(Equipment<T> equipment)
         {
             var newLevel = equipment.Data.LevelData.ShowNext();
 
             if (newLevel.ForAll || equipment.Data.HasComponent(newLevel.Type) == false)
-                foreach (var equip in _equipment.Keys)
+                foreach (var equip in _controller.Equipment)
                 {
                     if (equip == equipment)
                         equip.Data.LevelData.LevelUp(newLevel);
                     equip.Data.GetComponent(newLevel.Type)?.ChangeValue(newLevel.Value, newLevel.IsPercent);
                 }
             else
-                _equipment[equipment].LevelUp(newLevel);
+                equipment.Data.LevelData.LevelUp(newLevel);
         }
     }
 }

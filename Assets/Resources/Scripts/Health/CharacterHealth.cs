@@ -2,17 +2,16 @@ using UnityEngine;
 
 namespace MolecularSurvivors
 {
-    public class CharacterHealth : Health/* , IDisposable */
+    public class CharacterHealth : Health
     {
         private readonly HealthEventBus _eventBus;
-        
+
         private CharacterData _data;
 
-        public CharacterHealth(Transform damagable, HealthEventBus eventBus) : base(damagable)
+        public CharacterHealth(Transform damagable, HealthEventBus eventBus)
+        : base(damagable)
         {
-            //Construct(changesDisplay);
             _eventBus = eventBus;
-            //_eventBus.Subscribe<HealthChangedSignal>(OnHealthChanged);
         }
 
         public void Set(CharacterData data)
@@ -34,9 +33,6 @@ namespace MolecularSurvivors
             OnHealthChanged();
         }
 
-        private void OnHealthChanged()
-        {
-            _eventBus.Invoke(new HealthChangedSignal(this, LastChange));
-        }
+        private void OnHealthChanged() => _eventBus.Invoke(new HealthChangedSignal(this, LastChange));
     }
 }

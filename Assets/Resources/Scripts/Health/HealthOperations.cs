@@ -8,6 +8,6 @@ namespace MolecularSurvivors
 
         public int ApplyDamage(int amount) => _health.Current - amount > 0 ? _health.Current - amount : 0;
 
-        public int Recover(int amount) => _health.Current +- amount < _health.MaxAmount ? _health.Current + amount : _health.MaxAmount;
+        public int Recover(int amount) => _health.Current + amount < _health.MaxAmount ? _health.Current + amount : _health.MaxAmount;
     }
 }

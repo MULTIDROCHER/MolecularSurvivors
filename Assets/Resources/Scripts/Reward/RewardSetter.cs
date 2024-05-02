@@ -7,6 +7,7 @@ namespace MolecularSurvivors
 {
     public class RewardSetter : IDisposable
     {
+        private readonly string _defaultRewardsPath = "ScriptableObjects/Reward";
         private readonly Inventory _inventory;
         private readonly EquipmentAssets _assets = new();
         private readonly IReward[] _defaultRewards;
@@ -14,10 +15,10 @@ namespace MolecularSurvivors
 
         private List<IReward> _rewards = new();
 
-        public RewardSetter(Inventory inventory, DefaultReward[] defaultRewards)
+        public RewardSetter(Inventory inventory)
         {
             _inventory = inventory;
-            _defaultRewards = defaultRewards;
+            _defaultRewards = Resources.LoadAll<DefaultReward>(_defaultRewardsPath);
         }
 
         public List<IReward> SetRewards()

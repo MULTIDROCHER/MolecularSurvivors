@@ -6,24 +6,28 @@ namespace MolecularSurvivors
 {
     public class RewardWindow : MonoBehaviour
     {
-        private readonly TimeControl _timeController = new();
         private readonly List<RewardSlot> _slots = new();
 
         [SerializeField] private int _slotsAmount;
         [SerializeField] private Transform _container;
         [SerializeField] private RewardSlot _slotTemplate;
-        [SerializeField] private DefaultReward[] _defaultRewards;
         [SerializeField] private ParticleSystem _rewardEffect;
 
-        [Inject] private Player _player;
-        [Inject] private Inventory _inventory;
-
+        private Player _player;
+        private TimeControl _timeController;
         private RewardSlotsLoader _loader;
+
+        [Inject]
+        private void Construct(Player player, TimeControl timer)
+        {
+            _player = player;
+            _timeController = timer;
+        }
 
         private void Awake()
         {
             Initialize();
-            _loader = new(_slots, _defaultRewards, _inventory);
+            _loader = new(_slots, _player.Inventory);
             _slots.ForEach(slot => slot.RewardSelected += RewardSelected);
         }
 
